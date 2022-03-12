@@ -4,8 +4,14 @@ import { Container } from "./Container";
 
 const Sidebar = () => {
   return (
-    <Container direction="row" minW="md" maxW="3xl" w="2xl">
-      <Container direction="column" flexGrow={1} height="100vh">
+    <Container
+      direction="row"
+      maxW="xl"
+      position={"fixed"}
+      overflow={"hidden"}
+      display={{ sm: "none", xl: "flex" }}
+    >
+      <Container flexDirection={"row"} flexGrow={1}>
         <Text>Sidebar content!</Text>
       </Container>
 

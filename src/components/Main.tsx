@@ -6,13 +6,10 @@ import PostListItem from "./PostListItem";
 
 export const Main = () => {
   return (
-    <Container direction="column" flexGrow={3} height="100vh" overflow="auto">
-
-      <Container direction="row" width={"100%"}>
+    <Container direction="column" flexGrow={3} height="100vh">
+      <Container direction="row">
         <Stack textAlign="left" ml="10rem">
-          <Heading pt={20} pb={10} size="3xl">
-            Posts
-          </Heading>
+          <Heading size="3xl">Posts</Heading>
 
           <HStack flexFlow={"column"} pl={5}>
             {new Array(10).fill("").map((val) => {
