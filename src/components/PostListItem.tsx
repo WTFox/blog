@@ -8,7 +8,7 @@ type PostListItemProps = {
 
 const PostListItem = (props: PostListItemProps) => {
   return (
-    <Box w="3xl" py={10}>
+    <Box maxW={"2xl"} py={5}>
       <Heading mb={5} size="lg">
         {props.title}
       </Heading>

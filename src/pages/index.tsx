@@ -1,16 +1,17 @@
 import { Container } from "../components/Container";
 import { Main } from "../components/Main";
 import { DarkModeSwitch } from "../components/DarkModeSwitch";
-import Sidebar from "../components/Sidebar";
-import { HStack } from "@chakra-ui/react";
+import { Sidebar, MobileNav } from "../components/Sidebar";
+import { Stack } from "@chakra-ui/react";
 
 const Index = () => (
   <Container>
-    <HStack>
+    <Stack>
       <DarkModeSwitch />
+      <MobileNav />
       <Sidebar />
       <Main />
-    </HStack>
+    </Stack>
   </Container>
 );
 
