@@ -1,4 +1,4 @@
-import { Box, Heading, Stack, HStack, Text } from "@chakra-ui/react";
+import { Heading, Stack, HStack } from "@chakra-ui/react";
 
 import { Container } from "./Container";
 import { Footer } from "./Footer";
@@ -6,12 +6,13 @@ import PostListItem from "./PostListItem";
 
 export const Main = () => {
   return (
-    <Container direction="column" order={2}>
+    <Container direction="column">
       <Stack textAlign="left" ml={{ xl: "10rem" }}>
-        <Heading alignSelf={"center"} size="3xl">
+        <Heading pt={10} alignSelf="left" size="3xl">
           Posts
         </Heading>
-        <HStack flexFlow={"column"} pl={5} pt={10}>
+
+        <HStack flexFlow={"column"} pt={10}>
           {new Array(10).fill("").map((val) => {
             return (
               <PostListItem
