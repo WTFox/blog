@@ -8,7 +8,7 @@ export const Main = () => {
   return (
     <Container direction="column">
       <Stack textAlign="left" ml={{ xl: "10rem" }}>
-        <Heading pt={10} alignSelf="left" size="3xl">
+        <Heading pt={20} alignSelf="left" size="3xl">
           Posts
         </Heading>
 

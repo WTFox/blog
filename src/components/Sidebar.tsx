@@ -2,7 +2,7 @@ import {
   Box,
   Center,
   Divider,
-  Text,
+  Image,
   VStack,
   Heading,
   Grid,
@@ -11,24 +11,23 @@ import {
 
 import { Container } from "./Container";
 
-const MobileNav = (props: any) => {
-  return (
-    <Container
-      display={{ base: "flex", xl: "none" }}
-      alignItems="center"
-      borderBottomWidth="1px"
-      justifyContent="flex-start"
-      {...props}
-    >
-      <VStack pb={10}>
-        <Heading textAlign={"center"} size={"4xl"}>
-          Hello!
-        </Heading>
-        <Text>This is a story all about how!</Text>
-      </VStack>
-    </Container>
-  );
-};
+const MobileNav = () => (
+  <Container
+    display={{ base: "flex", xl: "none" }}
+    alignItems="center"
+    borderBottomWidth="1px"
+    justifyContent="flex-start"
+  >
+    <VStack py={20}>
+      <Image
+        borderRadius="full"
+        boxSize="sm"
+        src="https://avatars.githubusercontent.com/u/2353242?v=4"
+        alt="A. Fox"
+      />
+    </VStack>
+  </Container>
+);
 
 const VerticalDivider = () => {
   return (
@@ -54,8 +53,13 @@ const SidebarContent = () => {
       pos="fixed"
       display={{ base: "none", xl: "flex" }}
     >
-      <Box pt={10}>
-        <Heading size={"2xl"}>Hello!</Heading>
+      <Box pt={20}>
+        <Image
+          borderRadius="full"
+          boxSize="15rem"
+          src="https://avatars.githubusercontent.com/u/2353242?v=4"
+          alt="A. Fox"
+        />
       </Box>
     </Container>
   );
