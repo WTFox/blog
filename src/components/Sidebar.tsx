@@ -8,6 +8,7 @@ import {
   Grid,
   GridItem,
 } from "@chakra-ui/react";
+import Head from "next/head";
 
 import { Container } from "./Container";
 
@@ -49,17 +50,19 @@ const SidebarContent = () => {
     <Container
       h="full"
       minH="100vh"
-      top={0}
-      pos="fixed"
+      // pr={"5rem"}
       display={{ base: "none", xl: "flex" }}
     >
       <Box pt={20}>
         <Image
           borderRadius="full"
-          boxSize="15rem"
+          boxSize="10rem"
           src="https://avatars.githubusercontent.com/u/2353242?v=4"
           alt="A. Fox"
         />
+        <Heading textAlign={"center"} pt={10}>
+          Hello
+        </Heading>
       </Box>
     </Container>
   );
@@ -70,10 +73,6 @@ const Sidebar = () => {
     <Grid templateColumns="repeat(10, 1fr)">
       <GridItem colSpan={9}>
         <SidebarContent />
-      </GridItem>
-
-      <GridItem colSpan={1} alignItems="flex-start" justifyContent="flex-end">
-        <VerticalDivider />
       </GridItem>
     </Grid>
   );

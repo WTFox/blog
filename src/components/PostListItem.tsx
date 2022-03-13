@@ -1,17 +1,13 @@
-import { Box, Divider, Heading, Text } from "@chakra-ui/react";
-
-type PostListItemProps = {
-  title: string;
-  summary: string;
-  readTimeInMinutes: number;
-};
+import { Link, Box, Divider, Heading, Text } from "@chakra-ui/react";
 
 const PostListItem = (props: PostListItemProps) => {
   return (
     <Box maxW={"2xl"} py={5}>
-      <Heading mb={5} size="lg">
-        {props.title}
-      </Heading>
+      <Link href={props.link}>
+        <Heading mb={5} size="lg">
+          {props.title}
+        </Heading>
+      </Link>
 
       <Divider width="sm" orientation="horizontal" />
 
@@ -27,3 +23,10 @@ const PostListItem = (props: PostListItemProps) => {
 };
 
 export default PostListItem;
+
+export interface PostListItemProps {
+  title: string;
+  link: string;
+  summary: string;
+  readTimeInMinutes: number;
+}
