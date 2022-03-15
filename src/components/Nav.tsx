@@ -41,14 +41,13 @@ const Links = () => {
 };
 
 const NavContent = () => {
-  const color = useColorModeValue("purple", "pink");
   return (
     <Container h="100vh" mt={{ base: 4, md: 0 }} mx={24} textAlign="center">
       <Section delay={0.1}>
         <Link href={"/"}>
           <Box
-            borderColor={color}
             borderWidth={10}
+            bgGradient="linear(to-tl, #7928CA, #FF0080)"
             borderStyle="solid"
             w={"xs"}
             display="inline-block"
