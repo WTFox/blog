@@ -2,33 +2,9 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-import { Container } from "../components/Container";
-import { Main } from "../components/Main";
-import { DarkModeSwitch } from "../components/DarkModeSwitch";
-import { Sidebar, MobileNav } from "../components/Sidebar";
+import { PostList } from "../components/PostList";
 
-import { Grid, GridItem } from "@chakra-ui/react";
-
-const Index = ({ posts }) => (
-  <Container>
-    <DarkModeSwitch />
-    <Grid templateColumns="repeat(5, 1fr)">
-      <GridItem colSpan={1} alignItems="start" justifyContent="start">
-        <Sidebar />
-      </GridItem>
-
-      <GridItem
-        alignItems="start"
-        justifyContent="start"
-        colStart={{ sm: 1, xl: 3 }}
-        colEnd={5}
-      >
-        <MobileNav />
-        <Main posts={posts} />
-      </GridItem>
-    </Grid>
-  </Container>
-);
+const Index = ({ posts }) => <PostList posts={posts} />;
 
 export async function getStaticProps() {
   const postsDirectory = path.join(__dirname, "../../../src/_posts");

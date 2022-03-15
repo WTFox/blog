@@ -1,9 +1,3 @@
-import { ChakraProvider } from "@chakra-ui/react";
-
-import theme from "../theme";
-import { Container } from "../components/Container";
-import { DarkModeSwitch } from "../components/DarkModeSwitch";
-import { MobileNav } from "../components/Sidebar";
 import { Text, Heading } from "@chakra-ui/react";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote";
 
@@ -34,12 +28,7 @@ interface Props extends PostProps {
 }
 
 const PostLayout = (props: Props) => (
-  <Container>
-    <DarkModeSwitch />
-    <MobileNav />
-    <Heading>{props.frontMatter.title}</Heading>
-    <MDXRemote {...props.mdxSource} components={components} />
-  </Container>
+  <MDXRemote {...props.mdxSource} components={components} />
 );
 
 export default PostLayout;
