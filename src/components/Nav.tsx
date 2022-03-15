@@ -77,6 +77,7 @@ const NavContent = () => {
       </Section>
 
       <Divider w={"xs"} />
+      <Links />
     </Container>
   );
 };

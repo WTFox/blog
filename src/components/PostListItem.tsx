@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const PostListItem = (props: PostListItemProps) => {
   return (
-    <Box maxW={"4xl"}>
+    <Box maxW={"6xl"}>
       <Link href={props.link} passHref>
         <ChakraLink>
           <Heading mb={5} size="lg">

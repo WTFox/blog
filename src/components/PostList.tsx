@@ -5,7 +5,7 @@ import Section from "./Section";
 
 export const PostList = ({ posts }) => {
   return (
-    <Stack alignContent="center" px={20}>
+    <Stack px={20}>
       <Section pb={20} delay={0.1}>
         <Heading size="3xl">Posts</Heading>
       </Section>
