@@ -43,7 +43,7 @@ const Links = () => {
 const NavContent = () => {
   const color = useColorModeValue("purple", "pink");
   return (
-    <Container mt={{ base: 4, md: 0 }} mx={24} textAlign="center">
+    <Container h="100vh" mt={{ base: 4, md: 0 }} mx={24} textAlign="center">
       <Section delay={0.1}>
         <Link href={"/"}>
           <Box
