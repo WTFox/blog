@@ -1,4 +1,4 @@
-import { Heading, Stack } from "@chakra-ui/react";
+import { Divider, Heading, Stack } from "@chakra-ui/react";
 
 import PostListItem from "./PostListItem";
 import Section from "./Section";
@@ -6,8 +6,8 @@ import Section from "./Section";
 export const PostList = ({ posts }) => {
   return (
     <Stack px={20}>
-      <Section pb={20} delay={0.1}>
-        <Heading size="3xl">Posts</Heading>
+      <Section pb={10} delay={0.1}>
+        <Heading size="xl">Posts</Heading>
       </Section>
       {posts.map((post, index) => {
         return (

@@ -42,14 +42,14 @@ const Links = () => {
 
 const NavContent = () => {
   return (
-    <Container h="100vh" mt={{ base: 4, md: 0 }} mx={24} textAlign="center">
+    <Container h="100vh" mt={{ base: 4, md: 0 }} textAlign="center">
       <Section delay={0.1}>
         <Link href={"/"}>
           <Box
             borderWidth={10}
             bgGradient="linear(to-tl, #7928CA, #FF0080)"
             borderStyle="solid"
-            w={"xs"}
+            w={"56"}
             display="inline-block"
             borderRadius="full"
             overflow="hidden"
@@ -66,11 +66,13 @@ const NavContent = () => {
       </Section>
 
       <Section delay={0.1} py={10}>
-        <Heading fontSize={"2xl"}>Hi, I'm Anthony!</Heading>
-        <Container pt={5}>
-          <Text fontSize={"lg"} as="i">
-            I like to make things. I like to make things. I like to make things.
-            I like to make things. I like to make things.
+        <Heading fontSize={"xl"}>Hi, I'm Anthony!</Heading>
+        <Container maxW={"md"} pt={5}>
+          <Text fontSize={"sm"} as="i">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi fugiat
+            soluta sunt est ut, exercitationem odit repellat saepe, debitis,
+            excepturi alias sint veritatis. Quisquam non facere necessitatibus
+            illo ullam nam.
           </Text>
         </Container>
       </Section>

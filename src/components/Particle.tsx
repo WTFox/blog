@@ -3,7 +3,7 @@ import Particles from "react-tsparticles";
 import { Box, useColorModeValue } from "@chakra-ui/react";
 
 const Particle = () => {
-  const color = useColorModeValue("#D6BCFA", "#FBB6CE");
+  const color = useColorModeValue("#16161D", "#FBB6CE");
   return (
     <Box zIndex={-1} pos={"fixed"}>
       <Particles
@@ -12,10 +12,6 @@ const Particle = () => {
           particles: {
             color: {
               value: color,
-            },
-            links: {
-              enable: true,
-              opacity: 0.5,
             },
             move: {
               direction: "right",
