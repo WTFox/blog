@@ -1,6 +1,4 @@
-import { Container } from "../components/Container";
-
-import { DarkModeSwitch } from "../components/DarkModeSwitch";
+import DarkModeSwitch from "./DarkModeSwitch";
 import Nav from "./Nav";
 
 import { Grid, GridItem } from "@chakra-ui/react";
