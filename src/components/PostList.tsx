@@ -1,13 +1,20 @@
-import { Heading, Box, Stack } from "@chakra-ui/react";
+import { Heading, Stack } from "@chakra-ui/react";
 
-import PostListItem from "@/components/PostListItem";
+import PostListItem from "./PostListItem";
+import Section from "./Section";
 
 export const PostList = ({ posts }) => {
   return (
     <Stack alignContent="center" px={20} pt={10}>
-      <Heading size="3xl">Posts</Heading>
-      {posts.map((post) => {
-        return <PostListItem {...post.frontMatter} />;
+      <Section delay={0.2}>
+        <Heading size="3xl">Posts</Heading>
+      </Section>
+      {posts.map((post, index) => {
+        return (
+          <Section delay={0.4}>
+            <PostListItem {...post.frontMatter} />
+          </Section>
+        );
       })}
     </Stack>
   );
