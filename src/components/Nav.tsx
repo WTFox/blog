@@ -46,7 +46,7 @@ const NavContent = () => {
       <Section delay={0.1}>
         <Link href={"/"}>
           <Box
-            borderWidth={10}
+            borderWidth={3}
             bgGradient="linear(to-tl, #7928CA, #FF0080)"
             borderStyle="solid"
             w={"56"}

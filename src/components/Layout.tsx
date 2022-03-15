@@ -1,6 +1,5 @@
 import DarkModeSwitch from "./DarkModeSwitch";
 import Nav from "./Nav";
-import Particle from "./Particle";
 
 import { Box, Grid, GridItem } from "@chakra-ui/react";
 
