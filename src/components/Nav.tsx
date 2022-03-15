@@ -1,12 +1,49 @@
-import { Box, Image, useColorModeValue } from "@chakra-ui/react";
+import {
+  Icon,
+  Text,
+  Box,
+  Image,
+  useColorModeValue,
+  Heading,
+  Link as ChakraLink,
+  Divider,
+  VStack,
+} from "@chakra-ui/react";
 import Link from "next/link";
 
+import { GoOctoface } from "react-icons/go";
 import Section from "./Section";
+import { Container } from "@/components/Container";
+
+const Links = () => {
+  return (
+    <Section pt={10} textAlign="left" w="80%">
+      <VStack>
+        <Link passHref href={"/about"}>
+          <ChakraLink fontSize={"xl"}>
+            <Text textAlign={"left"}>
+              <Icon as={GoOctoface} />
+              {"    About"}
+            </Text>
+          </ChakraLink>
+        </Link>
+        <Link passHref href={"https://github.com/wtfox"}>
+          <ChakraLink isExternal fontSize={"xl"}>
+            <Text textAlign={"left"}>
+              <Icon as={GoOctoface} />
+              {"    Github"}
+            </Text>
+          </ChakraLink>
+        </Link>
+      </VStack>
+    </Section>
+  );
+};
 
 const NavContent = () => {
   const color = useColorModeValue("purple", "pink");
   return (
-    <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }} textAlign="center">
+    <Container mt={{ base: 4, md: 0 }} mx={24} textAlign="center">
       <Section delay={0.1}>
         <Link href={"/"}>
           <Box
@@ -28,7 +65,19 @@ const NavContent = () => {
           </Box>
         </Link>
       </Section>
-    </Box>
+
+      <Section delay={0.1} py={10}>
+        <Heading fontSize={"2xl"}>Hi, I'm Anthony!</Heading>
+        <Container pt={5}>
+          <Text fontSize={"lg"} as="i">
+            I like to make things. I like to make things. I like to make things.
+            I like to make things. I like to make things.
+          </Text>
+        </Container>
+      </Section>
+
+      <Divider w={"xs"} />
+    </Container>
   );
 };
 
