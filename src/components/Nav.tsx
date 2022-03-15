@@ -13,8 +13,7 @@ const NavContent = () => {
             borderColor={color}
             borderWidth={10}
             borderStyle="solid"
-            w="250px"
-            h="250px"
+            w={"xs"}
             display="inline-block"
             borderRadius="full"
             overflow="hidden"
