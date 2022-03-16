@@ -22,7 +22,7 @@ import { Container } from "@/components/Container";
 import profilePic from "../public/images/profile.jpg";
 
 const linkData = [
-  { href: "#Posts", icon: FaNewspaper, text: "    Posts", isExternal: false },
+  { href: "/#Posts", icon: FaNewspaper, text: "    Posts", isExternal: false },
   { href: "/talks", icon: BsMic, text: "    Talks", isExternal: false },
   {
     href: "/about",
@@ -53,18 +53,17 @@ const linkData = [
 
 const Links = () => {
   return (
-    <Section pt={10} textAlign="center" w="80%">
+    <Section pt={5} textAlign={{ lg: "center" }}>
       <Grid
-        justifyItems={"center"}
-        templateRows={{ base: "repeat(2, 1fr)", lg: "repeat(1, 1fr)" }}
-        templateColumns={{ base: "repeat(2, 1fr)", lg: "repeat(1, 1fr)" }}
-        gap={4}
+        justifyItems={"left"}
+        templateColumns={{ base: "repeat(2, 1fr)" }}
+        gap={2}
       >
         {linkData.map((link) => {
           return (
             <GridItem>
               <Link passHref href={link.href}>
-                <ChakraLink isExternal={link.isExternal} fontSize={"xl"}>
+                <ChakraLink isExternal={link.isExternal} fontSize={"md"}>
                   <Text>
                     <Icon as={link.icon} /> {link.text}{" "}
                   </Text>
@@ -99,7 +98,7 @@ const NavContent = () => {
         </Link>
       </Section>
 
-      <Section delay={0.1} py={10}>
+      <Section delay={0.1} pt={5}>
         <Heading fontSize={"xl"}>Hi, I'm Anthony!</Heading>
         <Container maxW={"md"} pt={5}>
           <Text fontSize={"sm"} as="i">
@@ -108,14 +107,18 @@ const NavContent = () => {
         </Container>
       </Section>
 
-      <Divider w={"xs"} />
+      <Divider pt={5} w={"xs"} />
       <Links />
     </Container>
   );
 };
 
 const Nav = () => {
-  return <NavContent />;
+  return (
+    <Box position={{ lg: "fixed" }}>
+      <NavContent />
+    </Box>
+  );
 };
 
 export default Nav;

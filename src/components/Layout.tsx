@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
           <Nav />
         </GridItem>
         <GridItem
-          pt={{ lg: "5em" }}
+          py="5em"
           colStart={{ base: 1, lg: 5 }}
           colSpan={{ base: 10, lg: 5 }}
         >
