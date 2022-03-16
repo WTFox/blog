@@ -11,6 +11,7 @@ const Section = ({ children, delay = 0, ...rest }) => (
   <StyledDiv
     initial={{ y: 10, opacity: 0 }}
     animate={{ y: 0, opacity: 1 }}
+    // @ts-ignore
     transition={{ duration: 0.8, delay }}
     {...rest}
   >
