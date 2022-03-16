@@ -2,14 +2,15 @@ import {
   Icon,
   Text,
   Box,
-  Image,
   Heading,
   Link as ChakraLink,
   Divider,
   GridItem,
   Grid,
 } from "@chakra-ui/react";
+
 import Link from "next/link";
+import Image from "next/image";
 
 import { EmailIcon, DownloadIcon } from "@chakra-ui/icons";
 import { GoOctoface } from "react-icons/go";
@@ -17,6 +18,8 @@ import { FaNewspaper } from "react-icons/fa";
 import { BsFillPersonFill, BsMic, BsTwitter } from "react-icons/bs";
 import Section from "./Section";
 import { Container } from "@/components/Container";
+
+import profilePic from "../public/images/profile.jpg";
 
 const linkData = [
   { href: "#Posts", icon: FaNewspaper, text: "    Posts", isExternal: false },
@@ -90,13 +93,7 @@ const NavContent = () => {
               borderRadius="full"
               overflow="hidden"
             >
-              <Image
-                src="https://avatars.githubusercontent.com/u/2353242?v=4"
-                alt="A. Fox"
-                borderRadius="full"
-                width="100%"
-                height="100%"
-              />
+              <Image src={profilePic} alt="A. Fox" />
             </Box>
           </ChakraLink>
         </Link>
