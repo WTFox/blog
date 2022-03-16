@@ -3,11 +3,11 @@ import {
   Text,
   Box,
   Image,
-  useColorModeValue,
   Heading,
   Link as ChakraLink,
   Divider,
-  VStack,
+  GridItem,
+  Grid,
 } from "@chakra-ui/react";
 import Link from "next/link";
 
@@ -18,67 +18,59 @@ import { BsFillPersonFill, BsMic, BsTwitter } from "react-icons/bs";
 import Section from "./Section";
 import { Container } from "@/components/Container";
 
+const linkData = [
+  { href: "#Posts", icon: FaNewspaper, text: "    Posts", isExternal: false },
+  { href: "/talks", icon: BsMic, text: "    Talks", isExternal: false },
+  {
+    href: "/about",
+    icon: BsFillPersonFill,
+    text: "    About Me",
+    isExternal: false,
+  },
+  {
+    href: "https://twitter.com/__wtfox__",
+    icon: BsTwitter,
+    text: "    Twitter",
+    isExternal: true,
+  },
+  {
+    href: "https://github.com/wtfox/",
+    icon: GoOctoface,
+    text: "    Github",
+    isExternal: true,
+  },
+  { href: "/", icon: DownloadIcon, text: "    Resume", isExternal: false },
+  {
+    href: "mailto:anthonyfox1988@gmail.com",
+    icon: EmailIcon,
+    text: "    Email",
+    isExternal: true,
+  },
+];
+
 const Links = () => {
   return (
-    <Section pt={10} textAlign="left" w="80%">
-      <VStack>
-        <Link passHref href={"/"}>
-          <ChakraLink fontSize={"xl"}>
-            <Text textAlign={"left"}>
-              <Icon as={FaNewspaper} />
-              {"    Posts"}
-            </Text>
-          </ChakraLink>
-        </Link>
-        <Link passHref href={"/talks"}>
-          <ChakraLink fontSize={"xl"}>
-            <Text textAlign={"left"}>
-              <Icon as={BsMic} />
-              {"    Talks"}
-            </Text>
-          </ChakraLink>
-        </Link>
-        <Link passHref href={"/about"}>
-          <ChakraLink fontSize={"xl"}>
-            <Text textAlign={"left"}>
-              <Icon as={BsFillPersonFill} />
-              {"    About"}
-            </Text>
-          </ChakraLink>
-        </Link>
-        <Link passHref href={"https://twitter.com/__wtfox__"}>
-          <ChakraLink isExternal fontSize={"xl"}>
-            <Text textAlign={"left"}>
-              <Icon as={BsTwitter} />
-              {"    Twitter"}
-            </Text>
-          </ChakraLink>
-        </Link>
-        <Link passHref href={"https://github.com/wtfox"}>
-          <ChakraLink isExternal fontSize={"xl"}>
-            <Text textAlign={"left"}>
-              <Icon as={GoOctoface} />
-              {"    Github"}
-            </Text>
-          </ChakraLink>
-        </Link>
-        <Link passHref href={"/"}>
-          <ChakraLink fontSize={"xl"}>
-            <Text textAlign={"left"}>
-              <Icon as={DownloadIcon} />
-              {"    Resume"}
-            </Text>
-          </ChakraLink>
-        </Link>
-        <Link passHref href={"/"}>
-          <ChakraLink fontSize={"xl"}>
-            <Text textAlign={"left"}>
-              <Icon as={EmailIcon} />
-              {"    Email"}
-            </Text>
-          </ChakraLink>
-        </Link>
-      </VStack>
+    <Section pt={10} textAlign="center" w="80%">
+      <Grid
+        justifyItems={"center"}
+        templateRows={{ base: "repeat(2, 1fr)", lg: "repeat(1, 1fr)" }}
+        templateColumns={{ base: "repeat(2, 1fr)", lg: "repeat(1, 1fr)" }}
+        gap={4}
+      >
+        {linkData.map((link) => {
+          return (
+            <GridItem>
+              <Link passHref href={link.href}>
+                <ChakraLink isExternal={link.isExternal} fontSize={"xl"}>
+                  <Text>
+                    <Icon as={link.icon} /> {link.text}{" "}
+                  </Text>
+                </ChakraLink>
+              </Link>
+            </GridItem>
+          );
+        })}
+      </Grid>
     </Section>
   );
 };
@@ -114,10 +106,7 @@ const NavContent = () => {
         <Heading fontSize={"xl"}>Hi, I'm Anthony!</Heading>
         <Container maxW={"md"} pt={5}>
           <Text fontSize={"sm"} as="i">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi fugiat
-            soluta sunt est ut, exercitationem odit repellat saepe, debitis,
-            excepturi alias sint veritatis. Quisquam non facere necessitatibus
-            illo ullam nam.
+            Writer of code. Maker of things.
           </Text>
         </Container>
       </Section>

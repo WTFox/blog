@@ -7,7 +7,9 @@ export const PostList = ({ posts }) => {
   return (
     <Stack px={20}>
       <Section pb={10} delay={0.1}>
-        <Heading size="xl">Posts</Heading>
+        <Heading id="Posts" size="xl">
+          Posts
+        </Heading>
       </Section>
       {posts.map((post, index) => {
         return (
