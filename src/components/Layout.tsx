@@ -8,20 +8,20 @@ const Layout = ({ children }) => {
     <Box>
       <Grid templateColumns="repeat(10, 1fr)" gap={0}>
         <GridItem
-          colStart={{ base: 0, xl: 1 }}
-          colSpan={{ base: 0, xl: 1 }}
+          colStart={{ base: 0, lg: 1 }}
+          colSpan={{ base: 0, lg: 1 }}
         ></GridItem>
         <GridItem
           pt={"5em"}
-          colStart={{ base: 1, xl: 2 }}
-          colSpan={{ base: 10, xl: 3 }}
+          colStart={{ base: 1, lg: 2 }}
+          colSpan={{ base: 10, lg: 3 }}
         >
           <Nav />
         </GridItem>
         <GridItem
-          pt={"5em"}
-          colStart={{ base: 1, xl: 5 }}
-          colSpan={{ base: 10, xl: 5 }}
+          pt={{ lg: "5em" }}
+          colStart={{ base: 1, lg: 5 }}
+          colSpan={{ base: 10, lg: 5 }}
         >
           {children}
           <DarkModeSwitch />

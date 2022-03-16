@@ -11,7 +11,7 @@ export const PostList = ({ posts }) => {
       </Section>
       {posts.map((post, index) => {
         return (
-          <Section delay={(index + 1) / 10 + 0.3}>
+          <Section key={index} delay={(index + 1) / 10 + 0.3}>
             <PostListItem {...post.frontMatter} />
           </Section>
         );
