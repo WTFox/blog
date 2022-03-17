@@ -1,7 +1,7 @@
 import { Link as ChakraLink, Box, Heading, Text } from "@chakra-ui/react";
 import Link from "next/link";
 
-export type PostListItemProps = {
+export interface PostListItemProps {
   link: string;
   frontMatter: {
     title: string;
@@ -9,7 +9,7 @@ export type PostListItemProps = {
     date: string;
     readTimeInMinutes: number;
   };
-};
+}
 
 const PostListItem = (props: PostListItemProps) => {
   return (

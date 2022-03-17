@@ -1,5 +1,6 @@
 import { Text, Heading } from "@chakra-ui/react";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote";
+import { PostListItemProps } from "@/components/PostListItem";
 
 const components = {
   h1: (props: any) => (
@@ -14,16 +15,7 @@ const components = {
   ),
 };
 
-interface PostProps {
-  frontMatter: {
-    title: string;
-    summary: string;
-    date: string;
-    readTimeInMinutes: number;
-  };
-}
-
-interface Props extends PostProps {
+interface Props extends PostListItemProps {
   mdxSource: MDXRemoteProps;
 }
 
