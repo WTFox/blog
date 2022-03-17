@@ -15,8 +15,7 @@ import {
 import { Container } from "./Container";
 import Section from "./Section";
 
-import SiteConfig from "lib/config";
-
+import SiteConfig from "../lib/config";
 import profilePic from "../public/images/profile.jpg";
 
 const SidebarLinks = () => {
