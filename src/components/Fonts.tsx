@@ -3,9 +3,6 @@ import { Global } from "@emotion/react";
 const Fonts = () => (
   <Global
     styles={`
-      a:focus {
-        outline: none;
-      },
       @font-face {
         font-family: 'MonoLisa';
         src: url('../public/fonts/MonoLisa/MonoLisa-Regular.woff2') format('woff2'),
