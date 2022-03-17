@@ -2,7 +2,7 @@ import Particles from "react-tsparticles";
 
 import { Box, useColorModeValue } from "@chakra-ui/react";
 
-const particleOptions = (color: string): any => {
+const particleOptions = (color: string): object => {
   return {
     fpsLimit: 60,
     particles: {

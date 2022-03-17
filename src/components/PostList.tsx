@@ -4,6 +4,8 @@ import PostListItem from "./PostListItem";
 import { PostListItemProps } from "./PostListItem";
 import Section from "./Section";
 
+
+// TODO: properly type this
 export const PostList = ({ posts }) => {
   posts = posts.sort((a: PostListItemProps, b: PostListItemProps) => {
     return new Date(a.frontMatter.date) < new Date(b.frontMatter.date);

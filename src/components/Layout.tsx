@@ -1,7 +1,7 @@
 import { DarkModeSwitch, ScrollToTop } from "./IconButtons";
 import Nav from "./Nav";
 
-import { Link, Box, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 
 import { useEffect, useState } from "react";
 
