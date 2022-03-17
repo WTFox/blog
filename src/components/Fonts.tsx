@@ -3,6 +3,8 @@ import { Global } from "@emotion/react";
 const Fonts = () => (
   <Global
     styles={`
+      @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
       @font-face {
         font-family: 'MonoLisa';
         src: url('../public/fonts/MonoLisa/MonoLisa-Regular.woff2') format('woff2'),
