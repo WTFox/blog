@@ -25,10 +25,6 @@ const Layout = ({ children }) => {
     <Box>
       <Grid templateColumns="repeat(10, 1fr)">
         <GridItem
-          colStart={{ base: 0, lg: 1, "2xl": 1 }}
-          colSpan={{ base: 0, lg: 1, "2xl": 2 }}
-        ></GridItem>
-        <GridItem
           pt={"5em"}
           colStart={{ base: 1, lg: 2, "2xl": 3 }}
           colSpan={{ base: 10, lg: 3, "2xl": 2 }}
