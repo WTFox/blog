@@ -7,6 +7,7 @@ interface Props extends PostListItemProps {
 }
 
 const PostLayout = (props: Props) => (
+  // @ts-ignore
   <MDXRemote {...props.mdxSource} components={components} />
 );
 
