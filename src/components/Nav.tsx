@@ -14,39 +14,43 @@ import Image from "next/image";
 
 import { EmailIcon, DownloadIcon } from "@chakra-ui/icons";
 import { GoOctoface } from "react-icons/go";
-import { FaNewspaper } from "react-icons/fa";
-import { BsFillPersonFill, BsMic, BsTwitter } from "react-icons/bs";
+import { FaTwitter } from "react-icons/fa";
+import { BsFillPersonFill, BsMicFill } from "react-icons/bs";
 import Section from "./Section";
 import { Container } from "@/components/Container";
 
 import profilePic from "../public/images/profile.jpg";
 
 const linkData = [
-  { href: "/#Posts", icon: FaNewspaper, text: "    Posts", isExternal: false },
-  { href: "/talks", icon: BsMic, text: "    Talks", isExternal: false },
   {
     href: "/about",
     icon: BsFillPersonFill,
-    text: "    About Me",
+    text: "/about",
     isExternal: false,
   },
+  { href: "/talks", icon: BsMicFill, text: "/talks", isExternal: false },
   {
     href: "https://twitter.com/__wtfox__",
-    icon: BsTwitter,
-    text: "    Twitter",
+    icon: FaTwitter,
+    text: "twitter",
     isExternal: true,
   },
   {
     href: "https://github.com/wtfox/",
     icon: GoOctoface,
-    text: "    Github",
+    text: "github",
     isExternal: true,
   },
-  { href: "/", icon: DownloadIcon, text: "    Resume", isExternal: false },
+  {
+    href: "/resume.pdf",
+    icon: DownloadIcon,
+    text: "resume",
+    isExternal: false,
+  },
   {
     href: "mailto:anthonyfox1988@gmail.com",
     icon: EmailIcon,
-    text: "    Email",
+    text: "email",
     isExternal: true,
   },
 ];
@@ -57,11 +61,11 @@ const Links = () => {
       <Grid
         justifyItems={"left"}
         templateColumns={{ base: "repeat(2, 1fr)" }}
-        gap={2}
+        gap={5}
       >
-        {linkData.map((link) => {
+        {linkData.map((link, index) => {
           return (
-            <GridItem>
+            <GridItem key={index}>
               <Link passHref href={link.href}>
                 <ChakraLink isExternal={link.isExternal} fontSize={"md"}>
                   <Text>
@@ -99,15 +103,14 @@ const NavContent = () => {
       </Section>
 
       <Section delay={0.1} pt={5}>
-        <Heading fontSize={"xl"}>Hi, I'm Anthony!</Heading>
+        <Heading fontSize={"xl"}>Anthony Fox</Heading>
         <Container maxW={"md"} pt={5}>
           <Text fontSize={"sm"} as="i">
             Writer of code. Maker of things.
           </Text>
         </Container>
       </Section>
-
-      <Divider pt={5} w={"xs"} />
+      <Divider pt={5} w={"2xs"} />
       <Links />
     </Container>
   );
