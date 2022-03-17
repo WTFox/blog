@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { Box, Divider, Text, useColorModeValue } from "@chakra-ui/react";
 
-const p = ({ children, ...delegated }: TextProps) => {
+const P = ({ children, ...delegated }: TextProps) => {
   return (
     <Text as="p" mt={4} lineHeight="tall" {...delegated}>
       {children}
@@ -25,7 +25,7 @@ const p = ({ children, ...delegated }: TextProps) => {
   );
 };
 
-const ul = ({ children, ...delegated }: BoxProps) => {
+const Ul = ({ children, ...delegated }: BoxProps) => {
   return (
     <Box as="ul" pt={2} pl={4} ml={2} {...delegated}>
       {children}
@@ -33,7 +33,7 @@ const ul = ({ children, ...delegated }: BoxProps) => {
   );
 };
 
-const ol = ({ children, ...delegated }: BoxProps) => {
+const Ol = ({ children, ...delegated }: BoxProps) => {
   return (
     <Box as="ol" pt={2} pl={4} ml={2} {...delegated}>
       {children}
@@ -41,7 +41,7 @@ const ol = ({ children, ...delegated }: BoxProps) => {
   );
 };
 
-const li = ({ children, ...delegated }: BoxProps) => {
+const Li = ({ children, ...delegated }: BoxProps) => {
   return (
     <Box as="li" pb={1} {...delegated}>
       {children}
@@ -49,7 +49,7 @@ const li = ({ children, ...delegated }: BoxProps) => {
   );
 };
 
-const blockquote = (props: BoxProps) => {
+const BlockQuote = (props: BoxProps) => {
   const bgColor = useColorModeValue("blue.50", "blue.900");
 
   return (
@@ -70,13 +70,13 @@ const blockquote = (props: BoxProps) => {
   );
 };
 
-const hr = () => {
+const HR = () => {
   const borderColor = useColorModeValue("gray.200", "gray.600");
 
   return <Divider borderColor={borderColor} my={4} w="full" />;
 };
 
-const h1 = ({ children, ...delegated }: HeadingProps) => {
+const H1 = ({ children, ...delegated }: HeadingProps) => {
   return (
     <Heading as="h1" size="xl" my={4} {...delegated}>
       {children}
@@ -84,7 +84,7 @@ const h1 = ({ children, ...delegated }: HeadingProps) => {
   );
 };
 
-const h2 = ({ children, ...delegated }: HeadingProps) => {
+const H2 = ({ children, ...delegated }: HeadingProps) => {
   return (
     <Heading as="h2" fontWeight="bold" size="lg" {...delegated}>
       {children}
@@ -92,7 +92,7 @@ const h2 = ({ children, ...delegated }: HeadingProps) => {
   );
 };
 
-const h3 = ({ children, ...delegated }: HeadingProps) => {
+const H3 = ({ children, ...delegated }: HeadingProps) => {
   return (
     <Heading as="h3" size="md" fontWeight="bold" {...delegated}>
       {children}
@@ -154,11 +154,11 @@ const ButtonLink = ({
   );
 };
 
-const table = (props: BoxProps) => (
+const Table = (props: BoxProps) => (
   <Box as="table" textAlign="left" mt="32px" width="full" {...props} />
 );
 
-const th = (props: BoxProps) => {
+const Th = (props: BoxProps) => {
   const bg = useColorModeValue("gray.50", "whiteAlpha.100");
 
   return (
@@ -166,7 +166,7 @@ const th = (props: BoxProps) => {
   );
 };
 
-const td = (props: BoxProps) => (
+const Td = (props: BoxProps) => (
   <Box
     as="td"
     p={2}
@@ -180,18 +180,18 @@ const td = (props: BoxProps) => (
 
 export const components = {
   Image,
-  h1,
-  h2,
-  h3,
-  p,
-  ul,
-  ol,
-  li,
-  blockquote,
-  hr,
-  table,
-  th,
-  td,
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  p: P,
+  ul: Ul,
+  ol: Ol,
+  li: Li,
+  blockquote: BlockQuote,
+  hr: HR,
+  table: Table,
+  th: Th,
+  td: Td,
   kbd: Kbd,
   a: Link,
   Link,
