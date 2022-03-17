@@ -1,4 +1,4 @@
-import { Heading, Stack } from "@chakra-ui/react";
+import { Divider, Heading, Stack } from "@chakra-ui/react";
 
 import PostListItem from "./PostListItem";
 import { PostListItemProps } from "./PostListItem";
@@ -16,6 +16,7 @@ export const PostList = ({ posts }) => {
         <Heading id="Posts" size="lg">
           Writings
         </Heading>
+        <Divider pt={5} size={"md"} />
       </Section>
       {posts.map((post: PostListItemProps, index: number) => {
         return (
