@@ -23,22 +23,22 @@ const Layout = ({ children }) => {
 
   return (
     <Box>
-      <Grid templateColumns="repeat(10, 1fr)" gap={0}>
+      <Grid templateColumns="repeat(10, 1fr)">
         <GridItem
-          colStart={{ base: 0, lg: 1 }}
-          colSpan={{ base: 0, lg: 1 }}
+          colStart={{ base: 0, lg: 1, "2xl": 1 }}
+          colSpan={{ base: 0, lg: 1, "2xl": 2 }}
         ></GridItem>
         <GridItem
           pt={"5em"}
-          colStart={{ base: 1, lg: 2 }}
-          colSpan={{ base: 10, lg: 3 }}
+          colStart={{ base: 1, lg: 2, "2xl": 3 }}
+          colSpan={{ base: 10, lg: 3, "2xl": 2 }}
         >
           <Nav />
         </GridItem>
         <GridItem
           py="5em"
-          colStart={{ base: 1, lg: 5 }}
-          colSpan={{ base: 10, lg: 5 }}
+          colStart={{ base: 1, lg: 5, "2xl": 5 }}
+          colSpan={{ base: 10, lg: 5, "2xl": 5 }}
         >
           {children}
           {scrollPosition > 500 && <ScrollToTop />}

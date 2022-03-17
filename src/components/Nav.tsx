@@ -125,9 +125,9 @@ const NavContent = () => {
 
 const Nav = () => {
   return (
-    <Box position={{ lg: "fixed" }}>
+    <Container position={{ lg: "fixed" }}>
       <NavContent />
-    </Box>
+    </Container>
   );
 };
 
