@@ -2,7 +2,7 @@ import { Divider, Heading, Stack } from "@chakra-ui/react";
 
 import PostListItem from "./PostListItem";
 import { PostListItemProps } from "./PostListItem";
-import Section from "./Section";
+import Section from "../Section";
 
 // TODO: properly type this
 export const PostList = ({ posts }) => {

@@ -1,14 +1,14 @@
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote";
-import { PostListItemProps } from "@/components/PostListItem";
+import { PostListItemProps } from "@/components/PostList/PostListItem";
 import { components } from "@/components/MDXComponents";
 
 interface Props extends PostListItemProps {
   mdxSource: MDXRemoteProps;
 }
 
-const PostLayout = (props: Props) => (
+const PostDetail = (props: Props) => (
   // @ts-ignore
   <MDXRemote {...props.mdxSource} components={components} />
 );
 
-export default PostLayout;
+export default PostDetail;

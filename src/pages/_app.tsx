@@ -1,21 +1,19 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import type { ReactElement, ReactNode } from "react";
+import type { NextPage } from "next";
+import type { AppProps } from "next/app";
+
 import "focus-visible/dist/focus-visible";
 
-import theme from "../theme";
-import Fonts from "@/components/Fonts";
-import { AppProps } from "next/app";
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
 
-import MainLayout from "@/components/Layouts/MainLayout";
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    // TODO: add Head tag
-    <ChakraProvider resetCSS theme={theme}>
-      <Fonts />
-      <MainLayout>
-        <Component {...pageProps} />
-      </MainLayout>
-    </ChakraProvider>
-  );
+export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  const getLayout = Component.getLayout ?? ((page) => page);
+
+  return getLayout(<Component {...pageProps} />);
 }
-export default MyApp;

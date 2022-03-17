@@ -1,13 +1,19 @@
-import PostLayout from "../../components/PostLayout";
+import PostDetail from "../../components/PostDetail";
 import { serialize } from "next-mdx-remote/serialize";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { ReactElement } from "react";
+import { PostDetailLayout } from "@/components/Layouts";
 
-const PostPage = ({ link, frontMatter, mdxSource }) => {
+const PostDetailView = ({ link, frontMatter, mdxSource }) => {
   return (
-    <PostLayout link={link} frontMatter={frontMatter} mdxSource={mdxSource} />
+    <PostDetail link={link} frontMatter={frontMatter} mdxSource={mdxSource} />
   );
+};
+
+PostDetailView.getLayout = function getLayout(page: ReactElement) {
+  return <PostDetailLayout>{page}</PostDetailLayout>;
 };
 
 const getStaticPaths = async () => {
@@ -44,4 +50,4 @@ const getStaticProps = async ({ params: { slug } }) => {
 };
 
 export { getStaticProps, getStaticPaths };
-export default PostPage;
+export default PostDetailView;
