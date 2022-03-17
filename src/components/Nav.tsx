@@ -8,8 +8,8 @@ import {
   Heading,
   Link as ChakraLink,
   Text,
+  Image,
 } from "@chakra-ui/react";
-import Image from "next/image";
 import Link from "next/link";
 import { BsFillPersonFill, BsMicFill } from "react-icons/bs";
 import { FaTwitter } from "react-icons/fa";
@@ -100,7 +100,7 @@ const NavContent = () => {
               borderRadius="full"
               overflow="hidden"
             >
-              <Image src={profilePic} alt="A. Fox" />
+              <Image src={profilePic.src} alt="A. Fox" />
             </Box>
           </ChakraLink>
         </Link>
