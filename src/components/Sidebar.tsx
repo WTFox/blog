@@ -1,5 +1,6 @@
-import { Container } from "@/components/Container";
-import { DownloadIcon, EmailIcon, Icon } from "@chakra-ui/icons";
+import Link from "next/link";
+
+import { Icon } from "@chakra-ui/icons";
 import {
   Box,
   Divider,
@@ -10,56 +11,15 @@ import {
   Text,
   Image,
 } from "@chakra-ui/react";
-import Link from "next/link";
-import { BsFillPersonFill, BsMicFill } from "react-icons/bs";
-import { FaTwitter } from "react-icons/fa";
-import { GoOctoface } from "react-icons/go";
-import { IconType } from "react-icons/lib";
-import profilePic from "../public/images/profile.jpg";
+
+import { Container } from "./Container";
 import Section from "./Section";
 
-interface Link {
-  href: string;
-  icon: IconType | typeof Icon;
-  text: string;
-  isExternal: boolean;
-}
+import SiteConfig from "lib/config";
 
-const linkData: Link[] = [
-  {
-    href: "/about",
-    icon: BsFillPersonFill,
-    text: "/about",
-    isExternal: false,
-  },
-  { href: "/talks", icon: BsMicFill, text: "/talks", isExternal: false },
-  {
-    href: "https://twitter.com/__wtfox__",
-    icon: FaTwitter,
-    text: "twitter",
-    isExternal: true,
-  },
-  {
-    href: "https://github.com/wtfox/",
-    icon: GoOctoface,
-    text: "github",
-    isExternal: true,
-  },
-  {
-    href: "/resume.pdf",
-    icon: DownloadIcon,
-    text: "resume",
-    isExternal: false,
-  },
-  {
-    href: "mailto:anthonyfox1988@gmail.com",
-    icon: EmailIcon,
-    text: "email",
-    isExternal: true,
-  },
-];
+import profilePic from "../public/images/profile.jpg";
 
-const Links = () => {
+const SidebarLinks = () => {
   return (
     <Section pt={5} textAlign={{ lg: "center" }}>
       <Grid
@@ -67,7 +27,7 @@ const Links = () => {
         templateColumns={{ base: "repeat(2, 1fr)" }}
         gap={5}
       >
-        {linkData.map((link, index) => {
+        {SiteConfig.links.map((link, index) => {
           return (
             <GridItem key={index}>
               <Link passHref href={link.href}>
@@ -85,9 +45,9 @@ const Links = () => {
   );
 };
 
-const NavContent = () => {
+const SidebarHero = () => {
   return (
-    <Container>
+    <Box>
       <Section delay={0.1}>
         <Link passHref href={"/"}>
           <ChakraLink cursor={"pointer"}>
@@ -114,13 +74,11 @@ const NavContent = () => {
           </Text>
         </Container>
       </Section>
-      <Divider pt={5} w={"2xs"} />
-      <Links />
-    </Container>
+    </Box>
   );
 };
 
-const Nav = () => {
+const Sidebar = () => {
   return (
     <Container
       h={{ lg: "100vh" }}
@@ -128,9 +86,11 @@ const Nav = () => {
       textAlign="center"
       position={{ lg: "fixed" }}
     >
-      <NavContent />
+      <SidebarHero />
+      <Divider pt={5} w={"2xs"} />
+      <SidebarLinks />
     </Container>
   );
 };
 
-export default Nav;
+export default Sidebar;

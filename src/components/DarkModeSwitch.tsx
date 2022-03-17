@@ -1,34 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  Box,
-  IconButton,
-  Link,
-  useColorMode,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
 
-import { SunIcon, MoonIcon, TriangleUpIcon } from "@chakra-ui/icons";
-
-const ScrollToTop = () => {
-  return (
-    <Link href="/#top">
-      <Box
-        display="inline-block"
-        position="fixed"
-        bottom="1rem"
-        right="1rem"
-        key={useColorModeValue("light", "dark")}
-      >
-        <IconButton
-          aria-label="Scroll to top"
-          bgColor={useColorModeValue("#7928CA", "#FF0080")}
-          color="white"
-          icon={<TriangleUpIcon />}
-        ></IconButton>
-      </Box>
-    </Link>
-  );
-};
+import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 
 const DarkModeSwitch = () => {
   const { toggleColorMode } = useColorMode();
@@ -60,4 +33,4 @@ const DarkModeSwitch = () => {
   );
 };
 
-export { DarkModeSwitch, ScrollToTop };
+export default DarkModeSwitch;
