@@ -1,25 +1,22 @@
+import { Container } from "@/components/Container";
+import { DownloadIcon, EmailIcon, Icon } from "@chakra-ui/icons";
 import {
-  Text,
   Box,
+  Divider,
+  Grid,
+  GridItem,
   Heading,
   Link as ChakraLink,
-  Divider,
-  GridItem,
-  Grid,
+  Text,
 } from "@chakra-ui/react";
-
-import Link from "next/link";
 import Image from "next/image";
-
-import { EmailIcon, DownloadIcon, Icon } from "@chakra-ui/icons";
-import { GoOctoface } from "react-icons/go";
-import { FaTwitter } from "react-icons/fa";
+import Link from "next/link";
 import { BsFillPersonFill, BsMicFill } from "react-icons/bs";
-import Section from "./Section";
-import { Container } from "@/components/Container";
-
-import profilePic from "../public/images/profile.jpg";
+import { FaTwitter } from "react-icons/fa";
+import { GoOctoface } from "react-icons/go";
 import { IconType } from "react-icons/lib";
+import profilePic from "../public/images/profile.jpg";
+import Section from "./Section";
 
 interface Link {
   href: string;
@@ -74,7 +71,7 @@ const Links = () => {
           return (
             <GridItem key={index}>
               <Link passHref href={link.href}>
-                <ChakraLink isExternal={link.isExternal} fontSize={"md"}>
+                <ChakraLink isExternal={link.isExternal} fontSize={"xl"}>
                   <Text>
                     <Icon as={link.icon} /> {link.text}{" "}
                   </Text>
@@ -90,7 +87,7 @@ const Links = () => {
 
 const NavContent = () => {
   return (
-    <Container h="100vh" mt={{ base: 4, md: 0 }} textAlign="center">
+    <Container>
       <Section delay={0.1}>
         <Link passHref href={"/"}>
           <ChakraLink cursor={"pointer"}>
@@ -110,9 +107,9 @@ const NavContent = () => {
       </Section>
 
       <Section delay={0.1} pt={5}>
-        <Heading fontSize={"xl"}>Anthony Fox</Heading>
+        <Heading fontSize={"3xl"}>Anthony Fox</Heading>
         <Container maxW={"md"} pt={5}>
-          <Text fontSize={"sm"} as="i">
+          <Text fontSize={"md"} as="i">
             Writer of code. Maker of things.
           </Text>
         </Container>
@@ -125,7 +122,12 @@ const NavContent = () => {
 
 const Nav = () => {
   return (
-    <Container position={{ lg: "fixed" }}>
+    <Container
+      h={{ lg: "100vh" }}
+      mt={{ base: 4, md: 0 }}
+      textAlign="center"
+      position={{ lg: "fixed" }}
+    >
       <NavContent />
     </Container>
   );

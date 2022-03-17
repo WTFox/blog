@@ -4,7 +4,6 @@ import PostListItem from "./PostListItem";
 import { PostListItemProps } from "./PostListItem";
 import Section from "./Section";
 
-
 // TODO: properly type this
 export const PostList = ({ posts }) => {
   posts = posts.sort((a: PostListItemProps, b: PostListItemProps) => {
@@ -12,9 +11,9 @@ export const PostList = ({ posts }) => {
   });
 
   return (
-    <Stack px={20}>
+    <Stack px={{ base: 8, lg: 20 }}>
       <Section pb={5} delay={0.1}>
-        <Heading id="Posts" size="xl">
+        <Heading id="Posts" size="lg">
           Writings
         </Heading>
       </Section>
