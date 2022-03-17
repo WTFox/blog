@@ -1,5 +1,4 @@
 import {
-  Icon,
   Text,
   Box,
   Heading,
@@ -12,7 +11,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-import { EmailIcon, DownloadIcon } from "@chakra-ui/icons";
+import { EmailIcon, DownloadIcon, Icon } from "@chakra-ui/icons";
 import { GoOctoface } from "react-icons/go";
 import { FaTwitter } from "react-icons/fa";
 import { BsFillPersonFill, BsMicFill } from "react-icons/bs";
@@ -20,8 +19,16 @@ import Section from "./Section";
 import { Container } from "@/components/Container";
 
 import profilePic from "../public/images/profile.jpg";
+import { IconType } from "react-icons/lib";
 
-const linkData = [
+interface Link {
+  href: string;
+  icon: IconType | typeof Icon;
+  text: string;
+  isExternal: boolean;
+}
+
+const linkData: Link[] = [
   {
     href: "/about",
     icon: BsFillPersonFill,
