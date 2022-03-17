@@ -18,10 +18,9 @@ export async function getStaticProps() {
     const { data: frontMatter } = matter(markdownWithMeta);
     const link = `/posts/${filename.replace(".mdx", "")}`;
 
-    frontMatter.link = link;
-
     return {
       frontMatter,
+      link,
       slug: filename.split(".")[0],
     };
   });
