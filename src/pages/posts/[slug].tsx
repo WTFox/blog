@@ -4,8 +4,10 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const PostPage = ({ frontMatter, mdxSource }) => {
-  return <PostLayout frontMatter={frontMatter} mdxSource={mdxSource} />;
+const PostPage = ({ link, frontMatter, mdxSource }) => {
+  return (
+    <PostLayout link={link} frontMatter={frontMatter} mdxSource={mdxSource} />
+  );
 };
 
 const getStaticPaths = async () => {
