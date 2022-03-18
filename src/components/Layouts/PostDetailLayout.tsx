@@ -1,6 +1,6 @@
-import { Box, ChakraProvider, Grid, GridItem } from "@chakra-ui/react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
 
-import DarkModeSwitch from "../DarkModeSwitch";
+import { Container } from "../Container";
 import Fonts from "../Fonts";
 import NavBar from "../NavBar";
 import ScrollToTop from "../ScrollToTop";
@@ -11,13 +11,13 @@ const PostDetailLayout = ({ children }) => {
     <ChakraProvider resetCSS theme={theme}>
       <Fonts />
       <NavBar />
-      <Grid templateColumns="repeat(5, 1fr)">
-        <GridItem py="5em" colStart={2} colSpan={3}>
-          <Box id="top" />
+      <Container pt={"10"}>
+        <Box id="top" />
+        <Box textAlign={"left"} px={"12rem"}>
           {children}
-          <ScrollToTop />
-        </GridItem>
-      </Grid>
+        </Box>
+      </Container>
+      <ScrollToTop />
     </ChakraProvider>
   );
 };

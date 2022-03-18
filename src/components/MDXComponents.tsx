@@ -19,7 +19,7 @@ import Image from "next/image";
 
 const P = ({ children, ...delegated }: TextProps) => {
   return (
-    <Text as="p" mt={4} lineHeight="tall" {...delegated}>
+    <Text as="p" py={4} lineHeight="tall" {...delegated}>
       {children}
     </Text>
   );
@@ -78,14 +78,7 @@ const HR = () => {
 
 const H1 = ({ children, ...delegated }: HeadingProps) => {
   return (
-    <Heading
-      bgGradient="linear(to-l, #7928CA, #FF0080)"
-      bgClip="text"
-      as="h1"
-      size="2xl"
-      py={4}
-      {...delegated}
-    >
+    <Heading as="h1" size="3xl" py={5} {...delegated}>
       {children}
     </Heading>
   );
@@ -93,7 +86,7 @@ const H1 = ({ children, ...delegated }: HeadingProps) => {
 
 const H2 = ({ children, ...delegated }: HeadingProps) => {
   return (
-    <Heading as="h2" fontWeight="bold" size="lg" {...delegated}>
+    <Heading py={4} as="h2" fontWeight="bold" size="2xl" {...delegated}>
       {children}
     </Heading>
   );
@@ -101,7 +94,7 @@ const H2 = ({ children, ...delegated }: HeadingProps) => {
 
 const H3 = ({ children, ...delegated }: HeadingProps) => {
   return (
-    <Heading as="h3" size="md" fontWeight="bold" {...delegated}>
+    <Heading py={4} as="h3" size="xl" fontWeight="bold" {...delegated}>
       {children}
     </Heading>
   );
@@ -190,6 +183,9 @@ export const components = {
   h1: H1,
   h2: H2,
   h3: H3,
+  h4: H3,
+  h5: H3,
+  h6: H3,
   p: P,
   ul: Ul,
   ol: Ol,
@@ -205,5 +201,9 @@ export const components = {
   ButtonLink,
   Button,
   Stack,
-  code: (props: CodeProps) => <Code {...props} />,
+  code: (props: CodeProps) => (
+    <Box py={"2rem"}>
+      <Code w={"100%"} {...props} />
+    </Box>
+  ),
 };

@@ -7,7 +7,6 @@ import {
   Heading,
   Image,
   Text,
-  useColorModeValue,
 } from "@chakra-ui/react";
 
 import { Container } from "./Container";
@@ -58,7 +57,7 @@ const SidebarHero = () => {
               borderRadius="full"
               overflow="hidden"
             >
-              <Image src={profilePic.src} alt="A. Fox" />
+              <Image src={profilePic.src} alt="Profile picture" />
             </Box>
           </ChakraLink>
         </Link>
@@ -72,11 +71,11 @@ const SidebarHero = () => {
           fontSize="4xl"
           fontWeight="extrabold"
         >
-          Anthony Fox
+          {SiteConfig.name}
         </Heading>
         <Container maxW={"md"} pt={5}>
           <Text fontSize={"md"} as="i">
-            Writer of code. Maker of things.
+            {SiteConfig.subtitle}
           </Text>
         </Container>
       </Section>

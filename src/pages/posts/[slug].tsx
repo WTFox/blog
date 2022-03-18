@@ -1,4 +1,3 @@
-import { Container } from "@chakra-ui/react";
 import PostDetail from "@/components/PostDetail";
 import { PostDetailLayout } from "@/components/Layouts";
 import { ReactElement } from "react";
@@ -9,9 +8,7 @@ import { serialize } from "next-mdx-remote/serialize";
 
 const PostDetailView = ({ link, frontMatter, mdxSource }) => {
   return (
-    <Container pt={"15"}>
-      <PostDetail link={link} frontMatter={frontMatter} mdxSource={mdxSource} />
-    </Container>
+    <PostDetail link={link} frontMatter={frontMatter} mdxSource={mdxSource} />
   );
 };
 

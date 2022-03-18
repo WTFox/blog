@@ -14,10 +14,14 @@ interface Link {
 }
 
 interface ISiteConfig {
+  name: string;
+  subtitle: string;
   links: Link[];
 }
 
 const SiteConfig: ISiteConfig = {
+  name: "Anthony Fox",
+  subtitle: "writer of code. maker of things.",
   links: [
     {
       href: "/about",
