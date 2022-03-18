@@ -21,19 +21,13 @@ export default function NavBar() {
         w={"100vw"}
         position={"fixed"}
         bg={useColorModeValue("white", "gray.800")}
-        px={"10"}
-        h={"28"}
+        px={"20"}
+        h={"16"}
         align={"baseline"}
         justifyContent={"space-between"}
       >
         <Menu>
           <Container direction={"row"}>
-            <Text
-              color={useColorModeValue("gray.800", "gray.200")}
-              display={"inline"}
-            >
-              {"<-"}
-            </Text>
             <Link href="/" passHref>
               <ChakraLink>
                 <Box overflow="hidden">
@@ -41,9 +35,9 @@ export default function NavBar() {
                     borderWidth={"2px"}
                     borderStyle={"solid"}
                     borderRadius="full"
-                    size={"lg"}
+                    size={"md"}
                     src={profilePic.src}
-                    borderColor={useColorModeValue("#7928CA", "#FF0080")}
+                    borderColor={"#FF0080"}
                   />
                 </Box>
               </ChakraLink>
