@@ -1,13 +1,13 @@
-import { IconButton, Box, Link, useColorModeValue } from "@chakra-ui/react";
-import { TriangleUpIcon } from "@chakra-ui/icons";
-
+import { Box, IconButton, Link, useColorModeValue } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+
+import { TriangleUpIcon } from "@chakra-ui/icons";
 
 const SCROLLBREAKPOINT = 500;
 
 const ScrollToTopButton = () => {
   return (
-    <Link href="/#top">
+    <Link href="#top">
       <Box
         display="inline-block"
         position="fixed"
