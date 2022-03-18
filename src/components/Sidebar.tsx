@@ -8,6 +8,7 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
+import { useColorMode, useColorModeValue } from "@chakra-ui/react";
 
 import { Container } from "./Container";
 import { Icon } from "@chakra-ui/icons";
@@ -43,6 +44,16 @@ const SidebarLinks = () => {
 };
 
 const SidebarHero = () => {
+  const { colorMode } = useColorMode();
+  const borderColor = useColorModeValue("#7928CA", "#FF0080");
+
+  let borderProps: any;
+  if (colorMode === "light") {
+    borderProps = { borderColor };
+  } else {
+    borderProps = { bgGradient: "linear(to-l, #7928CA, #FF0080)" };
+  }
+
   return (
     <Box>
       <Section delay={0.1}>
@@ -50,11 +61,11 @@ const SidebarHero = () => {
           <ChakraLink cursor={"pointer"}>
             <Box
               borderWidth={4}
-              bgGradient={"linear(to-l, #7928CA, #FF0080)"}
               w={"56"}
               display="inline-block"
               borderRadius="50"
               overflow="hidden"
+              {...borderProps}
             >
               <Image src={profilePic.src} alt="Profile picture" />
             </Box>

@@ -4,6 +4,7 @@ import {
   Link as ChakraLink,
   Menu,
   Text,
+  useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
 
@@ -35,14 +36,15 @@ export default function NavBar() {
             </Text>
             <Link href="/" passHref>
               <ChakraLink>
-                <Box
-                  bgGradient={"linear(to-bl, #7928CA, #FF0080)"}
-                  borderStyle={"solid"}
-                  borderRadius="full"
-                  overflow="hidden"
-                  borderWidth={"12"}
-                >
-                  <Avatar size={"lg"} src={profilePic.src} />
+                <Box overflow="hidden">
+                  <Avatar
+                    borderWidth={"2px"}
+                    borderStyle={"solid"}
+                    borderRadius="full"
+                    size={"lg"}
+                    src={profilePic.src}
+                    borderColor={useColorModeValue("#7928CA", "#FF0080")}
+                  />
                 </Box>
               </ChakraLink>
             </Link>
