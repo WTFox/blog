@@ -49,13 +49,12 @@ const SidebarHero = () => {
         <Link passHref href={"/"}>
           <ChakraLink cursor={"pointer"}>
             <Box
-              borderWidth={3}
-              bgGradient={"linear(to-bl, #7928CA, #FF0080)"}
-              borderStyle="solid"
+              borderWidth={4}
+              bgGradient={"linear(to-l, #7928CA, #FF0080)"}
               w={"56"}
               display="inline-block"
-              borderRadius="full"
-              overflow="hidden"
+              borderRadius="50"
+              overflow="clip"
             >
               <Image src={profilePic.src} alt="Profile picture" />
             </Box>

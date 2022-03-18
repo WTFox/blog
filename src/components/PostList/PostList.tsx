@@ -1,4 +1,4 @@
-import { Divider, Heading, Stack } from "@chakra-ui/react";
+import { Divider, Heading, Stack, Text } from "@chakra-ui/react";
 
 import PostListItem from "./PostListItem";
 import { PostListItemProps } from "./PostListItem";
@@ -14,7 +14,14 @@ export const PostList = ({ posts }) => {
     <Stack px={{ base: 8, lg: 20 }}>
       <Section pb={5} delay={0.1}>
         <Heading id="Posts" size="lg">
-          {">_ writings"}
+          <Text
+            display={"inline-block"}
+            // bgClip={"text"}
+            // bgGradient={"linear(to-l, #7928CA, #FF0080)"}
+          >
+            {"❯_"}
+          </Text>
+          {" writings"}
         </Heading>
         <Divider pt={5} size={"md"} />
       </Section>
