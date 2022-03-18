@@ -1,20 +1,19 @@
-import Link from "next/link";
-
-import { Icon } from "@chakra-ui/icons";
 import {
   Box,
+  Link as ChakraLink,
   Divider,
   Grid,
   GridItem,
   Heading,
-  Link as ChakraLink,
-  Text,
   Image,
+  Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 import { Container } from "./Container";
+import { Icon } from "@chakra-ui/icons";
+import Link from "next/link";
 import Section from "./Section";
-
 import SiteConfig from "../lib/config";
 import profilePic from "../public/images/profile.jpg";
 
@@ -66,7 +65,15 @@ const SidebarHero = () => {
       </Section>
 
       <Section delay={0.1} pt={5}>
-        <Heading fontSize={"3xl"}>Anthony Fox</Heading>
+        <Heading
+          bgGradient="linear(to-l, #7928CA, #FF0080)"
+          bgClip="text"
+          textTransform={"uppercase"}
+          fontSize="4xl"
+          fontWeight="extrabold"
+        >
+          Anthony Fox
+        </Heading>
         <Container maxW={"md"} pt={5}>
           <Text fontSize={"md"} as="i">
             Writer of code. Maker of things.

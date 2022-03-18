@@ -1,21 +1,21 @@
-import Image from "next/image";
-import NextLink, { LinkProps as NextLinkProps } from "next/link";
-
+import { Box, Divider, Text, useColorModeValue } from "@chakra-ui/react";
 import {
   BoxProps,
   Button,
   ButtonProps,
+  Link as ChakraLink,
   Code,
   CodeProps,
   Heading,
   HeadingProps,
   Kbd,
-  Link as ChakraLink,
   LinkProps,
   Stack,
   TextProps,
 } from "@chakra-ui/react";
-import { Box, Divider, Text, useColorModeValue } from "@chakra-ui/react";
+import NextLink, { LinkProps as NextLinkProps } from "next/link";
+
+import Image from "next/image";
 
 const P = ({ children, ...delegated }: TextProps) => {
   return (
@@ -78,7 +78,14 @@ const HR = () => {
 
 const H1 = ({ children, ...delegated }: HeadingProps) => {
   return (
-    <Heading as="h1" size="xl" my={4} {...delegated}>
+    <Heading
+      bgGradient="linear(to-l, #7928CA, #FF0080)"
+      bgClip="text"
+      as="h1"
+      size="2xl"
+      py={4}
+      {...delegated}
+    >
       {children}
     </Heading>
   );
