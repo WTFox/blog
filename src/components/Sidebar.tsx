@@ -54,7 +54,7 @@ const SidebarHero = () => {
               w={"56"}
               display="inline-block"
               borderRadius="50"
-              overflow="clip"
+              overflow="hidden"
             >
               <Image src={profilePic.src} alt="Profile picture" />
             </Box>
