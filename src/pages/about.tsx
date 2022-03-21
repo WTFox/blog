@@ -1,9 +1,11 @@
-import Section from "@/components/Section";
-import { Image, Container, Text, Heading } from "@chakra-ui/react";
+import { Container, Heading, Image, Text } from "@chakra-ui/react";
 
+import { MainLayout } from "@/components/Layouts";
+import { ReactElement } from "react";
+import Section from "@/components/Section";
 import pic from "../public/images/aboutme.jpg";
 
-const AboutMe = () => {
+const About = () => {
   return (
     <Container maxW={"4xl"}>
       <Section delay={0.3}>
@@ -20,4 +22,8 @@ const AboutMe = () => {
   );
 };
 
-export default AboutMe;
+About.getLayout = function getLayout(page: ReactElement) {
+  return <MainLayout>{page}</MainLayout>;
+};
+
+export default About;
