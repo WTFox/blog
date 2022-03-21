@@ -21,7 +21,7 @@ export default function NavBar() {
         w={"100vw"}
         position={"fixed"}
         bg={useColorModeValue("white", "gray.800")}
-        px={"20"}
+        px={{ base: "10", xl: "20" }}
         h={"16"}
         align={"baseline"}
         justifyContent={"space-between"}
