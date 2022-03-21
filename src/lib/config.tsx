@@ -16,6 +16,7 @@ interface ISiteConfig {
   links: Link[];
 }
 
+
 const SiteConfig: ISiteConfig = {
   links: [
     {
@@ -51,5 +52,6 @@ const SiteConfig: ISiteConfig = {
     },
   ],
 };
+
 
 export default SiteConfig;
