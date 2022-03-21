@@ -1,10 +1,10 @@
-import PostDetail from "../../components/PostDetail";
-import { serialize } from "next-mdx-remote/serialize";
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-import { ReactElement } from "react";
+import PostDetail from "@/components/PostDetail";
 import { PostDetailLayout } from "@/components/Layouts";
+import { ReactElement } from "react";
+import fs from "fs";
+import matter from "gray-matter";
+import path from "path";
+import { serialize } from "next-mdx-remote/serialize";
 
 const PostDetailView = ({ link, frontMatter, mdxSource }) => {
   return (

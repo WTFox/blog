@@ -1,20 +1,19 @@
-import Link from "next/link";
-
-import { Icon } from "@chakra-ui/icons";
 import {
   Box,
+  Link as ChakraLink,
   Divider,
   Grid,
   GridItem,
   Heading,
-  Link as ChakraLink,
-  Text,
   Image,
+  Text,
 } from "@chakra-ui/react";
+import { useColorMode, useColorModeValue } from "@chakra-ui/react";
 
 import { Container } from "./Container";
+import { Icon } from "@chakra-ui/icons";
+import Link from "next/link";
 import Section from "./Section";
-
 import SiteConfig from "../lib/config";
 import profilePic from "../public/images/profile.jpg";
 
@@ -45,31 +44,48 @@ const SidebarLinks = () => {
 };
 
 const SidebarHero = () => {
+  const { colorMode } = useColorMode();
+  const borderColor = useColorModeValue("#7928CA", "#FF0080");
+
+  let borderProps: any;
+  if (colorMode === "light") {
+    borderProps = { borderColor };
+  } else {
+    borderProps = { bgGradient: "linear(to-l, #7928CA, #FF0080)" };
+  }
+
   return (
     <Box>
       <Section delay={0.1}>
         <Link passHref href={"/"}>
           <ChakraLink cursor={"pointer"}>
             <Box
-              borderWidth={3}
-              bgGradient={"linear(to-bl, #7928CA, #FF0080)"}
-              borderStyle="solid"
+              borderWidth={4}
               w={"56"}
               display="inline-block"
-              borderRadius="full"
+              borderRadius="50"
               overflow="hidden"
+              {...borderProps}
             >
-              <Image src={profilePic.src} alt="A. Fox" />
+              <Image src={profilePic.src} alt="Profile picture" />
             </Box>
           </ChakraLink>
         </Link>
       </Section>
 
       <Section delay={0.1} pt={5}>
-        <Heading fontSize={"3xl"}>Anthony Fox</Heading>
+        <Heading
+          bgGradient="linear(to-l, #7928CA, #FF0080)"
+          bgClip="text"
+          textTransform={"uppercase"}
+          fontSize="4xl"
+          fontWeight="extrabold"
+        >
+          {SiteConfig.name}
+        </Heading>
         <Container maxW={"md"} pt={5}>
           <Text fontSize={"md"} as="i">
-            Writer of code. Maker of things.
+            {SiteConfig.subtitle}
           </Text>
         </Container>
       </Section>
