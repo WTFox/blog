@@ -2,12 +2,20 @@ import { Divider, Heading, Stack, Text } from "@chakra-ui/react";
 
 import PostListItem from "./PostListItem";
 import { PostListItemProps } from "./PostListItem";
+import React from "react";
 import Section from "../Section";
 
-// TODO: properly type this
-export const PostList = ({ posts }) => {
-  posts = posts.sort((a: PostListItemProps, b: PostListItemProps) => {
-    return new Date(a.frontMatter.date) < new Date(b.frontMatter.date);
+interface PostListProps extends React.FC {
+  posts: PostListItemProps[];
+}
+
+export const PostList: React.FC<PostListProps> = ({ posts }) => {
+  const sortedPosts = posts.sort((a, b) => {
+    const [dateA, dateB] = [
+      new Date(a.frontMatter.date).getTime(),
+      new Date(b.frontMatter.date).getTime(),
+    ];
+    return dateA - dateB;
   });
 
   return (
@@ -19,7 +27,7 @@ export const PostList = ({ posts }) => {
         </Heading>
         <Divider pt={5} size={"md"} />
       </Section>
-      {posts.map((post: PostListItemProps, index: number) => {
+      {sortedPosts.map((post, index: number) => {
         return (
           <Section key={index} delay={(index + 1) / 10 + 0.3}>
             <PostListItem {...post} />
