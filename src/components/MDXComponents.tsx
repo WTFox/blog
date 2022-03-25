@@ -13,9 +13,12 @@ import {
   TextProps,
 } from "@chakra-ui/react";
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
+import React, { useEffect } from "react";
 
 import Image from "next/image";
 import Mermaid from "./Mermaid";
+import Prism from "prismjs";
+import "dracula-prism/dist/css/dracula-prism.css";
 
 const P = ({ children, ...delegated }: TextProps) => {
   return (
@@ -179,8 +182,21 @@ const Td = (props: BoxProps) => (
   />
 );
 
+const CodeBlock = ({ code, language }) => {
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
+
+  return (
+    <div className="Code">
+      <pre>
+        <code className={`language-${language}`}>{code}</code>
+      </pre>
+    </div>
+  );
+};
+
 export const components = {
-  Image,
   h1: H1,
   h2: H2,
   h3: H3,
@@ -199,9 +215,11 @@ export const components = {
   kbd: Kbd,
   code: Code,
   a: Link,
+  Image,
   Link,
   ButtonLink,
   Button,
   Stack,
   Mermaid,
+  CodeBlock,
 };
