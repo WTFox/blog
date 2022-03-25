@@ -16,6 +16,7 @@ import {
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
 
 import Image from "next/image";
+import Mermaid from "./Mermaid";
 
 const P = ({ children, ...delegated }: TextProps) => {
   return (
@@ -201,6 +202,7 @@ export const components = {
   ButtonLink,
   Button,
   Stack,
+  Mermaid,
   code: (props: CodeProps) => (
     <Box py={"2rem"}>
       <Code w={"100%"} {...props} />
