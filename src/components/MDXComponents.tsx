@@ -5,7 +5,6 @@ import {
   ButtonProps,
   Link as ChakraLink,
   Code,
-  CodeProps,
   Heading,
   HeadingProps,
   Kbd,
@@ -51,7 +50,7 @@ const Li = ({ children, ...delegated }: BoxProps) => {
 };
 
 const BlockQuote = (props: BoxProps) => {
-  const bgColor = useColorModeValue("blue.50", "blue.900");
+  const bgColor = useColorModeValue("purple.100", "pink.800");
 
   return (
     <Box
@@ -112,6 +111,7 @@ const Link = ({
   locale,
   ...props
 }: LinkProps & NextLinkProps) => {
+  const color = useColorModeValue("#7928CA", "#FF0080");
   return (
     <NextLink
       href={href}
@@ -123,7 +123,7 @@ const Link = ({
       prefetch={prefetch}
       locale={locale}
     >
-      <ChakraLink as="a" {...props} />
+      <ChakraLink as="a" color={color} {...props} />
     </NextLink>
   );
 };
@@ -197,15 +197,11 @@ export const components = {
   th: Th,
   td: Td,
   kbd: Kbd,
+  code: Code,
   a: Link,
   Link,
   ButtonLink,
   Button,
   Stack,
   Mermaid,
-  code: (props: CodeProps) => (
-    <Box py={"2rem"}>
-      <Code w={"100%"} {...props} />
-    </Box>
-  ),
 };
