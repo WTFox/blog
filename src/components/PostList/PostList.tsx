@@ -5,11 +5,11 @@ import { PostListItemProps } from "./PostListItem";
 import React from "react";
 import Section from "../Section";
 
-interface PostListProps extends React.FC {
+interface PostListProps {
   posts: PostListItemProps[];
 }
 
-export const PostList: React.FC<PostListProps> = ({ posts }) => {
+export const PostList = ({ posts }: PostListProps) => {
   const sortedPosts = posts.sort((a, b) => {
     const [dateA, dateB] = [
       new Date(a.frontMatter.date).getTime(),

@@ -2,14 +2,15 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-import { ReactElement } from "react";
+import { ReactElement, ReactPropTypes } from "react";
 
 import { PostList } from "../components/PostList/PostList";
+import { PostListItemProps } from "@/components/PostList/PostListItem";
 import { MainLayout } from "@/components/Layouts";
 
 const Index = ({ posts }) => <PostList posts={posts} />;
 
-Index.getLayout = function getLayout(page: ReactElement) {
+Index.getlayout = function getlayout(page: ReactElement) {
   return <MainLayout>{page}</MainLayout>;
 };
 

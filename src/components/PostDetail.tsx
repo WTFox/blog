@@ -1,6 +1,4 @@
-// @ts-nocheck
-
-import { Box, Container, Divider, Heading, Text } from "@chakra-ui/react";
+import { Box, Divider, Heading, Text } from "@chakra-ui/react";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote";
 
 import { PostListItemProps } from "@/components/PostList/PostListItem";
@@ -11,7 +9,7 @@ interface Props extends PostListItemProps {
   mdxSource: MDXRemoteProps;
 }
 
-const Footer = ({ date }: string) => {
+const Footer = ({ date }) => {
   return (
     <Box py={3}>
       <Divider size={"md"} />
@@ -38,6 +36,7 @@ const PostDetail = (props: Props) => (
     >
       {props.frontMatter.title}
     </Heading>
+    {/* @ts-ignore */}
     <MDXRemote {...props.mdxSource} components={components} />
     <Footer date={props.frontMatter.date} />
   </Box>
