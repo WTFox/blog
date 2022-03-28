@@ -1,0 +1,45 @@
+---
+date: "2020-04-25"
+title: "Refactoring: Parameter Objects"
+summary: Introducing parameter objects into your code.
+draft: false
+readTimeInMinutes: 1
+---
+
+There are times when I'm building out a constructor or function and I find that I've ended up with a large number of parameters. Technically, there's nothing wrong with a lot of parameters. Your code will likely still work fine. But readability is sacrificed. And it's likely that some coupling is happening, too. I keep an eye out for this smell because it sometimes means I can replace some of these parameters with a parameter object.
+
+Let's take an ssh connection for example. You might have some code that looks like this:
+
+<CodeBlock
+  language={"go"}
+  code={`
+func NewClient(protocol, host, user, pass, port, path string) *ssh.Client {
+    // stuff...
+    return client
+}
+`}
+/>
+
+This code is fine and would absolutely work but it could be better with a parameter object.
+
+<CodeBlock
+  language={"go"}
+  code={`
+// Params is a parameter object
+type Params struct {
+    protocol,
+    host,
+    user,
+    pass,
+    port,
+    path string
+}
+
+func NewClient(params Params) \*ssh.Client {
+    // stuff...
+    return client
+}
+`}
+/>
+
+This is a pretty easy process and the value added isn't only in the shorter parameter list. The new `Params` type could also enable an abstraction of existing code that increases maintainability and readability.

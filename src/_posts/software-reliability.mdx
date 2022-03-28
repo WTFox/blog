@@ -1,0 +1,37 @@
+---
+date: "2020-05-09"
+title: "Software Reliability"
+draft: false
+summary: "A quick post on defining what reliability means in terms of software development."
+readTimeInMinutes: 1
+---
+
+A **fault** is defined as a component of a system deviating from its spec. A **failure** is when the system as a whole stops providing the required service to the user. Systems that can anticipate faults and cope with them are **fault-tolerant** or **resilient**. Obviously, we can't anticipate every type of fault so it only makes sense to talk about certain types.
+
+## Hardware
+
+- Hard disks have a mean time to failure (`MTTF`) of about 10 to 50 years
+- Redundancy and dual power supplies help
+- So does moving away from single-server systems
+
+## Software
+
+- Software bugs
+- Runaway processes
+- Third-Party API failures
+
+Carefully thinking about assumption and interactions made in the software can help
+
+## Humans
+
+- Understand that _all_ humans are unreliable
+- Design systems that minimizes opportunity for error.
+- Decouple the places where people make the most mistakes from the places that cause system failures
+- Test thoroughly at all levels
+- Set up monitoring/logs
+
+Some tools exist to try and trigger faults as a way to see where the weak points in the application are.
+
+<hr />
+
+This post was based on the book Designing Data-Intensive Applications by Martin Kleppmann.

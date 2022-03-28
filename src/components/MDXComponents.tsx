@@ -182,15 +182,17 @@ const Td = (props: BoxProps) => (
   />
 );
 
-const CodeBlock = ({ code, language }) => {
+const CodeBlock = ({ code, language }: { code: string; language: string }) => {
   useEffect(() => {
     Prism.highlightAll();
   }, []);
 
+  const trimmed = code.trim();
+
   return (
     <Box className="Code">
       <pre>
-        <code className={`language-${language}`}>{code}</code>
+        <code className={`language-${language}`}>{trimmed}</code>
       </pre>
     </Box>
   );

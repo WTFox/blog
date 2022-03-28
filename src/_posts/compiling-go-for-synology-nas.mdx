@@ -1,0 +1,30 @@
+---
+date: "2020-04-22"
+title: "Compiling GO for Synology NAS"
+draft: false
+summary: Compiling GO binaries for the synology platform.
+readTimeInMinutes: 1
+---
+
+I have a go app that runs via scheduled task on my Synology NAS DS218+. Compiling GO binaries for major platforms is fairly straight forward. Compiling GO binaries for Synology is a bit more involved. The following is what I've found to work.
+
+First, install musl-cross.
+
+<CodeBlock
+  language={"sh"}
+  code={"$ brew install FiloSottile/musl-cross/musl-cross "}
+/>
+
+Then run the following `go build` command.
+
+<CodeBlock
+  language={"sh"}
+  code={`
+$ CC=x86_64-linux-musl-gcc \\
+  CXX=x86_64-linux-musl-g++ \\
+  GOARCH=amd64 \\
+  GOOS=linux \\
+  CGO_ENABLED=1 \\
+  go build -ldflags "-linkmode external -extldflags -static"
+  `}
+/>

@@ -1,0 +1,37 @@
+---
+title: "Make Git Forget About Files Previously Tracked"
+date: "2020-05-02"
+summary: "Useful for adding a gitignore file later into a project."
+draft: false
+readTimeInMinutes: 1
+---
+
+A scenario where this is useful is if you've started a project that compiles some binaries in a subfolder. You might have started this project with haste to start working on it's features. But during that time you've compiled it a few times and probably did the ol `git add . && git commit -m "Initial commit"`. Now you want to go back and remove those binary files from git index. There are many different ways to do this but here's what I normally do.
+
+First, create your `.gitignore` file however you choose. Here's an example using bash.
+
+<CodeBlock
+  language={"bash"}
+  code={`
+$ echo "
+    # ignore compile python files
+    *.pyc" > .gitignore
+    `}
+/>
+
+Now let's update the git index. The first thing we do is unstage and remove paths only from the index. Files, modified or not, will be left alone.
+
+<CodeBlock language={"bash"} code={"$ git rm -r --cached ."} />
+
+Then add everything back and commit the changes. Here's the entirety of the process.
+
+<CodeBlock
+  language={"bash"}
+  code={`
+$ git rm -r --cached .
+$ git add .
+$ git commit -am "Remove ignored files"
+`}
+/>
+
+If you're using a GUI client for git like the one from Github or GitKraken, there may be a way to do this from the UI. Regardless of your preference, I encourage you to learn what these commands do and why. Taking the time to learn how git works has helped me speed up my development time and recover work that I previously thought was lost!
