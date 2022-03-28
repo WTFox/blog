@@ -19,7 +19,7 @@ I can now embed mermaid diagrams directly in my posts! I don't make new years re
 
 Here's an example, I can write the following directly into markdown files.
 
-```text
+<CodeBlock language={'text'} code={`
 erDiagram
     CUSTOMER ||--o{ ORDER : places
     ORDER ||--|{ LINE-ITEM : contains
@@ -29,7 +29,8 @@ erDiagram
         string firstName
         string lastName
     }
-```
+
+`}/>
 
 ...and it magically renders to this!
 
