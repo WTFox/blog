@@ -17,7 +17,7 @@ export async function getStaticProps() {
   const postsDirectory = path.join(__dirname, "../../../src/_posts");
   const files = fs.readdirSync(postsDirectory);
 
-  const posts = files.map((filename) => {
+  let posts = files.map((filename) => {
     const markdownWithMeta = fs.readFileSync(
       path.join(postsDirectory, filename),
       "utf-8"
@@ -31,6 +31,19 @@ export async function getStaticProps() {
       slug: filename.split(".")[0],
     };
   });
+
+  posts = posts
+    // filter out drafts
+    .filter((post) => {
+      if (typeof window === "undefined") {
+        return true;
+      }
+      return !post.frontMatter.draft;
+    })
+    // filter out posts with a date greater than today
+    .filter((post) => {
+      return new Date(post.frontMatter.date).getTime() <= new Date().getTime();
+    });
 
   return {
     props: {
