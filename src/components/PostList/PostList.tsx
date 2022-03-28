@@ -15,7 +15,7 @@ export const PostList = ({ posts }: PostListProps) => {
       new Date(a.frontMatter.date).getTime(),
       new Date(b.frontMatter.date).getTime(),
     ];
-    return dateA - dateB;
+    return dateB - dateA;
   });
 
   return (

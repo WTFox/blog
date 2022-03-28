@@ -188,11 +188,11 @@ const CodeBlock = ({ code, language }) => {
   }, []);
 
   return (
-    <div className="Code">
+    <Box className="Code">
       <pre>
         <code className={`language-${language}`}>{code}</code>
       </pre>
-    </div>
+    </Box>
   );
 };
 

@@ -1,0 +1,58 @@
+---
+date: "2022-01-21"
+title: "Hello, 2022"
+summary: Or should I call you 2020, too?
+readTimeInMinutes: 2
+---
+
+# What's new?
+
+## afox.dev
+
+The blog has been updated from Gatsby version 2 to 4! It builds without any warnings or errors in the console, and I'm pretty proud of that. I've spent more time working on this site than writing actual content.
+
+I own two domains for this blog: anthonyfox.io and afox.dev. The .io address was the default, but afox.dev will become the default URL since it's shorter.
+
+## Mermaid support
+
+I can now embed mermaid diagrams directly in my posts! I don't make new years resolutions, but if I did, getting better at diagramming relationships, flows, etc., would be one of them! [MermaidJS](https://mermaid-js.github.io/mermaid/#/) is a tool I've been using at work lately. You write your "diagrams" in markdown fences, and Mermaid will render it into diagrams! Plain text domination!!
+
+Here's an example, I can write the following directly into markdown files.
+
+```text
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+
+    CUSTOMER {
+        string firstName
+        string lastName
+    }
+```
+
+...and it magically renders to this!
+
+<Mermaid
+  definition={`\
+erDiagram
+    CUSTOMER ||--o{ ORDER : places
+    ORDER ||--|{ LINE-ITEM : contains
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
+    CUSTOMER {
+        string firstName
+        string lastName
+    }
+`}
+/>
+
+## Books
+
+Here are some books I've read recently:
+
+- Architecture Patterns with Python
+  - Co-authored by Harry Percival (obey the testing goat!), the book goes into topics like Domain-Driven Design, Coupling vs. Cohesion, and Abstractions with microservices.
+- How to Win Friends and Influence People in the Digital Age
+  - This is the original, but with additional examples on how to apply the same concepts in today's world.
+- Hail Mary
+  - I'm halfway through this book and, so far, I'm enjoying it more than The Martian.
