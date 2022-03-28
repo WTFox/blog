@@ -15,7 +15,7 @@ import { Icon } from "@chakra-ui/icons";
 import Link from "next/link";
 import Section from "./Section";
 import SiteConfig from "../lib/config";
-import profilePic from "../public/images/profile.jpg";
+import profilePic from "../../public/images/profile.jpg";
 
 const SidebarLinks = () => {
   return (

@@ -3,7 +3,7 @@ import { Container, Heading, Image, Text } from "@chakra-ui/react";
 import { MainLayout } from "@/components/Layouts";
 import { ReactElement } from "react";
 import Section from "@/components/Section";
-import pic from "../public/images/aboutme.jpg";
+import pic from "../../public/images/aboutme.jpg";
 
 const About = () => {
   return (

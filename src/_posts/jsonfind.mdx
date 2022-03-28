@@ -1,0 +1,19 @@
+---
+title: "jf - A JSON path finder written in Go"
+date: "2020-06-18"
+description: A CLI utility that searches for a value in JSON files and prints out paths that point to that value.
+draft: false
+readTimeInMinutes: 1
+---
+
+I'm working with some fairly large (>100MB) JSON files for a project right now. Due to the large file sizes, it's a little frustrating using VS Code or similar editors to navigate the contents. A lot of editors become slow shortly after opening these files.
+
+So I wrote a little utility called `jf`, short for "JSON Find." Given a value to search for and a filepath, it will search for the value and print out a dotted path for each occurrence found. Paths output are compatible with `jq`.
+
+Here it is in action!
+
+![](/images/jsonfind.png)
+
+I'm certain bugs exist so pull requests are welcome!
+
+[Github](https://github.com/WTFox/jsonfind)

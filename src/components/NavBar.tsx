@@ -11,7 +11,7 @@ import {
 import { Container } from "./Container";
 import DarkModeSwitch from "./DarkModeSwitch";
 import Link from "next/link";
-import profilePic from "../public/images/profile.jpg";
+import profilePic from "../../public/images/profile.jpg";
 
 export default function NavBar() {
   return (
