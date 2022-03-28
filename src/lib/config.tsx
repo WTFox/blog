@@ -19,7 +19,6 @@ interface ISiteConfig {
   links: Link[];
 }
 
-
 const SiteConfig: ISiteConfig = {
   name: "Anthony Fox",
   subtitle: "writer of code. maker of things.",
@@ -44,10 +43,10 @@ const SiteConfig: ISiteConfig = {
       isExternal: true,
     },
     {
-      href: "/resume.pdf",
+      href: "https://docs.google.com/viewer?url=https://docs.google.com/document/d/1NlGqYx4y47pHcgdFibr9-zFWBz6BMeM-wRga8vYAuwE/export?format=pdf",
       icon: DownloadIcon,
       text: "resume",
-      isExternal: false,
+      isExternal: true,
     },
     {
       href: "mailto:anthonyfox1988@gmail.com",
@@ -57,6 +56,5 @@ const SiteConfig: ISiteConfig = {
     },
   ],
 };
-
 
 export default SiteConfig;
