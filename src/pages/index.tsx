@@ -35,7 +35,7 @@ export async function getStaticProps() {
   posts = posts
     // filter out drafts
     .filter((post) => {
-      if (typeof window === "undefined") {
+      if (process.env.NODE_ENV === "development") {
         return true;
       }
       return !post.frontMatter.draft;
