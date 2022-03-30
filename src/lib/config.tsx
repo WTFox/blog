@@ -60,12 +60,12 @@ const SiteConfig: ISiteConfig = {
       text: "email",
       isExternal: true,
     },
-    {
-      href: "https://strava.com/athletes/wtfox",
-      icon: FaBicycle,
-      text: "strava",
-      isExternal: true,
-    },
+    //{
+    //href: "https://strava.com/athletes/wtfox",
+    //icon: FaBicycle,
+    //text: "strava",
+    //isExternal: true,
+    //},
   ],
 };
 
