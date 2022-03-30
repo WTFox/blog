@@ -13,7 +13,11 @@ const PostDetailLayout = ({ children }) => {
       <NavBar />
       <Container pt={"10"}>
         <Box id="top" />
-        <Box textAlign={"left"} px={{ base: "2rem", xl: "12rem" }}>
+        <Box
+          maxW={"100%"}
+          textAlign={"left"}
+          px={{ base: "2rem", xl: "12rem" }}
+        >
           {children}
         </Box>
       </Container>
