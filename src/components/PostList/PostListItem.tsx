@@ -12,6 +12,7 @@ export interface PostListItemProps {
 }
 
 const PostListItem = (props: PostListItemProps) => {
+  const readTime = props.frontMatter.readTimeInMinutes;
   return (
     <Box py={5} maxW={"8xl"}>
       <Link href={props.link} passHref>
@@ -27,7 +28,7 @@ const PostListItem = (props: PostListItemProps) => {
       </Text>
 
       <Text pt={5} fontSize="md">
-        {props.frontMatter.readTimeInMinutes} minutes
+        {readTime} {readTime === 1 ? "minute" : "minutes"}
       </Text>
     </Box>
   );
