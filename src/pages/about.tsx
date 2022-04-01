@@ -22,7 +22,7 @@ const About = () => {
           News, and has been featured in programming newsletters such as Django
           Weekly, and PyCoders Weekly. When Anthony isn’t glued to a glowing
           rectangle, he spends time reading, exercising, and going on road-trips
-          with his wife, Paola, and aussie, Alt.
+          with his wife, Paola, and aussie, Alto.
         </Text>
       </Section>
     </Stack>
