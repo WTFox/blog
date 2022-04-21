@@ -6,7 +6,7 @@ import NavBar from "../NavBar";
 import ScrollToTop from "../ScrollToTop";
 import theme from "src/theme";
 
-const PostDetailLayout = ({ children }) => {
+const FullWidthLayout = ({ children }) => {
   return (
     <ChakraProvider resetCSS theme={theme}>
       <Fonts />
@@ -26,4 +26,4 @@ const PostDetailLayout = ({ children }) => {
   );
 };
 
-export default PostDetailLayout;
+export default FullWidthLayout;

@@ -1,4 +1,4 @@
-import MainLayout from "./MainLayout";
-import PostDetailLayout from "./PostDetailLayout";
+import SidebarLayout from "./SidebarLayout"
+import FullWidthLayout from "./FullWidthLayout"
 
-export { MainLayout, PostDetailLayout };
+export { SidebarLayout, FullWidthLayout }
