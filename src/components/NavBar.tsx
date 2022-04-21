@@ -6,14 +6,17 @@ import {
   Text,
   useColorMode,
   useColorModeValue,
-} from "@chakra-ui/react";
+} from "@chakra-ui/react"
 
-import { Container } from "./Container";
-import DarkModeSwitch from "./DarkModeSwitch";
-import Link from "next/link";
-import profilePic from "../../public/images/profile.jpg";
+import { Container } from "./Container"
+import DarkModeSwitch from "./DarkModeSwitch"
+import Link from "next/link"
+import profilePic from "../../public/images/profile.jpg"
+import { useRouter } from "next/router"
 
 export default function NavBar() {
+  const router = useRouter()
+  const linkHref = router.asPath === "/" ? "/about" : "/"
   return (
     <Box pb={"20"}>
       <Container
@@ -28,7 +31,7 @@ export default function NavBar() {
       >
         <Menu>
           <Container direction={"row"}>
-            <Link href="/" passHref>
+            <Link href={linkHref} passHref>
               <ChakraLink>
                 <Box overflow="hidden">
                   <Avatar
@@ -53,5 +56,5 @@ export default function NavBar() {
         </Menu>
       </Container>
     </Box>
-  );
+  )
 }
