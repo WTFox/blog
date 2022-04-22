@@ -23,7 +23,7 @@ const Footer = ({ date }) => {
 }
 
 const PostDetail = (props: Props) => (
-  <Box px={"5rem"} textAlign={"justify"}>
+  <Box px={{ base: 0, xl: "16rem" }} textAlign={"justify"}>
     <Heading
       textAlign={"center"}
       bgGradient="linear(to-l, #7928CA, #FF0080)"
