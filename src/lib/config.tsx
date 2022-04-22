@@ -21,7 +21,13 @@ interface ISiteConfig {
 
 const SiteConfig: ISiteConfig = {
   name: "Anthony Fox",
-  subtitles: ["Software Engineer", "Maker of things", "Dog lover", "Batman?"],
+  subtitles: [
+    "Software Engineer.",
+    "Husband.",
+    "Maker of things.",
+    "Dog lover.",
+    "Batman?",
+  ],
   links: [
     {
       href: "/",
@@ -60,12 +66,6 @@ const SiteConfig: ISiteConfig = {
       text: "email",
       isExternal: true,
     },
-    //{
-    //href: "https://strava.com/athletes/wtfox",
-    //icon: FaBicycle,
-    //text: "strava",
-    //isExternal: true,
-    //},
   ],
 }
 
