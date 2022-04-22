@@ -6,7 +6,6 @@ import {
   useColorMode,
   useColorModeValue,
   Link,
-  Heading,
 } from "@chakra-ui/react"
 
 import { ReactElement } from "react"
@@ -17,7 +16,7 @@ import Rainbowify from "@/components/Rainbowify"
 import me from "../../public/images/me.jpg"
 import bike from "../../public/images/bike.png"
 
-function getAge(dateString: string): string {
+function getAge(dateString: string): number {
   var today = new Date()
   var birthDate = new Date(dateString)
   var age = today.getFullYear() - birthDate.getFullYear()
@@ -25,8 +24,9 @@ function getAge(dateString: string): string {
   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
     age--
   }
-  return age.toFixed(0)
+  return age
 }
+
 const About = () => {
   const age = getAge("10-05-1988")
 
