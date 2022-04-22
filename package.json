@@ -27,7 +27,8 @@
     "prismjs": "^1.27.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "react-rotating-text": "^1.4.1"
   },
   "devDependencies": {
     "@types/node": "^14.6.0",

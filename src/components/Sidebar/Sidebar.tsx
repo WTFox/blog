@@ -1,3 +1,6 @@
+import React from "react"
+import Link from "next/link"
+
 import {
   Box,
   Link as ChakraLink,
@@ -9,13 +12,16 @@ import {
   Text,
 } from "@chakra-ui/react"
 import { useColorMode, useColorModeValue } from "@chakra-ui/react"
-
-import { Container } from "./Container"
 import { Icon } from "@chakra-ui/icons"
-import Link from "next/link"
-import Section from "./Section"
-import SiteConfig from "../lib/config"
-import profilePic from "../../public/images/profile.jpg"
+
+import ReactRotatingText from "react-rotating-text"
+
+import { Container } from "@/components/Container"
+import Section from "@/components/Section"
+import SiteConfig from "../../lib/config"
+import profilePic from "../../../public/images/profile.jpg"
+
+import styles from "./Sidebar.module.css"
 
 const SidebarLinks = () => {
   return (
@@ -84,8 +90,12 @@ const SidebarHero = () => {
           {SiteConfig.name}
         </Heading>
         <Container maxW={"md"} pt={5}>
-          <Text fontSize={"md"} as="i">
-            {SiteConfig.subtitle}
+          <Text fontSize={"lg"} as="i">
+            <ReactRotatingText
+              pause={3000}
+              eraseMode={"overwrite"}
+              items={SiteConfig.subtitles}
+            />
           </Text>
         </Container>
       </Section>

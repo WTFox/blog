@@ -1,27 +1,27 @@
-import { BsFillPersonFill } from "react-icons/bs";
-import { DownloadIcon, EmailIcon } from "@chakra-ui/icons";
+import { BsFillPersonFill } from "react-icons/bs"
+import { DownloadIcon, EmailIcon } from "@chakra-ui/icons"
 
-import { FaTwitter, FaNewspaper, FaBicycle } from "react-icons/fa";
-import { GoOctoface } from "react-icons/go";
-import { Icon } from "@chakra-ui/react";
-import { IconType } from "react-icons";
+import { FaTwitter, FaNewspaper, FaBicycle } from "react-icons/fa"
+import { GoOctoface } from "react-icons/go"
+import { Icon } from "@chakra-ui/react"
+import { IconType } from "react-icons"
 
 interface Link {
-  href: string;
-  icon: IconType | typeof Icon;
-  text: string;
-  isExternal: boolean;
+  href: string
+  icon: IconType | typeof Icon
+  text: string
+  isExternal: boolean
 }
 
 interface ISiteConfig {
-  name: string;
-  subtitle: string;
-  links: Link[];
+  name: string
+  subtitles: string[]
+  links: Link[]
 }
 
 const SiteConfig: ISiteConfig = {
   name: "Anthony Fox",
-  subtitle: "writer of code. maker of things.",
+  subtitles: ["Coder", "Maker", "Dog person", "Batman?"],
   links: [
     {
       href: "/",
@@ -67,6 +67,6 @@ const SiteConfig: ISiteConfig = {
     //isExternal: true,
     //},
   ],
-};
+}
 
-export default SiteConfig;
+export default SiteConfig
