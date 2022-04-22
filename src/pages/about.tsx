@@ -16,9 +16,9 @@ import Rainbowify from "@/components/Rainbowify"
 import me from "../../public/images/me.jpg"
 import bike from "../../public/images/bike.png"
 
-function getAge(dateString: string): number {
+function getAge(): number {
   var today = new Date()
-  var birthDate = new Date(dateString)
+  var birthDate = new Date(1988, 10, 5)
   var age = today.getFullYear() - birthDate.getFullYear()
   var m = today.getMonth() - birthDate.getMonth()
   if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
@@ -28,7 +28,7 @@ function getAge(dateString: string): number {
 }
 
 const About = () => {
-  const age = getAge("10-5-1988")
+  const age = getAge()
 
   const { colorMode } = useColorMode()
   const borderColor = useColorModeValue("#7928CA", "#FF0080")
@@ -39,6 +39,8 @@ const About = () => {
   } else {
     borderProps = { bgGradient: "linear(to-l, #7928CA, #FF0080)" }
   }
+
+  const fontSize = "xl"
 
   return (
     <VStack maxW={"40rem"}>
@@ -56,33 +58,41 @@ const About = () => {
       </Section>
 
       <Section pb={5} delay={0.3}>
-        Hello, I&apos;m Anthony Fox.
+        <Text fontSize={fontSize}>Hello, I&apos;m Anthony Fox.</Text>
       </Section>
 
       <Section pb={5} delay={0.3}>
-        I&apos;m a <Rainbowify>{age}</Rainbowify> year old
-        <Rainbowify> Principal Engineer </Rainbowify>
-        for <Rainbowify>Stratasan</Rainbowify>, a company focused on healthcare
-        analytics.
+        <Text fontSize={fontSize}>
+          I&apos;m a <Rainbowify>{age}</Rainbowify> year old
+          <Rainbowify> Principal Engineer </Rainbowify>
+          for <Rainbowify>Stratasan</Rainbowify>, a company focused on
+          healthcare analytics.
+        </Text>
       </Section>
 
       <Section pb={5} delay={0.3}>
-        Learning is my passion and I prefer to learn by reading. Reading has
-        always helped me keep imposter syndrome at bay, but what good is
-        knowledge if you don&apos;t share it?
+        <Text fontSize={fontSize}>
+          Learning is my passion and I prefer to learn by reading. Reading has
+          always helped me keep imposter syndrome at bay, but what good is
+          knowledge if you don&apos;t share it?
+        </Text>
       </Section>
 
       <Section pb={5} delay={0.3}>
-        My days are usually spent pairing with others on my team, sharing best
-        practices, and trying to keep up with the ever-changing landscape that
-        is software engineering. I&apos;ve also spoken at many meetups and a few
-        conferences, too.
+        <Text fontSize={fontSize}>
+          My days are usually spent pairing with others on my team, sharing best
+          practices, and trying to keep up with the ever-changing landscape that
+          is software engineering. I&apos;ve also spoken at many meetups and a
+          few conferences, too.
+        </Text>
       </Section>
 
       <Section pb={5} delay={0.3}>
-        I live in California with my wife, Paola, and my Australian Shepherd,
-        Alto. When I&apos;m not programming, reading, or spending time with my
-        wife, I&apos;m on my bike.
+        <Text fontSize={fontSize}>
+          I live in California with my wife, Paola, and my Australian Shepherd,
+          Alto. When I&apos;m not programming, reading, or spending time with my
+          wife, I&apos;m on my bike.
+        </Text>
       </Section>
 
       <Section pb={5} delay={0.3}>
@@ -99,7 +109,7 @@ const About = () => {
       </Section>
 
       <Section pb={5} delay={0.3}>
-        <Text>
+        <Text fontSize={fontSize}>
           You can follow me on{" "}
           <Link
             textDecoration={"underline"}
