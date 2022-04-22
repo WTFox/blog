@@ -40,7 +40,6 @@ export default function NavBar() {
                     borderRadius="full"
                     size={"md"}
                     src={profilePic.src}
-                    borderColor={"#FF0080"}
                   />
                 </Box>
               </ChakraLink>

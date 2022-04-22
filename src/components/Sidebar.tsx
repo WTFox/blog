@@ -7,15 +7,15 @@ import {
   Heading,
   Image,
   Text,
-} from "@chakra-ui/react";
-import { useColorMode, useColorModeValue } from "@chakra-ui/react";
+} from "@chakra-ui/react"
+import { useColorMode, useColorModeValue } from "@chakra-ui/react"
 
-import { Container } from "./Container";
-import { Icon } from "@chakra-ui/icons";
-import Link from "next/link";
-import Section from "./Section";
-import SiteConfig from "../lib/config";
-import profilePic from "../../public/images/profile.jpg";
+import { Container } from "./Container"
+import { Icon } from "@chakra-ui/icons"
+import Link from "next/link"
+import Section from "./Section"
+import SiteConfig from "../lib/config"
+import profilePic from "../../public/images/profile.jpg"
 
 const SidebarLinks = () => {
   return (
@@ -36,28 +36,28 @@ const SidebarLinks = () => {
                 </ChakraLink>
               </Link>
             </GridItem>
-          );
+          )
         })}
       </Grid>
     </Section>
-  );
-};
+  )
+}
 
 const SidebarHero = () => {
-  const { colorMode } = useColorMode();
-  const borderColor = useColorModeValue("#7928CA", "#FF0080");
+  const { colorMode } = useColorMode()
+  const borderColor = useColorModeValue("#7928CA", "#FF0080")
 
-  let borderProps: any;
+  let borderProps: any
   if (colorMode === "light") {
-    borderProps = { borderColor };
+    borderProps = { borderColor }
   } else {
-    borderProps = { bgGradient: "linear(to-l, #7928CA, #FF0080)" };
+    borderProps = { bgGradient: "linear(to-l, #7928CA, #FF0080)" }
   }
 
   return (
     <Box>
       <Section delay={0.1}>
-        <Link passHref href={"/"}>
+        <Link passHref href={"/about"}>
           <ChakraLink cursor={"pointer"}>
             <Box
               borderWidth={4}
@@ -90,8 +90,8 @@ const SidebarHero = () => {
         </Container>
       </Section>
     </Box>
-  );
-};
+  )
+}
 
 const Sidebar = () => {
   return (
@@ -105,7 +105,7 @@ const Sidebar = () => {
       <Divider pt={5} w={"2xs"} />
       <SidebarLinks />
     </Container>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

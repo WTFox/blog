@@ -1,4 +1,4 @@
-import { Flex, useColorMode, FlexProps } from "@chakra-ui/react";
+import { Flex, FlexProps } from "@chakra-ui/react"
 
 export const Container = (props: FlexProps) => {
   return (
@@ -8,5 +8,5 @@ export const Container = (props: FlexProps) => {
       justifyContent="flex-start"
       {...props}
     />
-  );
-};
+  )
+}
