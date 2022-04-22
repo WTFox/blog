@@ -1,4 +1,4 @@
-import { Box, Divider, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Divider, Text, useColorModeValue } from "@chakra-ui/react"
 import {
   BoxProps,
   Button,
@@ -11,49 +11,49 @@ import {
   LinkProps,
   Stack,
   TextProps,
-} from "@chakra-ui/react";
-import NextLink, { LinkProps as NextLinkProps } from "next/link";
-import React, { useEffect } from "react";
+} from "@chakra-ui/react"
+import NextLink, { LinkProps as NextLinkProps } from "next/link"
+import React, { useEffect } from "react"
 
-import Image from "next/image";
-import Mermaid from "./Mermaid";
-import Prism from "prismjs";
-import "dracula-prism/dist/css/dracula-prism.css";
+import Image from "next/image"
+import Mermaid from "./Mermaid"
+import Prism from "prismjs"
+import "dracula-prism/dist/css/dracula-prism.css"
 
 const P = ({ children, ...delegated }: TextProps) => {
   return (
-    <Text as="p" py={4} lineHeight="tall" {...delegated}>
+    <Text as="p" py={4} fontSize={"xl"} lineHeight="tall" {...delegated}>
       {children}
     </Text>
-  );
-};
+  )
+}
 
 const Ul = ({ children, ...delegated }: BoxProps) => {
   return (
     <Box as="ul" pt={2} pl={4} ml={2} {...delegated}>
       {children}
     </Box>
-  );
-};
+  )
+}
 
 const Ol = ({ children, ...delegated }: BoxProps) => {
   return (
     <Box as="ol" pt={2} pl={4} ml={2} {...delegated}>
       {children}
     </Box>
-  );
-};
+  )
+}
 
 const Li = ({ children, ...delegated }: BoxProps) => {
   return (
-    <Box as="li" pb={1} {...delegated}>
+    <Box as="li" pb={1} fontSize={"xl"} {...delegated}>
       {children}
     </Box>
-  );
-};
+  )
+}
 
 const BlockQuote = (props: BoxProps) => {
-  const bgColor = useColorModeValue("purple.100", "pink.800");
+  const bgColor = useColorModeValue("purple.100", "pink.800")
 
   return (
     <Box
@@ -70,38 +70,38 @@ const BlockQuote = (props: BoxProps) => {
       }}
       {...props}
     />
-  );
-};
+  )
+}
 
 const HR = () => {
-  const borderColor = useColorModeValue("gray.200", "gray.600");
+  const borderColor = useColorModeValue("gray.200", "gray.600")
 
-  return <Divider borderColor={borderColor} my={4} w="full" />;
-};
+  return <Divider borderColor={borderColor} my={4} w="full" />
+}
 
 const H1 = ({ children, ...delegated }: HeadingProps) => {
   return (
     <Heading as="h1" size="3xl" py={5} {...delegated}>
       {children}
     </Heading>
-  );
-};
+  )
+}
 
 const H2 = ({ children, ...delegated }: HeadingProps) => {
   return (
     <Heading py={4} as="h2" fontWeight="bold" size="2xl" {...delegated}>
       {children}
     </Heading>
-  );
-};
+  )
+}
 
 const H3 = ({ children, ...delegated }: HeadingProps) => {
   return (
     <Heading py={4} as="h3" size="xl" fontWeight="bold" {...delegated}>
       {children}
     </Heading>
-  );
-};
+  )
+}
 
 const Link = ({
   href,
@@ -114,7 +114,7 @@ const Link = ({
   locale,
   ...props
 }: LinkProps & NextLinkProps) => {
-  const color = useColorModeValue("#7928CA", "#FF0080");
+  const color = useColorModeValue("#7928CA", "#FF0080")
   return (
     <NextLink
       href={href}
@@ -128,8 +128,8 @@ const Link = ({
     >
       <ChakraLink as="a" color={color} {...props} />
     </NextLink>
-  );
-};
+  )
+}
 
 const ButtonLink = ({
   href,
@@ -155,20 +155,20 @@ const ButtonLink = ({
     >
       <Button as="a" {...props} />
     </NextLink>
-  );
-};
+  )
+}
 
 const Table = (props: BoxProps) => (
   <Box as="table" textAlign="left" mt="32px" width="full" {...props} />
-);
+)
 
 const Th = (props: BoxProps) => {
-  const bg = useColorModeValue("gray.50", "whiteAlpha.100");
+  const bg = useColorModeValue("gray.50", "whiteAlpha.100")
 
   return (
     <Box as="th" bg={bg} fontWeight="semibold" p={2} fontSize="sm" {...props} />
-  );
-};
+  )
+}
 
 const Td = (props: BoxProps) => (
   <Box
@@ -180,23 +180,23 @@ const Td = (props: BoxProps) => (
     whiteSpace="normal"
     {...props}
   />
-);
+)
 
 const CodeBlock = ({ code, language }: { code: string; language: string }) => {
   useEffect(() => {
-    Prism.highlightAll();
-  }, []);
+    Prism.highlightAll()
+  }, [])
 
-  const trimmed = code.trim();
+  const trimmed = code.trim()
 
   return (
-    <Box className="Code">
+    <Box className="Code" fontSize={"xl"}>
       <pre>
         <code className={`language-${language}`}>{trimmed}</code>
       </pre>
     </Box>
-  );
-};
+  )
+}
 
 export const components = {
   h1: H1,
@@ -224,4 +224,4 @@ export const components = {
   Stack,
   Mermaid,
   CodeBlock,
-};
+}
