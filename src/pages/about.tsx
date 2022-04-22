@@ -43,11 +43,10 @@ const About = () => {
   const fontSize = "xl"
 
   return (
-    <VStack maxW={"40rem"}>
+    <VStack maxW={"40rem"} textAlign={"justify"}>
       <Section pb={5} delay={0.3}>
         <Box
           borderWidth={2}
-          w={"25rem"}
           display="inline-block"
           borderRadius="50"
           overflow="hidden"
@@ -98,7 +97,6 @@ const About = () => {
       <Section pb={5} delay={0.3}>
         <Box
           borderWidth={2}
-          w={"25rem"}
           display="inline-block"
           borderRadius="50"
           overflow="hidden"
