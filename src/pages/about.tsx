@@ -28,7 +28,7 @@ function getAge(dateString: string): number {
 }
 
 const About = () => {
-  const age = getAge("10-05-1988")
+  const age = getAge("10-5-1988")
 
   const { colorMode } = useColorMode()
   const borderColor = useColorModeValue("#7928CA", "#FF0080")
