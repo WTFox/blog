@@ -14,14 +14,11 @@ import {
 import { useColorMode, useColorModeValue } from "@chakra-ui/react"
 import { Icon } from "@chakra-ui/icons"
 
-import ReactRotatingText from "react-rotating-text"
-
 import { Container } from "@/components/Container"
 import Section from "@/components/Section"
 import SiteConfig from "../../lib/config"
 import profilePic from "../../../public/images/profile.jpg"
-
-import styles from "./Sidebar.module.css"
+import RoloText from "../RoloText"
 
 const SidebarLinks = () => {
   return (
@@ -90,13 +87,7 @@ const SidebarHero = () => {
           {SiteConfig.name}
         </Heading>
         <Container maxW={"md"} pt={5}>
-          <Text fontSize={"lg"} as="i">
-            <ReactRotatingText
-              pause={3000}
-              eraseMode={"overwrite"}
-              items={SiteConfig.subtitles}
-            />
-          </Text>
+          <RoloText>{SiteConfig.subtitles}</RoloText>
         </Container>
       </Section>
     </Box>
