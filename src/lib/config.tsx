@@ -21,7 +21,7 @@ interface ISiteConfig {
 
 const SiteConfig: ISiteConfig = {
   name: "Anthony Fox",
-  subtitles: ["Coder", "Maker", "Dog person", "Batman?"],
+  subtitles: ["Software Engineer", "Maker of things", "Dog lover", "Batman?"],
   links: [
     {
       href: "/",

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { Text } from "@chakra-ui/react"
+import { Heading } from "@chakra-ui/react"
 
 import SiteConfig from "@/lib/config"
+import { AnimatePresence, motion } from "framer-motion"
 
 const RoloText = ({ children }) => {
   const subtitles: typeof SiteConfig["subtitles"] = children
@@ -10,10 +11,29 @@ const RoloText = ({ children }) => {
   useEffect(() => {
     setTimeout(() => {
       setIndex((index + 1) % subtitles.length)
-    }, 2500)
+    }, 3000)
   })
 
-  return <Text as={"i"}>{subtitles[index]}</Text>
+  const displayText = subtitles[index]
+
+  return (
+    <AnimatePresence exitBeforeEnter initial={false}>
+      <motion.div
+        style={{
+          display: "inline-block",
+        }}
+        key={displayText}
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 20, opacity: 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <Heading size={"md"} as={"i"}>
+          {displayText}
+        </Heading>
+      </motion.div>
+    </AnimatePresence>
+  )
 }
 
 export default RoloText

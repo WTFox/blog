@@ -86,7 +86,7 @@ const SidebarHero = () => {
         >
           {SiteConfig.name}
         </Heading>
-        <Container maxW={"md"} pt={5}>
+        <Container maxW={"md"} pt={2}>
           <RoloText>{SiteConfig.subtitles}</RoloText>
         </Container>
       </Section>
