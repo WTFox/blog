@@ -1,12 +1,12 @@
-import { Divider, Heading, Stack, Text } from "@chakra-ui/react";
+import { Divider, Heading, Stack, Text } from "@chakra-ui/react"
 
-import PostListItem from "./PostListItem";
-import { PostListItemProps } from "./PostListItem";
-import React from "react";
-import Section from "../Section";
+import PostListItem from "./PostListItem"
+import { PostListItemProps } from "./PostListItem"
+import React from "react"
+import Section from "../Section"
 
 interface PostListProps {
-  posts: PostListItemProps[];
+  posts: PostListItemProps[]
 }
 
 export const PostList = ({ posts }: PostListProps) => {
@@ -14,15 +14,15 @@ export const PostList = ({ posts }: PostListProps) => {
     const [dateA, dateB] = [
       new Date(a.frontMatter.date).getTime(),
       new Date(b.frontMatter.date).getTime(),
-    ];
-    return dateB - dateA;
-  });
+    ]
+    return dateB - dateA
+  })
 
   return (
     <Stack px={{ base: 8, lg: 20 }}>
       <Section pb={5} delay={0.1}>
-        <Heading id="Posts" size="lg">
-          <Text display={"inline-block"}>{"❯_ writings"}</Text>
+        <Heading id="Posts" size="xl">
+          {"❯_ writings"}
         </Heading>
         <Divider pt={5} size={"md"} />
       </Section>
@@ -31,8 +31,8 @@ export const PostList = ({ posts }: PostListProps) => {
           <Section key={index} delay={(index + 1) / 10 + 0.3}>
             <PostListItem {...post} />
           </Section>
-        );
+        )
       })}
     </Stack>
-  );
-};
+  )
+}
