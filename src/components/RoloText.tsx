@@ -9,9 +9,10 @@ const RoloText = ({ children }) => {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
-    setTimeout(() => {
+    const id = setTimeout(() => {
       setIndex((index + 1) % subtitles.length)
     }, 3000)
+    return () => clearTimeout(id)
   })
 
   const displayText = subtitles[index]
