@@ -1,7 +1,7 @@
 import { BsFillPersonFill } from "react-icons/bs"
 import { DownloadIcon, EmailIcon } from "@chakra-ui/icons"
 
-import { FaTwitter, FaNewspaper, FaBicycle } from "react-icons/fa"
+import { FaTwitter, FaNewspaper } from "react-icons/fa"
 import { GoOctoface } from "react-icons/go"
 import { Icon } from "@chakra-ui/react"
 import { IconType } from "react-icons"
@@ -41,7 +41,6 @@ const SiteConfig: ISiteConfig = {
       text: "/about",
       isExternal: false,
     },
-    // { href: "/talks", icon: BsMicFill, text: "/talks", isExternal: false },
     {
       href: "https://twitter.com/__wtfox__",
       icon: FaTwitter,
@@ -55,7 +54,8 @@ const SiteConfig: ISiteConfig = {
       isExternal: true,
     },
     {
-      href: "https://docs.google.com/viewer?url=https://docs.google.com/document/d/1NlGqYx4y47pHcgdFibr9-zFWBz6BMeM-wRga8vYAuwE/export?format=pdf",
+      href:
+        "https://docs.google.com/viewer?url=https://docs.google.com/document/d/1NlGqYx4y47pHcgdFibr9-zFWBz6BMeM-wRga8vYAuwE/export?format=pdf",
       icon: DownloadIcon,
       text: "resume",
       isExternal: true,
