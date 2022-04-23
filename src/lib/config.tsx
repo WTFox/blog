@@ -17,6 +17,8 @@ interface ISiteConfig {
   name: string
   title: string
   gradient: string
+  lightAccent: string
+  darkAccent: string
   links: Link[]
   subtitles: string[]
 }
@@ -70,6 +72,8 @@ const SiteConfig: ISiteConfig = {
     },
   ],
   gradient: "linear(to-l, #7928CA, #FF0080)",
+  lightAccent: "#7928CA",
+  darkAccent: "#FF0080",
 }
 
 export default SiteConfig

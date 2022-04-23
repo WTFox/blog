@@ -19,6 +19,7 @@ import Image from "next/image"
 import Mermaid from "./Mermaid"
 import Prism from "prismjs"
 import "dracula-prism/dist/css/dracula-prism.css"
+import SiteConfig from "@/lib/config"
 
 const P = ({ children, ...delegated }: TextProps) => {
   return (
@@ -114,7 +115,7 @@ const Link = ({
   locale,
   ...props
 }: LinkProps & NextLinkProps) => {
-  const color = useColorModeValue("#7928CA", "#FF0080")
+  const color = useColorModeValue(SiteConfig.lightAccent, SiteConfig.darkAccent)
   return (
     <NextLink
       href={href}

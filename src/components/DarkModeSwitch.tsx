@@ -1,9 +1,10 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react";
-import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { AnimatePresence, motion } from "framer-motion"
+import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react"
+import { MoonIcon, SunIcon } from "@chakra-ui/icons"
+import SiteConfig from "@/lib/config"
 
 const DarkModeSwitch = ({ motionProps } = null) => {
-  const { toggleColorMode } = useColorMode();
+  const { toggleColorMode } = useColorMode()
 
   return (
     <AnimatePresence exitBeforeEnter initial={false}>
@@ -23,14 +24,17 @@ const DarkModeSwitch = ({ motionProps } = null) => {
       >
         <IconButton
           aria-label="Toggle theme"
-          bgColor={useColorModeValue("#7928CA", "#FF0080")}
+          bgColor={useColorModeValue(
+            SiteConfig.lightAccent,
+            SiteConfig.darkAccent
+          )}
           color="white"
           icon={useColorModeValue(<MoonIcon />, <SunIcon />)}
           onClick={toggleColorMode}
         ></IconButton>
       </motion.div>
     </AnimatePresence>
-  );
-};
+  )
+}
 
-export default DarkModeSwitch;
+export default DarkModeSwitch

@@ -32,7 +32,10 @@ const About = () => {
   const age = getAge()
 
   const { colorMode } = useColorMode()
-  const borderColor = useColorModeValue("#7928CA", "#FF0080")
+  const borderColor = useColorModeValue(
+    SiteConfig.lightAccent,
+    SiteConfig.darkAccent
+  )
 
   let borderProps: any
   if (colorMode === "light") {

@@ -1,9 +1,10 @@
-import { Box, IconButton, Link, useColorModeValue } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { Box, IconButton, Link, useColorModeValue } from "@chakra-ui/react"
+import { useEffect, useState } from "react"
 
-import { TriangleUpIcon } from "@chakra-ui/icons";
+import { TriangleUpIcon } from "@chakra-ui/icons"
+import SiteConfig from "@/lib/config"
 
-const SCROLLBREAKPOINT = 500;
+const SCROLLBREAKPOINT = 500
 
 const ScrollToTopButton = () => {
   return (
@@ -17,32 +18,35 @@ const ScrollToTopButton = () => {
       >
         <IconButton
           aria-label="Scroll to top"
-          bgColor={useColorModeValue("#7928CA", "#FF0080")}
+          bgColor={useColorModeValue(
+            SiteConfig.lightAccent,
+            SiteConfig.darkAccent
+          )}
           color="white"
           icon={<TriangleUpIcon />}
         ></IconButton>
       </Box>
     </Link>
-  );
-};
+  )
+}
 
 const ScrollToTop = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0)
 
   const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
+    const position = window.pageYOffset
+    setScrollPosition(position)
+  }
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true })
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
 
-  return scrollPosition > SCROLLBREAKPOINT && <ScrollToTopButton />;
-};
+  return scrollPosition > SCROLLBREAKPOINT && <ScrollToTopButton />
+}
 
-export default ScrollToTop;
+export default ScrollToTop
