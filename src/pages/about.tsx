@@ -15,6 +15,7 @@ import Rainbowify from "@/components/Rainbowify"
 
 import me from "../../public/images/me.jpg"
 import bike from "../../public/images/bike.png"
+import SiteConfig from "@/lib/config"
 
 function getAge(): number {
   var today = new Date()
@@ -37,7 +38,7 @@ const About = () => {
   if (colorMode === "light") {
     borderProps = { borderColor }
   } else {
-    borderProps = { bgGradient: "linear(to-l, #7928CA, #FF0080)" }
+    borderProps = { bgGradient: SiteConfig.gradient }
   }
 
   const fontSize = "xl"

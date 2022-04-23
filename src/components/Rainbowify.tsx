@@ -1,12 +1,9 @@
+import SiteConfig from "@/lib/config"
 import { Text } from "@chakra-ui/react"
 
 const Rainbowify = ({ children }) => {
   return (
-    <Text
-      display={"inline"}
-      bgGradient="linear(to-l, #7928CA, #FF0080)"
-      bgClip="text"
-    >
+    <Text display={"inline"} bgGradient={SiteConfig.gradient} bgClip="text">
       {children}
     </Text>
   )

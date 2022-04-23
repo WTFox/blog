@@ -26,7 +26,7 @@ const PostDetail = (props: Props) => (
   <Box px={{ base: 0, md: "10rem", xl: "16rem" }} textAlign={"justify"}>
     <Heading
       textAlign={"center"}
-      bgGradient="linear(to-l, #7928CA, #FF0080)"
+      bgGradient={SiteConfig.gradient}
       bgClip="text"
       textTransform={"uppercase"}
       fontWeight="extrabold"

@@ -16,8 +16,9 @@ interface Link {
 interface ISiteConfig {
   name: string
   title: string
-  subtitles: string[]
+  gradient: string
   links: Link[]
+  subtitles: string[]
 }
 
 const SiteConfig: ISiteConfig = {
@@ -56,8 +57,7 @@ const SiteConfig: ISiteConfig = {
       isExternal: true,
     },
     {
-      href:
-        "https://docs.google.com/viewer?url=https://docs.google.com/document/d/1NlGqYx4y47pHcgdFibr9-zFWBz6BMeM-wRga8vYAuwE/export?format=pdf",
+      href: "https://docs.google.com/viewer?url=https://docs.google.com/document/d/1NlGqYx4y47pHcgdFibr9-zFWBz6BMeM-wRga8vYAuwE/export?format=pdf",
       icon: DownloadIcon,
       text: "resume",
       isExternal: true,
@@ -69,6 +69,7 @@ const SiteConfig: ISiteConfig = {
       isExternal: true,
     },
   ],
+  gradient: "linear(to-l, #7928CA, #FF0080)",
 }
 
 export default SiteConfig

@@ -54,7 +54,7 @@ const SidebarHero = () => {
   if (colorMode === "light") {
     borderProps = { borderColor }
   } else {
-    borderProps = { bgGradient: "linear(to-l, #7928CA, #FF0080)" }
+    borderProps = { bgGradient: SiteConfig.gradient }
   }
 
   return (
@@ -78,7 +78,7 @@ const SidebarHero = () => {
 
       <Section delay={0.1} pt={5}>
         <Heading
-          bgGradient="linear(to-l, #7928CA, #FF0080)"
+          bgGradient={SiteConfig.gradient}
           bgClip="text"
           textTransform={"uppercase"}
           fontSize="4xl"
