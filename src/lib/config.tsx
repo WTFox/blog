@@ -15,11 +15,13 @@ interface Link {
 
 interface ISiteConfig {
   name: string
+  title: string
   subtitles: string[]
   links: Link[]
 }
 
 const SiteConfig: ISiteConfig = {
+  title: "A. Fox",
   name: "Anthony Fox",
   subtitles: [
     "Software Engineer.",
