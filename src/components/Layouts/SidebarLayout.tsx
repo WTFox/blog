@@ -3,7 +3,7 @@ import { Box, ChakraProvider, Grid, GridItem } from "@chakra-ui/react"
 import NavBar from "../NavBar"
 import Fonts from "../Fonts"
 import ScrollToTop from "../ScrollToTop"
-import Sidebar from "../Sidebar/Sidebar"
+import Sidebar from "../Sidebar"
 import theme from "../../theme"
 
 const SidebarLayout = ({ children }) => {
