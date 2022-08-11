@@ -1,7 +1,6 @@
 import { Box, ChakraProvider, Grid, GridItem } from "@chakra-ui/react"
 
 import NavBar from "../NavBar"
-import Fonts from "../Fonts"
 import ScrollToTop from "../ScrollToTop"
 import Sidebar from "../Sidebar"
 import theme from "../../theme"
@@ -9,7 +8,6 @@ import theme from "../../theme"
 const SidebarLayout = ({ children }) => {
   return (
     <ChakraProvider resetCSS theme={theme}>
-      <Fonts />
       <NavBar />
       <Grid templateColumns="repeat(10, 1fr)">
         <GridItem
