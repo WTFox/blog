@@ -8,6 +8,8 @@ draft: false
 
 ![](enclosure.gif)
 
+[Video here](https://www.youtube.com/shorts/qjL10i--TrU)
+
 Actually, I started this project last October. In my spare time, I help organize a Python meetup in Orange County and we didn't have a speaker lined up for the month. Being that it was the Halloween season, I offered to build something fit for a costume. Luckily, I had an [LED ring](https://www.adafruit.com/product/1586) and a [CircuitPy](https://www.adafruit.com/product/3501) board laying around, so I thought an Arc Reactor would be just perfect.
 
 If you're unfamiliar with Arc Reactors -- it's a fictional power source in Marvel's Comic Universe, famously used by Iron Man himself who initially had it installed to keep him alive. Over time, it's gone through several different design changes throughout the course of the comic -- but it's essentially a circular device that glows blue with a dim flickering light. The flicker is the key to making it seem like there's actual nuclear power flowing through the arc reactor. You can read more about that here, if you'd like: [Marvel Fandom: Arc Reactor](https://marvel.fandom.com/wiki/Arc_Reactor).
@@ -45,12 +47,6 @@ We bought the button and spent half of a Saturday wiring everything up and progr
 
 ![](blue-w-button.jpg)
 ![](pink-w-button.jpg)
-
-<iframe
-  width="100%"
-  src="https://www.youtube.com/embed/qjL10i--TrU"
-  title="Finished Arc Notifier"
-></iframe>
 
 Here's a portion of the code with the button logic. When the button is pressed, we turn the button LED on and change the color of the arc reactor to pink for quite a few CPU cycles, then turn the button LED off and change the arc reactor color back to its original blue.
 

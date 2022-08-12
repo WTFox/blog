@@ -16,12 +16,9 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react"
 import NextLink, { LinkProps as NextLinkProps } from "next/link"
-import React, { useEffect } from "react"
 
 import Image from "next/image"
 import Mermaid from "./Mermaid"
-import Prism from "prismjs"
-import "dracula-prism/dist/css/dracula-prism.css"
 import SiteConfig from "@/lib/SiteConfig"
 
 const P = ({ children, ...delegated }: TextProps) => {
@@ -187,14 +184,10 @@ const Td = (props: BoxProps) => (
 )
 
 const CodeBlock = ({ code, language }: { code: string; language: string }) => {
-  useEffect(() => {
-    Prism.highlightAll()
-  }, [])
-
   const trimmed = code.trim()
 
   return (
-    <Box className="Code" fontSize={"xl"}>
+    <Box className="Code" fontSize={"md"}>
       <pre>
         <code className={`language-${language}`}>{trimmed}</code>
       </pre>
@@ -204,12 +197,7 @@ const CodeBlock = ({ code, language }: { code: string; language: string }) => {
 
 export const components = (slug) => ({
   img: ({ src, alt }) => {
-    return (
-      <Image
-        alt={alt}
-        src={require(`../_posts/${slug}/${src}`).default}
-      />
-    )
+    return <Image alt={alt} src={require(`../_posts/${slug}/${src}`).default} />
   },
   h1: H1,
   h2: H2,
