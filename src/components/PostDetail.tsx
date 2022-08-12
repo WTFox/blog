@@ -6,6 +6,7 @@ import SiteConfig from "@/lib/config"
 import { components } from "@/components/MDXComponents"
 
 interface Props extends PostListItemProps {
+  slug: string
   mdxSource: MDXRemoteProps
 }
 
@@ -37,7 +38,7 @@ const PostDetail = (props: Props) => (
       {props.frontMatter.title}
     </Heading>
     {/* @ts-ignore */}
-    <MDXRemote {...props.mdxSource} components={components} />
+    <MDXRemote {...props.mdxSource} components={components(props.slug)} />
     <Footer date={props.frontMatter.date} />
   </Box>
 )

@@ -202,7 +202,15 @@ const CodeBlock = ({ code, language }: { code: string; language: string }) => {
   )
 }
 
-export const components = {
+export const components = (slug) => ({
+  img: ({ src, alt }) => {
+    return (
+      <Image
+        alt={alt}
+        src={require(`../_posts/${slug}/${src}`).default}
+      />
+    )
+  },
   h1: H1,
   h2: H2,
   h3: H3,
@@ -221,11 +229,10 @@ export const components = {
   kbd: Kbd,
   code: Code,
   a: Link,
-  Image,
   Link,
   ButtonLink,
   Button,
   Stack,
   Mermaid,
   CodeBlock,
-}
+})

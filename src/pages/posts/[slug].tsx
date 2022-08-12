@@ -6,9 +6,14 @@ import matter from "gray-matter"
 import { serialize } from "next-mdx-remote/serialize"
 import { getPosts, lookupPostFromSlug } from "@/lib/post"
 
-const PostDetailView = ({ link, frontMatter, mdxSource }) => {
+const PostDetailView = ({ link, frontMatter, mdxSource, slug }) => {
   return (
-    <PostDetail link={link} frontMatter={frontMatter} mdxSource={mdxSource} />
+    <PostDetail
+      slug={slug}
+      link={link}
+      frontMatter={frontMatter}
+      mdxSource={mdxSource}
+    />
   )
 }
 
