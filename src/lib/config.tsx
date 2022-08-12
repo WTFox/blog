@@ -6,6 +6,8 @@ import { GoOctoface } from "react-icons/go"
 import { Icon } from "@chakra-ui/react"
 import { IconType } from "react-icons"
 
+import path from "path"
+
 interface Link {
   href: string
   icon: IconType | typeof Icon
@@ -17,6 +19,7 @@ interface ISiteConfig {
   name: string
   title: string
   gradient: string
+  postsDirectory: string
   lightAccent: string
   darkAccent: string
   links: Link[]
@@ -24,6 +27,7 @@ interface ISiteConfig {
 }
 
 const SiteConfig: ISiteConfig = {
+  postsDirectory: path.join(__dirname, "../../../src/_posts"),
   title: "A. Fox",
   name: "Anthony Fox",
   subtitles: [

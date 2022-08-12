@@ -3,8 +3,8 @@ import { FullWidthLayout } from "@/components/Layouts"
 import { ReactElement } from "react"
 import fs from "fs"
 import matter from "gray-matter"
-import path from "path"
 import { serialize } from "next-mdx-remote/serialize"
+import { getPosts, lookupPostFromSlug } from "@/lib/post"
 
 const PostDetailView = ({ link, frontMatter, mdxSource }) => {
   return (
@@ -17,27 +17,17 @@ PostDetailView.getLayout = function getLayout(page: ReactElement) {
 }
 
 const getStaticPaths = async () => {
-  const files = fs.readdirSync(path.join(__dirname, "../../../../src/_posts"))
-
-  const paths = files.map((filename) => ({
-    params: {
-      slug: filename.replace(".mdx", ""),
-    },
-  }))
-
   return {
-    paths,
+    paths: getPosts().map((post) => post.link),
     fallback: false,
   }
 }
 
 const getStaticProps = async ({ params: { slug } }) => {
-  const markdownWithMeta = fs.readFileSync(
-    path.join(__dirname, "../../../../src/_posts", slug + ".mdx"),
-    "utf-8"
-  )
+  const post = lookupPostFromSlug(slug)
+  const markdownXFile = fs.readFileSync(post.path, "utf-8")
 
-  const { data: frontMatter, content } = matter(markdownWithMeta)
+  const { data: frontMatter, content } = matter(markdownXFile)
   const mdxSource = await serialize(content)
 
   return {

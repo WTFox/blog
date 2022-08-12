@@ -3,8 +3,6 @@ import {
   Box,
   Link as ChakraLink,
   Menu,
-  Text,
-  useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react"
 

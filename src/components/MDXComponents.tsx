@@ -1,16 +1,19 @@
-import { Box, Divider, Text, useColorModeValue } from "@chakra-ui/react"
 import {
+  Box,
   BoxProps,
   Button,
   ButtonProps,
-  Link as ChakraLink,
   Code,
+  Divider,
   Heading,
   HeadingProps,
   Kbd,
+  Link as ChakraLink,
   LinkProps,
   Stack,
+  Text,
   TextProps,
+  useColorModeValue,
 } from "@chakra-ui/react"
 import NextLink, { LinkProps as NextLinkProps } from "next/link"
 import React, { useEffect } from "react"

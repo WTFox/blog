@@ -1,29 +1,31 @@
-import React from "react";
-import Link from "next/link";
+import React from "react"
+import Link from "next/link"
 import {
+  useColorMode,
+  useColorModeValue,
   Box,
-  Link as ChakraLink, Heading,
-  Image
-} from "@chakra-ui/react";
-import { useColorMode, useColorModeValue } from "@chakra-ui/react";
-import { Container } from "@/components/Container";
-import Section from "@/components/Section";
-import SiteConfig from "../../lib/config";
-import profilePic from "../../../public/images/profile.jpg";
-import RoloText from "../RoloText";
+  Link as ChakraLink,
+  Heading,
+  Image,
+} from "@chakra-ui/react"
+import { Container } from "@/components/Container"
+import Section from "@/components/Section"
+import SiteConfig from "../../lib/config"
+import profilePic from "../../../public/images/profile.jpg"
+import RoloText from "../RoloText"
 
 export const SidebarHero = () => {
-  const { colorMode } = useColorMode();
+  const { colorMode } = useColorMode()
   const borderColor = useColorModeValue(
     SiteConfig.lightAccent,
     SiteConfig.darkAccent
-  );
+  )
 
-  let borderProps: any;
+  let borderProps: any
   if (colorMode === "light") {
-    borderProps = { borderColor };
+    borderProps = { borderColor }
   } else {
-    borderProps = { bgGradient: SiteConfig.gradient };
+    borderProps = { bgGradient: SiteConfig.gradient }
   }
 
   return (
@@ -60,5 +62,5 @@ export const SidebarHero = () => {
         </Container>
       </Section>
     </Box>
-  );
-};
+  )
+}
