@@ -1,0 +1,87 @@
+---
+title: "I Created an Arc Reactor!"
+summary: "...And then my wife took it."
+readTimeInMinutes: 5
+date: "2019-01-29"
+draft: false
+---
+
+![](enclosure.gif)
+
+Actually, I started this project last October. In my spare time, I help organize a Python meetup in Orange County and we didn't have a speaker lined up for the month. Being that it was the Halloween season, I offered to build something fit for a costume. Luckily, I had an [LED ring](https://www.adafruit.com/product/1586) and a [CircuitPy](https://www.adafruit.com/product/3501) board laying around, so I thought an Arc Reactor would be just perfect.
+
+If you're unfamiliar with Arc Reactors -- it's a fictional power source in Marvel's Comic Universe, famously used by Iron Man himself who initially had it installed to keep him alive. Over time, it's gone through several different design changes throughout the course of the comic -- but it's essentially a circular device that glows blue with a dim flickering light. The flicker is the key to making it seem like there's actual nuclear power flowing through the arc reactor. You can read more about that here, if you'd like: [Marvel Fandom: Arc Reactor](https://marvel.fandom.com/wiki/Arc_Reactor).
+
+So, the first task was to get the light pattern accurate. I searched around and found some code snippets that all came really close to what I wanted, so I combined them all together and was off to a solid start.
+
+![](circuitpython.jpg)
+
+![](starting.gif)
+
+The code for this isn't terribly complicated. Basically, there's a main loop and an alpha direction that determines whether the brightness should increase or decrease. Then, I either increment or decrement the brightness by a small amount. There's also a one in five-ish chance that the alpha direction is reversed each loop. So, if we're incrementing brightness, it will swap to decrementing and vice versa. This gives the effect of the device sometimes looking like it's about to power down only to then come back to life!
+
+<CodeBlock language={'python'} code={`
+while True:
+    if one_in_five_chance():
+        alpha_up = not alpha_up
+
+    alpha_up, brightness = adjust_brightness(alpha_up, brightness)
+    lights.brightness = brightness
+    lights.write()
+
+`} />
+
+At this point, the hard work is done. I asked a few friends to 3D-print the casing for me. This took a few tries because apparently the light-ring was a different size than the thingiverse project I originally selected. I was able to frankenstein two printed objects together and came up with something nice. I spray painted my device a metallic silver for the finishing touch.
+
+---
+
+Fast forward to present day.
+
+My wife decides she needs it, but she'd also like a [big, red button](https://www.amazon.com/dp/B00CYGTH9I) wired up to it and when the button is pressed, it changes the color from blue to pink (temporarily). This, she explained to me, would be a sort of doorbell for her cubicle at work. She often works with headphones on and is usually startled when co-workers "sneak up" behind her.
+
+![](red-panda.gif)
+
+We bought the button and spent half of a Saturday wiring everything up and programming the button logic.
+
+![](blue-w-button.jpg)
+![](pink-w-button.jpg)
+
+<iframe
+  width="640"
+  height="1138"
+  src="https://www.youtube.com/embed/qjL10i--TrU"
+  title="Finished Arc Notifier"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
+
+Here's a portion of the code with the button logic. When the button is pressed, we turn the button LED on and change the color of the arc reactor to pink for quite a few CPU cycles, then turn the button LED off and change the arc reactor color back to its original blue.
+
+<CodeBlock language={'python'} code={`
+button = DigitalInOut(config.BUTTON_PIN)
+button.direction = Direction.INPUT
+button.pull = Pull.UP
+
+color = COLORS["nuclear_blue"]
+alpha_up = True
+brightness = config.STARTING_BRIGHTNESS
+
+color_chase(color, strip)
+while True:
+if one_in_five_chance():
+alpha_up = not alpha_up
+
+    if button.value:
+        # Show the pink color
+        button_animation()
+
+    alpha_up, brightness = adjust_brightness(alpha_up, brightness)
+    strip.brightness = brightness
+    strip.write()
+
+`} />
+
+Let me know what you think!
+
+Here's a link to my github repo: [ArcReactor](https://github.com/WTFox/ArcReactor)
