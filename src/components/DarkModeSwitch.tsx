@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { IconButton, useColorMode, useColorModeValue } from "@chakra-ui/react"
 import { MoonIcon, SunIcon } from "@chakra-ui/icons"
-import SiteConfig from "@/lib/config"
+import SiteConfig from "@/lib/SiteConfig"
 
 const DarkModeSwitch = ({ motionProps } = null) => {
   const { toggleColorMode } = useColorMode()

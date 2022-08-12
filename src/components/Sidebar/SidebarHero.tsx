@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react"
 import { Container } from "@/components/Container"
 import Section from "@/components/Section"
-import SiteConfig from "../../lib/config"
+import SiteConfig from "../../lib/SiteConfig"
 import profilePic from "../../../public/images/profile.jpg"
 import RoloText from "../RoloText"
 

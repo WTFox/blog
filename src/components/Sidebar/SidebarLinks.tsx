@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { Icon } from "@chakra-ui/icons";
 import Section from "@/components/Section";
-import SiteConfig from "../../lib/config";
+import SiteConfig from "../../lib/SiteConfig";
 
 export const SidebarLinks = () => {
   return (

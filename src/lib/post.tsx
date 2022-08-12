@@ -3,7 +3,7 @@ import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 import { glob } from "glob"
-import SiteConfig from "@/lib/config"
+import SiteConfig from "@/lib/SiteConfig"
 
 interface Post {
   frontMatter: any

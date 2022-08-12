@@ -15,7 +15,7 @@ import Rainbowify from "@/components/Rainbowify"
 
 import me from "../../public/images/me.jpg"
 import bike from "../../public/images/bike.png"
-import SiteConfig from "@/lib/config"
+import SiteConfig from "@/lib/SiteConfig"
 
 function getAge(): number {
   var today = new Date()

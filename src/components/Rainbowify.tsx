@@ -1,4 +1,4 @@
-import SiteConfig from "@/lib/config"
+import SiteConfig from "@/lib/SiteConfig"
 import { Text } from "@chakra-ui/react"
 
 const Rainbowify = ({ children }) => {

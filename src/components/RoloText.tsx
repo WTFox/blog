@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Heading } from "@chakra-ui/react"
 
-import SiteConfig from "@/lib/config"
+import SiteConfig from "@/lib/SiteConfig"
 import { AnimatePresence, motion } from "framer-motion"
 
 const RoloText = ({ children }) => {

@@ -2,7 +2,7 @@ import { Box, IconButton, Link, useColorModeValue } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
 
 import { TriangleUpIcon } from "@chakra-ui/icons"
-import SiteConfig from "@/lib/config"
+import SiteConfig from "@/lib/SiteConfig"
 
 const SCROLLBREAKPOINT = 500
 

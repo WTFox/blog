@@ -2,7 +2,7 @@ import NextDocument, { Head, Html, Main, NextScript } from "next/document"
 
 import { ColorModeScript } from "@chakra-ui/react"
 
-import SiteConfig from "@/lib/config"
+import SiteConfig from "@/lib/SiteConfig"
 
 export default class Document extends NextDocument {
   render() {

@@ -2,7 +2,7 @@ import { Box, Divider, Heading, Text } from "@chakra-ui/react"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote"
 
 import { PostListItemProps } from "@/components/PostList/PostListItem"
-import SiteConfig from "@/lib/config"
+import SiteConfig from "@/lib/SiteConfig"
 import { components } from "@/components/MDXComponents"
 
 interface Props extends PostListItemProps {

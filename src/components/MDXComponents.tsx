@@ -22,7 +22,7 @@ import Image from "next/image"
 import Mermaid from "./Mermaid"
 import Prism from "prismjs"
 import "dracula-prism/dist/css/dracula-prism.css"
-import SiteConfig from "@/lib/config"
+import SiteConfig from "@/lib/SiteConfig"
 
 const P = ({ children, ...delegated }: TextProps) => {
   return (
