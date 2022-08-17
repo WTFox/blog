@@ -4,7 +4,8 @@
     "dev": "next",
     "lint": "next lint",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "newPost": "node ./scripts/newPost.js"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.5",
@@ -31,13 +32,17 @@
     "react-icons": "^4.3.1"
   },
   "devDependencies": {
+    "@types/date-fns": "^2.6.0",
     "@types/node": "^14.6.0",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "@types/slug": "^5.0.3",
     "@types/webpack-env": "^1.16.3",
+    "date-fns": "^2.29.1",
     "eslint": "8.11.0",
     "eslint-config-next": "12.1.0",
     "file-loader": "^6.2.0",
+    "slug": "^6.0.0",
     "typescript": "4.3.2"
   }
 }
