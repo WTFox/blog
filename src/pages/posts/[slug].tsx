@@ -5,15 +5,22 @@ import fs from "fs"
 import matter from "gray-matter"
 import { serialize } from "next-mdx-remote/serialize"
 import { getPosts, lookupPostFromSlug } from "@/lib/post"
+import Head from "next/head"
 
 const PostDetailView = ({ link, frontMatter, mdxSource, slug }) => {
   return (
-    <PostDetail
-      slug={slug}
-      link={link}
-      frontMatter={frontMatter}
-      mdxSource={mdxSource}
-    />
+    <div>
+      <Head>
+        <title>{frontMatter.title}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <PostDetail
+        slug={slug}
+        link={link}
+        frontMatter={frontMatter}
+        mdxSource={mdxSource}
+      />
+    </div>
   )
 }
 

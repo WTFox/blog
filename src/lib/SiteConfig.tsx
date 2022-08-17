@@ -31,7 +31,7 @@ interface ISiteConfig {
 
 const SiteConfig: ISiteConfig = {
   postsDirectory: path.join(__dirname, "../../../content"),
-  siteTitle: "A. Fox",
+  siteTitle: "A. Fox Blog",
   authorName: "Anthony Fox",
   authorEmail: "anthonyfox1988@gmail.com",
   siteDescription: "Random thoughts and musings.",
