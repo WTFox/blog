@@ -197,7 +197,9 @@ const CodeBlock = ({ code, language }: { code: string; language: string }) => {
 
 export const components = (slug) => ({
   img: ({ src, alt }) => {
-    return <Image alt={alt} src={require(`../_posts/${slug}/${src}`).default} />
+    return (
+      <Image alt={alt} src={require(`../../content/${slug}/${src}`).default} />
+    )
   },
   h1: H1,
   h2: H2,

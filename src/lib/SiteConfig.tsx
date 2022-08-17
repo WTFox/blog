@@ -27,7 +27,7 @@ interface ISiteConfig {
 }
 
 const SiteConfig: ISiteConfig = {
-  postsDirectory: path.join(__dirname, "../../../src/_posts"),
+  postsDirectory: path.join(__dirname, "../../../content"),
   title: "A. Fox",
   name: "Anthony Fox",
   subtitles: [
