@@ -1,7 +1,7 @@
 import { BsFillPersonFill } from "react-icons/bs"
 import { DownloadIcon, EmailIcon } from "@chakra-ui/icons"
 
-import { FaTwitter, FaNewspaper } from "react-icons/fa"
+import { FaTwitter, FaRss } from "react-icons/fa"
 import { GoOctoface } from "react-icons/go"
 import { Icon } from "@chakra-ui/react"
 import { IconType } from "react-icons"
@@ -45,12 +45,6 @@ const SiteConfig: ISiteConfig = {
   ],
   links: [
     {
-      href: "/",
-      icon: FaNewspaper,
-      text: "/writings",
-      isExternal: false,
-    },
-    {
       href: "/about",
       icon: BsFillPersonFill,
       text: "/about",
@@ -79,6 +73,12 @@ const SiteConfig: ISiteConfig = {
       icon: EmailIcon,
       text: "email",
       isExternal: true,
+    },
+    {
+      href: "/rss/feed.xml",
+      icon: FaRss,
+      text: "rss",
+      isExternal: false,
     },
   ],
   gradient: "linear(to-l, #7928CA, #FF0080)",
