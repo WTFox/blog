@@ -3,8 +3,6 @@ import {
   BoxProps,
   Button,
   ButtonProps,
-  Code,
-  CodeProps,
   Divider,
   Heading,
   HeadingProps,
@@ -21,6 +19,7 @@ import NextLink, { LinkProps as NextLinkProps } from "next/link"
 import Image from "next/image"
 import Mermaid from "./Mermaid"
 import SiteConfig from "@/lib/SiteConfig"
+import { CodeBlock, CopyBlock, dracula as theme } from "react-code-blocks"
 
 const P = ({ children, ...delegated }: TextProps) => {
   return (
@@ -184,6 +183,29 @@ const Td = (props: BoxProps) => (
   />
 )
 
+const CustomCodeBlock = (props) => {
+  const { className, copy, children } = props
+
+  if (!className) {
+    return <kbd>{children}</kbd>
+  }
+
+  const language =
+    className.match(/(?<=language-)(\w.*?)\b/) != null
+      ? className.match(/(?<=language-)(\w.*?)\b/)[0]
+      : "javascript"
+
+  return (
+    <CodeBlock
+      text={children}
+      language={language}
+      theme={theme}
+      showLineNumbers={false}
+      wrapLines
+    />
+  )
+}
+
 export const components = (slug) => ({
   img: ({ src, alt }) => {
     return (
@@ -212,4 +234,6 @@ export const components = (slug) => ({
   Button,
   Stack,
   Mermaid,
+  // CodeBlock,
+  code: (props) => <CustomCodeBlock {...props} />,
 })

@@ -22,7 +22,7 @@ So, the first task was to get the light pattern accurate. I searched around and 
 
 The code for this isn't terribly complicated. Basically, there's a main loop and an alpha direction that determines whether the brightness should increase or decrease. Then, I either increment or decrement the brightness by a small amount. There's also a one in five-ish chance that the alpha direction is reversed each loop. So, if we're incrementing brightness, it will swap to decrementing and vice versa. This gives the effect of the device sometimes looking like it's about to power down only to then come back to life!
 
-<CodeBlock language={'python'} code={`
+```python
 while True:
     if one_in_five_chance():
         alpha_up = not alpha_up
@@ -30,8 +30,7 @@ while True:
     alpha_up, brightness = adjust_brightness(alpha_up, brightness)
     lights.brightness = brightness
     lights.write()
-
-`} />
+```
 
 At this point, the hard work is done. I asked a few friends to 3D-print the casing for me. This took a few tries because apparently the light-ring was a different size than the thingiverse project I originally selected. I was able to frankenstein two printed objects together and came up with something nice. I spray painted my device a metallic silver for the finishing touch.
 
@@ -50,7 +49,7 @@ We bought the button and spent half of a Saturday wiring everything up and progr
 
 Here's a portion of the code with the button logic. When the button is pressed, we turn the button LED on and change the color of the arc reactor to pink for quite a few CPU cycles, then turn the button LED off and change the arc reactor color back to its original blue.
 
-<CodeBlock language={'python'} code={`
+```python
 button = DigitalInOut(config.BUTTON_PIN)
 button.direction = Direction.INPUT
 button.pull = Pull.UP
@@ -71,8 +70,7 @@ alpha_up = not alpha_up
     alpha_up, brightness = adjust_brightness(alpha_up, brightness)
     strip.brightness = brightness
     strip.write()
-
-`} />
+```
 
 Let me know what you think!
 

@@ -10,21 +10,17 @@ I have a go app that runs via scheduled task on my Synology NAS DS218+. Compilin
 
 First, install musl-cross.
 
-<CodeBlock
-  language={"sh"}
-  code={"$ brew install FiloSottile/musl-cross/musl-cross "}
-/>
+```sh
+$ brew install FiloSottile/musl-cross/musl-cross
+```
 
 Then run the following `go build` command.
 
-<CodeBlock
-  language={"sh"}
-  code={`
+```sh
 $ CC=x86_64-linux-musl-gcc \\
   CXX=x86_64-linux-musl-g++ \\
   GOARCH=amd64 \\
   GOOS=linux \\
   CGO_ENABLED=1 \\
   go build -ldflags "-linkmode external -extldflags -static"
-  `}
-/>
+```

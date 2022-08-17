@@ -10,21 +10,16 @@ There are times when I'm building out a constructor or function and I find that 
 
 Let's take an ssh connection for example. You might have some code that looks like this:
 
-<CodeBlock
-  language={"go"}
-  code={`
+```go
 func NewClient(protocol, host, user, pass, port, path string) *ssh.Client {
     // stuff...
     return client
 }
-`}
-/>
+```
 
 This code is fine and would absolutely work but it could be better with a parameter object.
 
-<CodeBlock
-  language={"go"}
-  code={`
+```go
 // Params is a parameter object
 type Params struct {
     protocol,
@@ -39,7 +34,6 @@ func NewClient(params Params) \*ssh.Client {
     // stuff...
     return client
 }
-`}
-/>
+```
 
 This is a pretty easy process and the value added isn't only in the shorter parameter list. The new `Params` type could also enable an abstraction of existing code that increases maintainability and readability.

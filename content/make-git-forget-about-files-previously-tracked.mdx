@@ -10,28 +10,24 @@ A scenario where this is useful is if you've started a project that compiles som
 
 First, create your `.gitignore` file however you choose. Here's an example using bash.
 
-<CodeBlock
-  language={"bash"}
-  code={`
+```bash
 $ echo "
     # ignore compile python files
     *.pyc" > .gitignore
-    `}
-/>
+```
 
 Now let's update the git index. The first thing we do is unstage and remove paths only from the index. Files, modified or not, will be left alone.
 
-<CodeBlock language={"bash"} code={"$ git rm -r --cached ."} />
+```bash
+$ git rm -r --cached .
+```
 
 Then add everything back and commit the changes. Here's the entirety of the process.
 
-<CodeBlock
-  language={"bash"}
-  code={`
+```sh
 $ git rm -r --cached .
 $ git add .
 $ git commit -am "Remove ignored files"
-`}
-/>
+```
 
 If you're using a GUI client for git like the one from Github or GitKraken, there may be a way to do this from the UI. Regardless of your preference, I encourage you to learn what these commands do and why. Taking the time to learn how git works has helped me speed up my development time and recover work that I previously thought was lost!
