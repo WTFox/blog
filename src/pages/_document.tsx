@@ -8,7 +8,7 @@ export default class Document extends NextDocument {
   render() {
     return (
       <Html>
-        <Head title={SiteConfig.title}/>
+        <Head title={SiteConfig.siteTitle} />
         <body>
           {/* Make Color mode to persists when you refresh the page. */}
           <ColorModeScript />

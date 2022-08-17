@@ -16,7 +16,7 @@ const Footer = ({ date }) => {
       <Divider size={"md"} />
       <Box py={10}>
         <Text>
-          Authored by {SiteConfig.name} on {date}
+          Authored by {SiteConfig.authorName} on {date}
         </Text>
       </Box>
     </Box>

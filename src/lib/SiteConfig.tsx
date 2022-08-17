@@ -16,20 +16,26 @@ interface Link {
 }
 
 interface ISiteConfig {
-  name: string
-  title: string
+  authorName: string
+  siteTitle: string
+  siteURL: string
   gradient: string
   postsDirectory: string
   lightAccent: string
   darkAccent: string
   links: Link[]
   subtitles: string[]
+  authorEmail: string
+  siteDescription: string
 }
 
 const SiteConfig: ISiteConfig = {
   postsDirectory: path.join(__dirname, "../../../content"),
-  title: "A. Fox",
-  name: "Anthony Fox",
+  siteTitle: "A. Fox",
+  authorName: "Anthony Fox",
+  authorEmail: "anthonyfox1988@gmail.com",
+  siteDescription: "Random thoughts and musings.",
+  siteURL: "https://afox.dev",
   subtitles: [
     "Software Engineer.",
     "Husband.",

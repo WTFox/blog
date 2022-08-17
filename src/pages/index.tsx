@@ -4,6 +4,7 @@ import { PostList } from "../components/PostList/PostList"
 import { SidebarLayout } from "@/components/Layouts"
 
 import { getPosts } from "@/lib/post"
+import generateRssFeed from "@/lib/generateRssFeed"
 
 const Index = ({ posts }) => <PostList posts={posts} />
 
@@ -12,6 +13,7 @@ Index.getLayout = function getLayout(page: ReactElement) {
 }
 
 export async function getStaticProps() {
+  await generateRssFeed()
   return {
     props: {
       posts: getPosts(),

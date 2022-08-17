@@ -55,7 +55,7 @@ export const SidebarHero = () => {
           fontSize="4xl"
           fontWeight="extrabold"
         >
-          {SiteConfig.name}
+          {SiteConfig.authorName}
         </Heading>
         <Container maxW={"md"} pt={2}>
           <RoloText>{SiteConfig.subtitles}</RoloText>
