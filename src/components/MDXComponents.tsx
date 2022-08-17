@@ -4,6 +4,7 @@ import {
   Button,
   ButtonProps,
   Code,
+  CodeProps,
   Divider,
   Heading,
   HeadingProps,
@@ -195,6 +196,10 @@ const CodeBlock = ({ code, language }: { code: string; language: string }) => {
   )
 }
 
+const CustomCode = (props: CodeProps) => {
+  return <Code {...props} fontSize={"lg"} />
+}
+
 export const components = (slug) => ({
   img: ({ src, alt }) => {
     return (
@@ -217,7 +222,7 @@ export const components = (slug) => ({
   th: Th,
   td: Td,
   kbd: Kbd,
-  code: Code,
+  code: CustomCode,
   a: Link,
   Link,
   ButtonLink,
