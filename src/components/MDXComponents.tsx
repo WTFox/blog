@@ -190,10 +190,12 @@ const CustomCodeBlock = (props) => {
     return <kbd>{children}</kbd>
   }
 
-  const language =
-    className.match(/(?<=language-)(\w.*?)\b/) != null
-      ? className.match(/(?<=language-)(\w.*?)\b/)[0]
+  let language =
+    className.match(/language-(\w.*?)\b/) != null
+      ? className.match(/language-(\w.*?)\b/)[0]
       : "javascript"
+
+  language = language.replace("language-", "")
 
   return (
     <CodeBlock
