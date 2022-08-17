@@ -211,7 +211,11 @@ const CustomCodeBlock = (props) => {
 export const components = (slug) => ({
   img: ({ src, alt }) => {
     return (
-      <Image alt={alt} src={require(`../../content/${slug}/${src}`).default} />
+      <Image
+        loading="eager"
+        alt={alt}
+        src={require(`../../content/${slug}/${src}`).default}
+      />
     )
   },
   h1: H1,
