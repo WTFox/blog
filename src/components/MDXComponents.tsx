@@ -184,22 +184,6 @@ const Td = (props: BoxProps) => (
   />
 )
 
-const CodeBlock = ({ code, language }: { code: string; language: string }) => {
-  const trimmed = code.trim()
-
-  return (
-    <Box className="Code" fontSize={"md"}>
-      <pre>
-        <code className={`language-${language}`}>{trimmed}</code>
-      </pre>
-    </Box>
-  )
-}
-
-const CustomCode = (props: CodeProps) => {
-  return <Code {...props} fontSize={"lg"} />
-}
-
 export const components = (slug) => ({
   img: ({ src, alt }) => {
     return (
@@ -222,12 +206,10 @@ export const components = (slug) => ({
   th: Th,
   td: Td,
   kbd: Kbd,
-  code: CustomCode,
   a: Link,
   Link,
   ButtonLink,
   Button,
   Stack,
   Mermaid,
-  CodeBlock,
 })
