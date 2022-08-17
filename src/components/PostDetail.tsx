@@ -24,7 +24,7 @@ const Footer = ({ date }) => {
 }
 
 const PostDetail = (props: Props) => (
-  <Box px={{ base: 0, md: "10rem", xl: "16rem" }} textAlign={"justify"}>
+  <Box px={{ base: 0, md: "16", xl: "12" }} textAlign={"justify"}>
     <Heading
       textAlign={"center"}
       bgGradient={SiteConfig.gradient}
@@ -32,7 +32,7 @@ const PostDetail = (props: Props) => (
       textTransform={"uppercase"}
       fontWeight="extrabold"
       as="h1"
-      size="4xl"
+      size="3xl"
       pb={"16"}
     >
       {props.frontMatter.title}

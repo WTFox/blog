@@ -23,7 +23,7 @@ import SiteConfig from "@/lib/SiteConfig"
 
 const P = ({ children, ...delegated }: TextProps) => {
   return (
-    <Text as="p" py={4} fontSize={"xl"} lineHeight="tall" {...delegated}>
+    <Text as="p" py={4} fontSize={"lg"} lineHeight="tall" {...delegated}>
       {children}
     </Text>
   )
@@ -47,7 +47,7 @@ const Ol = ({ children, ...delegated }: BoxProps) => {
 
 const Li = ({ children, ...delegated }: BoxProps) => {
   return (
-    <Box as="li" pb={1} fontSize={"xl"} {...delegated}>
+    <Box as="li" pb={1} fontSize={"lg"} {...delegated}>
       {children}
     </Box>
   )
@@ -82,7 +82,7 @@ const HR = () => {
 
 const H1 = ({ children, ...delegated }: HeadingProps) => {
   return (
-    <Heading as="h1" size="3xl" py={5} {...delegated}>
+    <Heading as="h1" size="2xl" py={5} {...delegated}>
       {children}
     </Heading>
   )
@@ -90,7 +90,7 @@ const H1 = ({ children, ...delegated }: HeadingProps) => {
 
 const H2 = ({ children, ...delegated }: HeadingProps) => {
   return (
-    <Heading py={4} as="h2" fontWeight="bold" size="2xl" {...delegated}>
+    <Heading py={4} as="h2" fontWeight="bold" size="xl" {...delegated}>
       {children}
     </Heading>
   )
@@ -98,7 +98,7 @@ const H2 = ({ children, ...delegated }: HeadingProps) => {
 
 const H3 = ({ children, ...delegated }: HeadingProps) => {
   return (
-    <Heading py={4} as="h3" size="xl" fontWeight="bold" {...delegated}>
+    <Heading py={4} as="h3" size="lg" fontWeight="bold" {...delegated}>
       {children}
     </Heading>
   )
