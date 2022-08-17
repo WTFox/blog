@@ -19,7 +19,7 @@ export const PostList = ({ posts }: PostListProps) => {
   })
 
   return (
-    <Stack px={{ base: 8, lg: 20 }}>
+    <Stack maxW={"4xl"} px={{ base: 8, lg: 20 }}>
       <Section pb={5} delay={0.1}>
         <Heading id="Posts" size="xl">
           {"❯_ writings"}
