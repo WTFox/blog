@@ -3,6 +3,7 @@ import {
   BoxProps,
   Button,
   ButtonProps,
+  Center,
   Divider,
   Heading,
   HeadingProps,
@@ -19,7 +20,8 @@ import NextLink, { LinkProps as NextLinkProps } from "next/link"
 import Image from "next/image"
 import Mermaid from "./Mermaid"
 import SiteConfig from "@/lib/SiteConfig"
-import { CodeBlock, CopyBlock, dracula as theme } from "react-code-blocks"
+import PhotoGrid from "./PhotoGrid"
+import { CodeBlock, dracula as theme } from "react-code-blocks"
 
 const P = ({ children, ...delegated }: TextProps) => {
   return (
@@ -209,13 +211,16 @@ const CustomCodeBlock = (props) => {
 }
 
 export const components = (slug) => ({
+  PhotoGrid: ({ images }) => <PhotoGrid slug={slug} images={images} />,
   img: ({ src, alt }) => {
     return (
-      <Image
-        loading="eager"
-        alt={alt}
-        src={require(`../../content/${slug}/${src}`).default}
-      />
+      <Center>
+        <Image
+          loading="eager"
+          alt={alt}
+          src={require(`../../content/${slug}/${src}`).default}
+        />
+      </Center>
     )
   },
   h1: H1,
@@ -240,6 +245,5 @@ export const components = (slug) => ({
   Button,
   Stack,
   Mermaid,
-  // CodeBlock,
   code: (props) => <CustomCodeBlock {...props} />,
 })

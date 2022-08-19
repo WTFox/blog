@@ -16,9 +16,7 @@ If you're unfamiliar with Arc Reactors -- it's a fictional power source in Marve
 
 So, the first task was to get the light pattern accurate. I searched around and found some code snippets that all came really close to what I wanted, so I combined them all together and was off to a solid start.
 
-![](circuitpython.jpg)
-
-![](starting.gif)
+<PhotoGrid images={["circuitpython.jpg", "starting.gif"]} />
 
 The code for this isn't terribly complicated. Basically, there's a main loop and an alpha direction that determines whether the brightness should increase or decrease. Then, I either increment or decrement the brightness by a small amount. There's also a one in five-ish chance that the alpha direction is reversed each loop. So, if we're incrementing brightness, it will swap to decrementing and vice versa. This gives the effect of the device sometimes looking like it's about to power down only to then come back to life!
 
@@ -44,8 +42,7 @@ My wife decides she needs it, but she'd also like a [big, red button](https://ww
 
 We bought the button and spent half of a Saturday wiring everything up and programming the button logic.
 
-![](blue-w-button.jpg)
-![](pink-w-button.jpg)
+<PhotoGrid images={["blue-w-button.jpg", "pink-w-button.jpg"]} />
 
 Here's a portion of the code with the button logic. When the button is pressed, we turn the button LED on and change the color of the arc reactor to pink for quite a few CPU cycles, then turn the button LED off and change the arc reactor color back to its original blue.
 
@@ -60,8 +57,8 @@ brightness = config.STARTING_BRIGHTNESS
 
 color_chase(color, strip)
 while True:
-if one_in_five_chance():
-alpha_up = not alpha_up
+    if one_in_five_chance():
+        alpha_up = not alpha_up
 
     if button.value:
         # Show the pink color
