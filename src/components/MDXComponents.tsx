@@ -216,6 +216,7 @@ export const components = (slug) => ({
     return (
       <Center>
         <Image
+          loading="eager"
           alt={alt}
           src={require(`../../content/${slug}/${src}`).default}
         />
