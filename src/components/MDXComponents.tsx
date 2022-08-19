@@ -3,6 +3,7 @@ import {
   BoxProps,
   Button,
   ButtonProps,
+  Center,
   Divider,
   Heading,
   HeadingProps,
@@ -213,11 +214,12 @@ export const components = (slug) => ({
   PhotoGrid: ({ images }) => <PhotoGrid slug={slug} images={images} />,
   img: ({ src, alt }) => {
     return (
-      <Image
-        loading="eager"
-        alt={alt}
-        src={require(`../../content/${slug}/${src}`).default}
-      />
+      <Center>
+        <Image
+          alt={alt}
+          src={require(`../../content/${slug}/${src}`).default}
+        />
+      </Center>
     )
   },
   h1: H1,
