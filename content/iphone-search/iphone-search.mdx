@@ -1,0 +1,125 @@
+---
+date: "2017-11-14"
+title: "Automating the Boring Search for an iPhone X"
+draft: false
+summary: "T-Mobile didn't let me pre-order the new iPhone. So I had to write a script to notify me when there was stock nearby."
+readTimeInMinutes: 2
+---
+
+For reasons I still don't understand, T-Mobile effectively prevented me from preordering the iPhone X. This had something to do with Apples payment plans and T-Mobile's stipulations. It ultimately meant that if I wanted an iPhone X I'd have to go in store, on November 3rd and purchase everything there. In person. No thanks. I don't really consider myself an introvert, but I'll avoid crowds if I can find a way. Unfortunately, that meant just deciding that I would stick with my 6s+ for awhile longer. Which isn't that bad at all.
+
+I called Apple out of curiosity a couple of days ago and asked what the iPhone X stock situation looked liked around my area. The rep mentioned to me that Apple stores get shipments every morning. Those shipments sometimes contain iPhone X's but they are first come, first serve. She also mentioned that I could check the stock online at apple.com. If I found a store that had some in stock, I could reserve my device online then go in store and pick it up. She said the best hours to check this were between 4am and 6am. I usually get up at 4am anyways (I know...) so that's what I did the next morning.
+
+Checking the stock of the iPhone X online went exactly how I thought it would. Nothing. I did find one store with iPhones in stock in Minnesota, though. That didn't help much considering I'm in southern California. I did notice something interesting while using Apple's tool..
+
+It's just making json requests. I decided to build a python module for this. I've open sourced it [here.](https://github.com/WTFox/iphone-checker) The usage is pretty simple. To install it, it's just
+
+```
+pip install iphone-checker
+```
+
+After that, you can either use it as a module:
+
+```python
+In [1]: from iphone_checker import check_availability
+
+In [2]: check_availability('tmobile', '92620')
+Out[2]: []  # Too accurate
+```
+
+or as a CLI via the `checkx` command.
+
+```bash
+$ checkx -z 92620
+No stores near 92620 have stock. :(
+
+$ checkx --help
+Usage: checkx [OPTIONS]
+
+Options:
+  -c, --carrier TEXT  Which carrier do you need?
+  -z, --zipcode TEXT  What zipcode to search in?
+  --help              Show this message and exit.
+```
+
+This will search the 12 nearest Apple stores and return the stores that have any iPhone X model (for the given carrier) in stock.
+
+## What can you do with it?
+
+I'm using this with the wonderful [notifiers library](https://github.com/liiight/notifiers) to run constantly and alert me via [Pushover](https://pushover.net/) when it finds one.
+
+```python
+import os
+
+from iphone_checker import check_availability
+from notifiers import get_notifier
+
+
+PUSHOVER_TOKEN = os.environ.get('PUSHOVER_TOKEN', None)
+PUSHOVER_USER = os.environ.get('PUSHOVER_USER', None)
+
+
+def main():
+    pushover = get_notifier('pushover')
+    results = check_availability('tmobile', '92620')
+    for store in results:
+        device_name = store.get('partsAvailability', {}).values()[0].get(
+          'storePickupProductTitle'
+        )
+        message = '{product}\t{store}\t{phone_number}\t{url}'.format(
+            product=device_name,
+            store=store.get('storeName'),
+            url=store.get('reservationUrl'),
+            phone_number=store.get('phoneNumber')
+        )
+        pushover.notify(
+            user=PUSHOVER_USER,
+            token=PUSHOVER_TOKEN,
+            title='iPhone X Located',
+            message=message
+        )
+
+
+if __name__ == '__main__':
+    main()
+```
+
+I'm just running this with:
+
+```
+$ watch -n 600 python checkx_task.py
+```
+
+It has actually worked, too! I got alerted that a store near me had an iPhone in stock, but by the time I called it was sold. :(
+
+## One Last Thing..
+
+I tend to just jump into projects head first and start writing without looking to see if it's been invented already. That was the case here and when I was almost done with this I found this CLI written in node - [carlosesilva/iphone-x-availability-node-cli](https://github.com/carlosesilva/iphone-x-availability-node-cli). I want to thank the author of that library because without it, finding all of the part numbers would have been tedious.
+
+I hope this helps!
+
+---
+
+## Update (3 days later): It worked!
+
+Interestingly enough, I was in a conference call with a colleague of mine and during the call I get a notification on my phone saying that an iPhone was located about 10 miles away so I
+
+- jumped on apple.com
+- selected the model I wanted
+- paid with my credit card
+- got a fraud alert
+- frantically told Chase to stop trying to ruin my life
+- and set a pickup window to go to the store.
+
+At lunch, I picked up the phone and drove home. I'm still very impressed with how well my script worked. Without it, I would have had to wait 2-3 weeks. Not the end of the world but thankful that I didn't have to wait. :)
+
+<PhotoGrid
+  images={["iphonex-in-box.jpg", "screenshot.png", "loki1.jpg", "loki2.jpg"]}
+/>
+
+## Links
+
+- [My iPhone Checker module on Github](https://github.com/WTFox/iphone-checker)
+- [Pushover](https://pushover.net/)
+- [Notifiers on Github](https://github.com/liiight/notifiers)
+- [carlosesilva/iphone-x-availability-node-cli on Github](https://github.com/carlosesilva/iphone-x-availability-node-cli)
