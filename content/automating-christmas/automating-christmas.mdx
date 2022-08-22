@@ -180,7 +180,7 @@ Before you can run this you'll need to have a file named `config.json` exposed t
 Run the image with a command like this:
 
 ```sh
-$ docker run -itd —net host -p 0.0.0.0:51826:51826 -v /path/to/homebridge/config/folder/:/root/.homebridge hugoch/rpi-python-homebridge:v1 /root/run_homebridge.sh`
+$ docker run -itd —net host -p 0.0.0.0:51826:51826 -v /path/to/homebridge/config/folder/:/root/.homebridge hugoch/rpi-python-homebridge:v1 /root/run_homebridge.sh
 ```
 
 After that open up HomeKit on your iOS device and you should see the new “Homebridge” accessory listed. You can add it into any scene, or just use Siri to access it directly by name.
