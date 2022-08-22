@@ -22,6 +22,7 @@ import Mermaid from "./Mermaid"
 import SiteConfig from "@/lib/SiteConfig"
 import PhotoGrid from "./PhotoGrid"
 import { CodeBlock, dracula as theme } from "react-code-blocks"
+import YouTubeEmbed from "./YouTubeEmbed"
 
 const P = ({ children, ...delegated }: TextProps) => {
   return (
@@ -246,4 +247,5 @@ export const components = (slug) => ({
   Stack,
   Mermaid,
   code: (props) => <CustomCodeBlock {...props} />,
+  YouTubeEmbed,
 })
