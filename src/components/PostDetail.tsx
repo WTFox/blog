@@ -12,7 +12,7 @@ interface Props extends PostListItemProps {
 
 const Footer = ({ date }) => {
   return (
-    <Box py={3}>
+    <Box key={"footer"} py={3}>
       <Divider size={"md"} />
       <Box py={10}>
         <Text>

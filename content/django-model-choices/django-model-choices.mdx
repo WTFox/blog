@@ -1,0 +1,134 @@
+---
+title: "Choices for Choices in Django CharFields"
+date: "2017-02-16"
+draft: false
+summary: "You have multiple choices when implementing a multiple choice field in Django."
+readTimeInMinutes: 2
+---
+
+It's not uncommon to want to restrict input options to a set of pre defined values. In this post, I'm particularly talking about handling multiple choices using a `CharField` from the Model class in Django. There are many ways to approach choices in a Django model. I’m going to cover a few approaches in this post and none of them will be the definitive answer. You should always use your best judgement. There's never going to be a one size fits all solution.
+
+## Option #1
+
+```python
+class Car(models.Model):
+    COLOR_CHOICES = (
+        ('RED', 'red'),
+        ('WHITE', 'white'),
+        ('BLUE', 'blue'),
+    )
+
+    color = models.CharField(max_length=5, choices=COLOR_CHOICES, default='RED')
+    # ...
+
+red_cars = Car.objects.filter(color='RED')
+```
+
+There’s nothing inherently wrong with this approach, though it can be improved. The most obvious smell is with `COLOR_CHOICES`. It may not be obvious with this example, but what if we had crazy colors like `'Orange-Red'`, or `'Yellow-Green'`.
+
+```python
+Car.objects.filter(color='red-orange')  # or was it 'orangered', or 'orange-red'
+```
+
+That would only cause confusion and madness!
+
+![saywha](confusedron.gif)
+
+It’s usually quickly recommended next that you modify it and take this approach.
+
+## Option #2
+
+```python
+class Car(models.Model):
+    RED = 'RED'
+    WHITE = 'WHITE'
+    BLUE = 'BLUE'
+    COLOR_CHOICES = (
+        (RED, 'red'),
+        (WHITE, 'white'),
+        (BLUE, 'blue'),
+    )
+
+    color = models.CharField(max_length=5, choices=COLOR_CHOICES, default=RED)
+    # ...
+
+red_cars = Car.objects.filter(color=Car.RED)
+```
+
+Logically this makes more sense for a few different reasons. A big reason being that constants are now managing hardcoded strings. So, great, yeah. We’re trying our best to follow good practices, but is it worth it? Absolutely! This seems like a lot of boiler plate code just for some lousy color choices, but there’s an added benefit - it removes all guess work. Now that we have constants stored at the model level we can now use them in any lookups. Once we import the model, they’re imported as well. No need to duplicate those choices in multiple files, or worry about importing them from somewhere else.
+
+The only thing about this approach that I take issue with is that it’s very verbose and can easily get out of hand if a model has three or four different choice set’s needed.
+
+## Option #3
+
+Introduced in Python 3.4, Enum’s have finally made their way into Python. Obviously not all codebases are not using Python3 yet, but with Python 2.7 being [retired](https://pythonclock.org/) soon, it’s time we start thinking of generations to come. I’ve wanted Enums in Python for awhile before they were introduced.
+
+Here’s a brief primer on Enums in Python. Here are the [docs](https://docs.python.org/3/library/enum.html) if you want know more.
+
+```python
+from enum import Enum
+
+class Color(Enum):
+    RED = 'red'
+    WHITE = 'white'
+    BLUE = 'blue'
+
+# They're iterables
+print([c for c in Color])
+# >>> [Color.RED, Color.WHITE, Color.BLUE]
+
+# Comparing..
+Color.RED == Color.RED
+# >>> True
+
+# but comparisons against non-enumeration values will always be false.
+# (See IntNum if that's something you're interested in.)
+Color.RED == 'red'
+# >>> False
+
+# Values are accessed through .value.
+Color.RED.value == 'red'
+# >>> True
+
+color = Color.RED
+color.name
+# >>> 'RED'
+color.value
+# >>> 'red'
+```
+
+Back to our Django model. We should write some prep code before we hop back into our Car class. Bare with me here... I’d probably create a file named `utils.py`.
+
+```python
+from enum import Enum
+
+class ChoiceEnum(Enum):
+    @classmethod
+    def choices(cls):
+        return tuple((x.name, x.value) for x in cls)
+```
+
+Simple enough.. now what?
+
+```python
+from .utils import ChoiceEnum
+
+class Car(models.Model):
+    # Encapsulation, we meet again.
+    class Colors(ChoiceEnum):
+        RED = 'red'
+        WHITE = 'white'
+        BLUE = 'blue'
+
+    color = models.CharField(max_length=5, choices=Colors.choices(), default=Colors.RED)
+    # ...
+
+# Querying requires an extra word to type though...
+red_cars = Car.objects.filter(color=Car.Colors.RED.value)
+```
+
+So there's three different options to providing a set of choices in django. Personally, I still think _Option 2_ is the most common, but maybe someone can come up with a better implementation using Enums. This seems to be the sort of thing they were designed for. That wraps it up for this. I'm also out of all the different ways to implement choices for CharFields. Like the zen of python says,
+
+> "There should be one-- and preferably only one --obvious way to do it."
+
+I'm sure there are even more, and I'd honestly love to hear about them. Tweet, Email, Carrier Pigeon, send your ideas over!

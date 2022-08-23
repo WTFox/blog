@@ -1,0 +1,75 @@
+---
+title: "Building A Custom Music Box (Part 1)"
+date: "2018-02-09"
+draft: false
+summary: "My wife loves the movie Pan's Labyrinth. In that movie, there's a lullaby and she's mentioned to me several times that she has always wanted a music box that plays that lullaby."
+readTimeInMinutes: 3
+---
+
+Well, I looked everywhere to find the music box. I suppose not literally everywhere, but I found myself searching obscure websites. From Chinese wholesalers to upscale artisanal music box makers. I even emailed a few people on Etsy, but was forced to select from a limited selection.
+
+So I'm building it myself ヽ(´ ー｀)ﾉ
+
+<YouTubeEmbed videoId="-WPV3ExFGxk" />
+
+There are still a few things to work out, most notably:
+
+- The gear mechanism is of poor quality.
+  - Made of cheap plastic that a gear has already been stripped clean. I've replaced it, but saying it's a delicate process would be an understatement.
+- There's a weird buzzing that occurs during playback.
+  - This should be an easy-ish fix. In the video, you can see I'm pressing down to help with the buzzing.
+- Everything must be mounted within an actual box.
+- Sheet music needs to be taped together to create a continuous loop.
+- Finally, solder everything to an actual breadboard.
+
+## The Process
+
+After finding the sheet music online and marking the notes, the process went like this:
+
+### Step 1 - Punch the notes out.
+
+<PhotoGrid images={["punching-holes.jpg", "measures.jpg"]} />
+
+### Step 2 - Wire everything up!
+
+<PhotoGrid
+  images={["gears.jpg", "beginnings.jpg", "potentiometer.jpg", "wiring.png"]}
+/>
+
+### Step 3 - Add some code!
+
+Normally, I would create a whole repo for the code used. But for now, this is all there is.
+
+```cpp
+int REED_PIN = D0;
+int MOTOR_PIN = D3;
+int LED_PIN = D7;
+int MOTOR_SPEED = 255;
+
+void setup() {
+    pinMode(LED_PIN, OUTPUT);
+    pinMode(REED_PIN, INPUT_PULLUP);
+    pinMode(MOTOR_PIN, OUTPUT);
+}
+
+void loop() {
+    bool lidIsOpen = digitalRead(REED_PIN) == LOW;
+    if (lidIsOpen) {
+        digitalWrite(LED_PIN, HIGH);
+        startMotor();
+    } else {
+        digitalWrite(LED_PIN, LOW);
+        stopMotor();
+    }
+}
+
+void startMotor() {
+    analogWrite(MOTOR_PIN, MOTOR_SPEED);
+}
+
+void stopMotor() {
+    analogWrite(MOTOR_PIN, 0);
+}
+```
+
+Here's the actual song for reference: [Pan's Labyrinth Lullaby](https://www.youtube.com/watch?v=19bBGxf5k6k)
