@@ -56,30 +56,21 @@ const Li = ({ children, ...delegated }: BoxProps) => {
   )
 }
 
-const BlockQuote = (props: BoxProps) => {
-  const bgColor = useColorModeValue("purple.100", "pink.800")
-
+const BlockQuote = (props) => {
   return (
     <Box
-      mt={4}
-      w="full"
-      bg={bgColor}
-      variant="left-accent"
-      status="info"
-      css={{
-        "> *:first-of-type": {
-          marginTop: 0,
-          marginLeft: 8,
-        },
-      }}
-      {...props}
-    />
+      borderLeft={"10px solid #ccc"}
+      m={"1.5em 10px"}
+      p={"0.5em 10px"}
+      fontSize={"larger"}
+    >
+      <blockquote color="#ccc" {...props}></blockquote>
+    </Box>
   )
 }
 
 const HR = () => {
   const borderColor = useColorModeValue("gray.200", "gray.600")
-
   return <Divider borderColor={borderColor} my={4} w="full" />
 }
 
