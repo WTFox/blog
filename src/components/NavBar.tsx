@@ -21,6 +21,7 @@ export default function NavBar() {
         direction={"row"}
         w={"100vw"}
         position={"fixed"}
+        zIndex={"1"}
         bg={useColorModeValue("white", "gray.800")}
         px={{ base: "10", xl: "20" }}
         h={"16"}
