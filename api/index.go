@@ -6,11 +6,14 @@ import (
 )
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
 	data := map[string]string{
 		"url": r.URL.String(),
 	}
+	returnJSON(r, w, data)
+}
+
+func returnJSON(r *http.Request, w http.ResponseWriter, data map[string]string) {
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	json.NewEncoder(w).Encode(data)
 }
