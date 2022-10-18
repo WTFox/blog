@@ -1,7 +1,7 @@
 import SiteConfig from "@/lib/SiteConfig"
 import { Text } from "@chakra-ui/react"
 
-export default ({ children }) => {
+const Rainbowify = ({ children }) => {
   return (
     <Text
       display={"inline"}
@@ -14,3 +14,5 @@ export default ({ children }) => {
     </Text>
   )
 }
+
+export default Rainbowify
