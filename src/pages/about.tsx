@@ -20,7 +20,7 @@ import Head from "next/head"
 
 function getAge(): number {
   const today = new Date()
-  const birthDate = new Date(1988, 10, 5)
+  const birthDate = new Date(1988, 9, 5)
   const m = today.getMonth() - birthDate.getMonth()
   let age = today.getFullYear() - birthDate.getFullYear()
 
@@ -30,9 +30,7 @@ function getAge(): number {
   return age
 }
 
-const About = () => {
-  const age = getAge()
-
+const About = ({ age }) => {
   const { colorMode } = useColorMode()
   const borderColor = useColorModeValue(
     SiteConfig.lightAccent,
@@ -141,6 +139,12 @@ const About = () => {
 
 About.getLayout = function getLayout(page: ReactElement) {
   return <FullWidthLayout>{page}</FullWidthLayout>
+}
+
+export async function getServerSideProps() {
+  return {
+    props: { age: getAge() },
+  }
 }
 
 export default About
