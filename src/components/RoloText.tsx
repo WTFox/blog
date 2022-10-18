@@ -1,21 +1,23 @@
 import { useEffect, useState } from "react"
-import { Heading } from "@chakra-ui/react"
 
-import SiteConfig from "@/lib/SiteConfig"
 import { AnimatePresence, motion } from "framer-motion"
 
-const RoloText = ({ children }) => {
-  const subtitles: typeof SiteConfig["subtitles"] = children
+type Props = {
+  values: string[]
+  delay?: number
+}
+
+const RoloText = ({ values, delay = 3000 }: Props) => {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
     const id = setTimeout(() => {
-      setIndex((index + 1) % subtitles.length)
-    }, 3000)
+      setIndex((index + 1) % values.length)
+    }, delay)
     return () => clearTimeout(id)
   })
 
-  const displayText = subtitles[index]
+  const displayText = values[index]
 
   return (
     <AnimatePresence exitBeforeEnter initial={false}>
@@ -29,9 +31,7 @@ const RoloText = ({ children }) => {
         exit={{ y: 20, opacity: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Heading size={"md"} fontWeight={"medium"}>
-          {displayText}
-        </Heading>
+        {displayText}
       </motion.div>
     </AnimatePresence>
   )
