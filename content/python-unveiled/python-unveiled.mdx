@@ -1,0 +1,656 @@
+---
+date: "2023-06-06"
+title: "Python Unveiled"
+draft: false
+summary: "Idioms, Standard Library Gems, and Snake Traps to Avoid"
+readTimeInMinutes: 15
+---
+
+Python is an interpreted, dynamically typed, language. Python's philosophy can be found in any interpreter by typing `import this`. These are not hard-rules, but rather guidelines to writing clean, efficient, and 'Pythonic' code.
+
+```
+  >>> import this
+  The Zen of Python, by Tim Peters
+
+  Beautiful is better than ugly.
+  Explicit is better than implicit.
+  Simple is better than complex.
+  Complex is better than complicated.
+  Flat is better than nested.
+  Sparse is better than dense.
+  Readability counts.
+  Special cases aren't special enough to break the rules.
+  Although practicality beats purity.
+  Errors should never pass silently.
+  Unless explicitly silenced.
+  In the face of ambiguity, refuse the temptation to guess.
+  There should be one-- and preferably only one --obvious way to do it.
+  Although that way may not be obvious at first unless you're Dutch.
+  Now is better than never.
+  Although never is often better than *right* now.
+  If the implementation is hard to explain, it's a bad idea.
+  If the implementation is easy to explain, it may be a good idea.
+  Namespaces are one honking great idea -- let's do more of those!
+```
+
+(another fun one: `import antigravity`)
+
+
+## Pythonic Idioms: Embracing the Zen 
+
+
+#### List Comprehensions
+
+Python's preferred way to filter lists, 
+
+```python
+def is_even(num):
+  return num % 2 == 0
+
+evens = []
+for num in range(10):
+  if is_even(num):
+    evens.append(num)
+print(evens)  # [0, 2, 4, 6, 8]
+
+# equivalent to 
+evens = [num for num in range(10) if is_even(num)]
+print(evens)  # [0, 2, 4, 6, 8]
+```
+
+and a functional way to create new lists.
+
+```python
+def add_two(num):
+  return num + 2
+
+nums = []
+for num in range(10):
+  nums.append(add_two(num))
+print(nums)  # [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+# equivalent to 
+nums = [add_two(num) for num in range(10)]
+print(nums)  # [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+```
+
+You can combine both approaches to map and filter in one fell swoop. 
+
+```python
+def add_two(num):
+  return num + 2
+
+def is_even(num):
+  return num % 2 == 0
+
+nums = [add_two(num) for num in range(10) if is_even(num)]
+print(nums)  # [2, 4, 6, 8, 10]
+```
+
+#### Dictionary Comprehensions
+
+Dictionary comprehensions give you the ability to generate new dictionaries, concisely. The syntax looks like this: `{k: v for k, v in thing}`
+
+```python
+words = ["foo", "comprehension", "bar", "dictionary", "baz"]
+
+word_lengths = {word: len(word) for word in words}
+print(word_lengths)  # {'foo': 3, 'comprehension': 13, 'bar': 3, 'dictionary': 10, 'baz': 3}
+
+easy_words = {word: count for word, count in word_lengths.items() if count < 10}
+print(easy_words)  # {'foo': 3, 'bar': 3, 'baz': 3}
+```
+
+#### Decorators
+
+**@staticmethod** Used when a method logically belongs in a class but doesn't operate on it's instances. 
+
+```python
+class MathUtil:
+  
+    @staticmethod
+    def add(x, y):
+        return x + y
+      
+      
+# Use the static method
+result = MathUtil.add(5, 7)
+```
+
+**@classmethod** - We know that `__init__` is the constructor of a class. Think of @classmethod's as alternate constructors among other things.
+
+```python
+class Pizza:
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
+
+    @classmethod
+    def from_string(cls, ingredient_string):
+        ingredients = ingredient_string.split(',')
+        return cls(ingredients)
+
+
+# Create a Pizza the usual way
+p1 = Pizza(['cheese', 'tomatoes'])
+
+# Create a Pizza using the alternative constructor
+p2 = Pizza.from_string('cheese,tomatoes')
+
+print(p1.ingredients)  # Output: ['cheese', 'tomatoes']
+print(p2.ingredients)  # Output: ['cheese', 'tomatoes']
+```
+
+**@property** gives us some syntax sugar. Note that we're decorating the function full_name, but we don't use parens when calling it!
+
+```python 
+class Person:
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+
+p = Person('John', 'Doe')
+print(p.full_name)  # Output: John Doe
+```
+
+#### Decorators (custom)
+
+Decorators functions that wrap other functions, giving you access to the time just before the function runs and immediately after. This lets gives you the ability to create really neat things. 
+
+Good use cases: retrying when failures happen, memoization, logging, and more.
+
+
+```python
+import functools
+
+
+def print_decorator(func):
+  
+    @functools.wraps(func)  # <- another decorator. Preserves original function's name and docstring
+    def wrapper(*args, **kwargs):
+        print(f"Before calling function {func.__name__}")
+        result = func(*args, **kwargs)
+        print(f"After calling function {func.__name__}")
+        return result
+      
+    return wrapper
+
+  
+# Usage: 
+@print_decorator
+def add(x, y):
+    return x + y
+
+add(1, 2)
+
+# Outputs:
+# Before calling function add
+# After calling function add
+```
+
+Note: that since you're only defining a higher order function, this is functionally equivalent to the following. Python just gives us `@` as shorthand.
+
+```python
+add = print_decorator(add)
+add(1, 2)
+```
+
+#### Dunder methods
+
+Magic methods that exist on the class allow Python to treat that object in unique ways.
+
+- `__repr__(self)` : Controls how an object is represented in the system
+- `__str__(self)`: Controls how an object is present when the user invokes `print()`
+- `__add__(self, other)`: Controls how two objects interact with the `+` operator
+- `__iter__(self)`: Controls what is returned as the objects iterator
+- `__next__(self)`: Controls how to generate the `next()` item in the iteration
+
+Here we're creating a custom iterable.
+
+```python
+class Repeat:
+    def __init__(self, value, times):
+        self.value = value
+        self.times = times
+        self.count = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.count >= self.times:
+            raise StopIteration
+        self.count += 1
+        return self.value
+      
+
+r = Repeat('Python', 5)
+for val in r:
+    print(val)
+
+# Output:
+# Python
+# Python
+# Python
+# Python
+# Python
+```
+
+Note: You should use `itertools.repeat` if you actually need repeat functionality. 
+
+
+#### Context Managers
+
+Context managers are Python's solution to working with objects that require a specific setup and exit operations. Here's a timer, for example: 
+
+```python 
+import time
+
+class Timer:
+    def __enter__(self):  # <- called when we enter the new indentation
+        self.start = time.time()
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):  # <- called after we leave that block
+        self.end = time.time()
+        print(f"Execution time: {self.end - self.start} seconds")
+
+        
+with Timer():  # <- __enter__
+    sum(range(10**7))  # Some time-consuming operation
+    # other operations can go here...
+    
+    # __exit__() is called here
+```
+
+If you've ever typed `with open(...)`, that's a context manager! 
+
+```python
+lines = []
+with open("myfile.csv", "r") as f:  # file is opened in reader mode, e.g "r"
+  lines = f.read_lines()
+  # other operations can go here.
+  # file is closed once the end of the block is reached
+  
+# equivalent to:
+f = open("myfile.csv", "r")
+lines = f.read_lines()
+f.close()
+```
+
+Fun fact: we often use these to close db connections, too! Preventing us from accidentally leaving orphaned open connections.
+
+
+#### Generators
+
+You can think of iterables and iterators like a book and bookmark respectively. Iterators hold their location untill instructed to advance. Generators take it a step further and chop the left side of the book off entirely. In other word, generators only care about what the current value is and the location of the next value. This reduces a lot of memory overhead. 
+
+In this example, pretend that we're iterating over a very large file (terabytes, even!). If we were to load that file into memory entirely, python would raise an OutOfMemory exception. We're able to prevent that by using generators.
+
+```python
+def read_large_file(file_path):
+    with open(file_path, "r") as file:
+        for line in file:
+            yield line.strip()  # remove trailing newline character
+            
+
+# Use the generator function
+for line in read_large_file("/path/to/your/large/file.log"):
+    # Process each line
+    print(line)
+```
+
+
+## Python's Standard Library: Hidden Gems 
+
+Python ships with 'batteries included.' This means that out of the box, Python provides us with a broad selection of libraries to use for many different tasks. 305 modules, to be exact.
+
+```python
+>>> import sys
+>>> len(sys.stdlib_module_names)
+305  # <- dang, that's a lot!
+```
+
+Dang, that's a lot! (jinx) Probably too much, to be honest. Good news, [PEP 594](https://peps.python.org/pep-0594/) aims to remove "dead batteries" and Brett Cannon had discussions this year at the Python Summit to answer the question [What is the std library for?](https://pyfound.blogspot.com/2023/05/the-python-language-summit-2023-what-is.html) 
+
+However, there are a few modules in the standard library that stand out!
+
+
+#### Itertools (for efficient looping)
+
+**`itertools.cycle(iterable)`** is used to infinitely repeat iteration over an iterable.
+
+```python 
+import itertools
+
+colors = itertools.cycle(['red', 'green', 'blue'])
+for _ in range(10):
+    print(next(colors))
+    
+# Output:
+# red
+# green
+# blue
+# red
+# green
+# blue
+# red
+# ...
+
+# you could also do this, but BEWARE that it is an infinite loop.
+for color in itertools.cycle(['red', 'green', 'blue']):
+  print(color)
+```
+
+**`itertools.chain(*interables)`** chains multiple iterables together.
+
+```python
+import itertools
+
+for i in itertools.chain([1, 2, 3], ['a', 'b', 'c']):
+    print(i)
+
+# Output:
+# 1
+# 2
+# 3
+# a
+# b
+# c
+```
+
+**`itertools.permutations(iterable)`** iterates over every permutation of `<iterble>`.
+
+```python
+import itertools
+
+word = "dog"
+perms = itertools.permutations(word)
+for perm in perms:
+    print(''.join(perm))
+
+# Ouputs: 
+# dog
+# dgo
+# odg
+# ogd
+# gdo
+# god
+```
+
+
+#### Functools (for operations on callable objects)
+
+We've already seen functools.wraps. Here are some others:
+
+
+**`functools.partial(func, *args, **kwargs)`** - Returns a new function with partial application of the given arguments.
+
+```python
+from functools import partial
+
+def multiply(x, y):
+    return x * y
+
+# create a new function that multiplies by 2
+dbl = partial(multiply, 2)
+print(dbl(4))   # Output: 8
+```
+
+
+**`functools.lru_cache(maxsize)`** - caches the result of function calls. It can save time when an expensive or I/O bound function is periodically called with the same arguments.
+
+```python
+from functools import lru_cache
+
+
+@lru_cache(maxsize=None)
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n - 1) + fib(n - 2)
+
+
+print(fib(36))  # Output: 14930352, but quickly
+```
+
+Other neat modules
+- functools.reduce (think javascript reduce)
+- functools.total_ordering
+
+
+#### Collections (for working with container datatypes)
+
+
+**`collections.defaultdict(callable)`** saves us from having to check if a key exists in a dictionary before working with it. 
+
+```python
+from collections import defaultdict
+
+grades = [
+    ('Anna', 'A'),
+    ('Brad', 'B'),
+    ('Carol', 'A'),
+    ('Derek', 'C'),
+    ('Ella', 'B'),
+    ('Fred', 'A'),
+    ('Grace', 'C'),
+]
+
+# Using defaultdict
+students_by_grade = defaultdict(list)
+
+for student, grade in grades:
+    students_by_grade[grade].append(student)
+
+print(students_by_grade)
+# Output: defaultdict(<class 'list'>, {'A': ['Anna', 'Carol', 'Fred'], 'B': ['Brad', 'Ella'], 'C': ['Derek', 'Grace']})
+```
+
+
+**`collections.namedtuple(name: str, fields: list[str])`** - Alternative, memory efficient structure to hold data
+
+```python
+from collections import namedtuple
+
+Point = namedtuple('Point', ['x', 'y'])
+
+p = Point(1, 2)
+
+print(p.x)  # Output: 1
+print(p.y)  # Output: 2
+
+
+# Python 3.5+ supports an alternative syntax that supports typing
+from typing import NamedTuple
+
+class Point(NamedTuple):
+  x: int
+  y: int
+
+p = Point(1, 2)
+
+print(p.x)  # Output: 1
+print(p.y)  # Output: 2
+
+```
+
+**collections.Counter(iterable)`** - Used to easily count occurrences in an iterable.
+
+```python
+from collections import Counter
+
+orders = ['latte', 'espresso', 'cappuccino', 'latte', 'espresso', 'latte', 'cappuccino', 'cappuccino', 'latte']
+
+counter = Counter(orders)
+
+print(counter)
+# Output: Counter({'latte': 4, 'cappuccino': 3, 'espresso': 2})
+```
+
+Other neat modules
+- collections.deque
+- collections.OrderedDict
+
+
+## Python Gotchas: Avoiding the Snakebite 
+
+
+**Mutable default arguments: the trap in function definitions**
+
+Consider this snippet.
+
+```python
+def update_profile(request_data, profile_data={"name": "Guest", "email": "guest@example.com"}):
+    profile_data.update(request_data)
+    return profile_data
+
+print(update_profile({"name": "Alice"}))
+# Output: {'name': 'Alice', 'email': 'guest@example.com'}
+
+print(update_profile({"email": "bob@example.com"}))
+# Output: {'name': 'Alice', 'email': 'bob@example.com'}
+```
+
+What happened here? If Alice and Bob were two different users, we wouldn't want Bob's profile to have Alice's name. In Python, default arguments (`profile_data` in this case) are evaluated once when the function is defined, not each time the function is called. This means that if you use a mutable default argument and mutate it, you will mutate that object for all future calls to the function as well.
+
+A better approach would be to use None as the default value, and assign an empty list in the function body, if None was provided:
+
+```python 
+def update_profile(request_data, profile_data=None):
+    if profile_data is None:
+        profile_data = {"name": "Guest", "email": "guest@example.com"}
+    profile_data.update(request_data)
+    return profile_data
+
+print(update_profile({"name": "Alice"}))
+# Output: {'name': 'Alice', 'email': 'guest@example.com'}
+
+print(update_profile({"email": "bob@example.com"}))
+# Output: {'name': 'Guest', 'email': 'bob@example.com'}
+```
+
+
+**Pitfalls of using == and "is" interchangeably**
+
+`==` checks for equality in value: This operator compares the values of two objects and returns True if they are equal.
+
+```python
+print(10 == 10.0)  # True, although one is int and the other is float
+```
+
+`is` checks for identity: This operator checks whether two variables point to the same object in memory, not if their values are equal. This can be thought of as checking if they are exactly the same object.
+
+```python
+a = [1, 2, 3]
+b = a
+print(b is a)  # True, because b and a point to the same list object in memory
+
+c = [1, 2, 3]
+print(a is c)  # False, because c points to a new list object in memory, even though its value is equal to a's
+```
+
+The pitfall comes when you assume is checks for value equality, or vice versa.
+
+For instance, due to Python’s optimization strategy (called interning), small integers and strings sometimes point to the same object in memory, making is return True unexpectedly:
+
+```python
+print(10 is 10)  # True, due to Python's optimization
+print("hello" is "hello")  # True, strings are also interned
+
+# But with different values or types:
+a = 1000
+print(a is 1000)  # False, the optimization doesn't apply here
+print("hello " is "hello")  # False, the two strings are different
+```
+
+Another example
+
+```python
+a = [1, 2, 3]
+b = [1, 2, 3]
+c = a
+
+print(a == b)  # True, because the lists have the same contents
+print(a is b)  # False, because they're not the same object. They are completely different objects in memory.
+print(a is c)  # True, because they're the same object. We instructed c to point to a's location in memory.
+```
+
+Last example. Python automatically interns (i.e., creates and reuses) the numbers from -5 to 256. So these numbers will have the same id and exist at the same memory location. Here's an example that demonstrates this:
+
+```python
+# Small numbers are interned
+a = 256
+b = 256
+print(a is b)  # Outputs: True
+
+# Larger numbers are not interned
+a = 257
+b = 257
+print(a is b)  # Outputs: False
+```
+
+In the last example we should clearly be using equality checks instead of identity. 
+
+
+## General Performance Advice
+
+This is taken from Anthony Shaw's PyCon talk. 
+[link](https://www.youtube.com/watch?v=YY7yJHo0M5I)
+
+
+**Loop invariances**
+
+```python
+def before():
+  x = (1, 2, 3, 4)
+  i = 6
+  
+  for j in range(10_000):
+    print(len(x) * i + j)  # len(x) doesn't change in the context of this loop
+   
+    
+def after():
+  x = (1, 2, 3, 4)
+  i = 6
+  x_i = len(x) * i
+   
+  for j in range(10_000):
+    print(x_i + j)
+   
+```
+
+**Missing Comprehensions**
+
+From our earlier example,
+
+```python
+evens = []
+for num in range(10):
+  if is_even(num):
+    evens.append(num)
+print(evens)  # [0, 2, 4, 6, 8]
+
+# equivalent to 
+evens = [num for num in range(10) if is_even(num)]
+```
+
+The first approach creates a new list, loops over another list and appends things to the first one. However, this is slower because Python has optimizations for list comprehensions. Not only is the second approach faster, but it's less code too.
+
+
+## Other
+
+There are many other optimizations you can consider, but remember:
+
+> Readability counts.
+
+Here are some helpful links
+
+- [LearnXInY where X=Python](https://learnxinyminutes.com/docs/python/)
+- [Write Faster Python! by Anthony Shaw](https://www.youtube.com/watch?v=YY7yJHo0M5I)
+- [PEP-594](https://peps.python.org/pep-0594/)
+- [What is the standard library for?](https://pyfound.blogspot.com/2023/05/the-python-language-summit-2023-what-is.html)
