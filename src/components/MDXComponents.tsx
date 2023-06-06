@@ -84,7 +84,7 @@ const H1 = ({ children, ...delegated }: HeadingProps) => {
 
 const H2 = ({ children, ...delegated }: HeadingProps) => {
   return (
-    <Heading py={4} as="h2" fontWeight="bold" size="xl" {...delegated}>
+    <Heading py={5} as="h2" fontWeight="bold" size="xl" {...delegated}>
       {children}
     </Heading>
   )
@@ -92,7 +92,23 @@ const H2 = ({ children, ...delegated }: HeadingProps) => {
 
 const H3 = ({ children, ...delegated }: HeadingProps) => {
   return (
-    <Heading py={4} as="h3" size="lg" fontWeight="bold" {...delegated}>
+    <Heading py={5} as="h3" size="lg" fontWeight="bold" {...delegated}>
+      {children}
+    </Heading>
+  )
+}
+
+const H4 = ({ children, ...delegated }: HeadingProps) => {
+  return (
+    <Heading py={5} as="h4" size="lg" fontWeight="bold" {...delegated}>
+      {children}
+    </Heading>
+  )
+}
+
+const H5 = ({ children, ...delegated }: HeadingProps) => {
+  return (
+    <Heading py={5} as="h5" size="lg" fontWeight="bold" {...delegated}>
       {children}
     </Heading>
   )
@@ -192,13 +208,15 @@ const CustomCodeBlock = (props) => {
   language = language.replace("language-", "")
 
   return (
-    <CodeBlock
-      text={children}
-      language={language}
-      theme={theme}
-      showLineNumbers={false}
-      wrapLines
-    />
+    <Box py={3}>
+      <CodeBlock
+        text={children}
+        language={language}
+        theme={theme}
+        showLineNumbers={false}
+        wrapLines
+      />
+    </Box>
   )
 }
 
@@ -218,9 +236,9 @@ export const components = (slug) => ({
   h1: H1,
   h2: H2,
   h3: H3,
-  h4: H3,
-  h5: H3,
-  h6: H3,
+  h4: H4,
+  h5: H5,
+  h6: H5,
   p: P,
   ul: Ul,
   ol: Ol,
