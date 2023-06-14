@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "18.15.0"
+  },
   "private": true,
   "scripts": {
     "dev": "next",
@@ -34,7 +37,7 @@
   },
   "devDependencies": {
     "@types/date-fns": "^2.6.0",
-    "@types/node": "^14.6.0",
+    "@types/node": "^18.15.0",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/slug": "^5.0.3",
