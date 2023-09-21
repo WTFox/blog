@@ -72,9 +72,7 @@ const About = ({ age }) => {
         <Section pb={5} delay={0.3}>
           <Text fontSize={fontSize}>
             I&apos;m a <Rainbowify>{age}</Rainbowify> year old
-            <Rainbowify> Principal Engineer </Rainbowify>
-            for <Rainbowify>Stratasan</Rainbowify>, a company focused on
-            healthcare analytics.
+            <Rainbowify> Principal Software Engineer</Rainbowify>.
           </Text>
         </Section>
 

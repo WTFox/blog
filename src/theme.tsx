@@ -3,9 +3,9 @@ import { ThemeConfig, extendTheme, theme as baseTheme } from "@chakra-ui/react"
 import { createBreakpoints } from "@chakra-ui/theme-tools"
 
 const fonts = {
-  heading: `'Montserrat', sans-serif`,
-  body: `'Montserrat', sans-serif`,
-  mono: `'Source Code Pro', monospace`,
+  heading: "JetBrains Mono",
+  body: "JetBrains Mono",
+  mono: "JetBrains Mono",
 }
 
 const breakpoints = createBreakpoints({
