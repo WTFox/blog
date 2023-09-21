@@ -1,0 +1,89 @@
+---
+date: "2023-09-21"
+title: "Working with Arrays in Bash"
+draft: false
+summary: "I learned more writing this post than I expected to."
+readTimeInMinutes: 5
+---
+
+
+<br />
+<br />
+
+
+It almost looks like a regular variable, but you add parentheses to it. And items are separated by spaces (or newlines), not commas.
+
+```sh
+movies=(
+	"The Holy Grail"
+	"The Life of Brian"
+	"The Meaning of Life"
+)
+```
+
+<br />
+<br />
+
+
+Ever wondered how you print an array in bash? It's not like this, this only prints the first element.
+
+```sh
+echo $movies 
+```
+
+<br />
+<br />
+
+
+You use the @ symbol to print all the elements.
+
+```sh
+echo ${movies[@]} # the "@" sign refers to all the elements.
+```
+
+<br />
+<br />
+
+
+Ever wondered how you print the length of an array in bash? The `#` symbol is used to print the length of an array. So you would think that this would print the length of the array:
+
+```sh
+echo ${#movies}    # this prints the length of the first element.
+echo ${#movies[0]} # does the same thing here.
+```
+
+
+<br />
+<br />
+
+
+Nope. This prints the length of the array.
+
+```sh
+echo ${#movies[@]} # because the "@" references all the elements.
+```
+
+
+<br />
+<br />
+
+
+Ever wondered how you get a random element?
+
+```sh
+echo ${movies[$RANDOM % ${#movies[@]}]}
+```
+
+
+<br />
+<br />
+
+
+`RANDOM` is a special variable that returns a random integer between 0 and 32767. The modulo operator (`%`) is used to get a random number between 0 and the length of the array.
+
+
+<br />
+<br />
+
+
+Thank you for coming to my TEDTalk. 
