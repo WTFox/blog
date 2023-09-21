@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": "18.17.0"
+    "node": "18.17.1"
   },
   "private": true,
   "scripts": {
