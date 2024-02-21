@@ -18,6 +18,43 @@ import bike from "../../public/images/bike.png"
 import SiteConfig from "@/lib/SiteConfig"
 import Head from "next/head"
 
+import { useState, useEffect } from "react"
+
+function MileageDisplay() {
+  const [mileage, setMileage] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true)
+      try {
+        const response = await fetch("/api/strava") // Assuming your Edge function is at this route
+        if (!response.ok) {
+          throw new Error("Failed to fetch mileage")
+        }
+        const data = await response.json()
+        // round to nearest mile
+        const miles = Math.round(data.miles)
+        setMileage(miles)
+      } catch (error) {
+        setError(error.message)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  return (
+    <span>
+      {isLoading && <span>Loading mileage...</span>}
+      {mileage && <span>{mileage}</span>}
+    </span>
+  )
+}
+
 function getAge(): number {
   const today = new Date()
   const birthDate = new Date(1988, 9, 5)
@@ -123,7 +160,11 @@ const About = ({ age }) => {
             >
               <Rainbowify>Strava</Rainbowify>
             </Link>
-            , if you&apos;d like. I&apos;m more active during the summer. ;)
+            , if you&apos;d like. I&apos;ve logged{" "}
+            <Rainbowify>
+              <MileageDisplay /> miles
+            </Rainbowify>{" "}
+            this year (so far).
           </Text>
         </Section>
 
