@@ -26,6 +26,7 @@ yarn-error.log*
 
 # local env files
 .env.local
+.envrc.local
 .env.development.local
 .env.test.local
 .env.production.local
@@ -35,3 +36,4 @@ yarn-error.log*
 
 # rss feed
 public/rss/
+
