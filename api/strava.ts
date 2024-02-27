@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import axios from "axios"
+// @ts-ignore
 import { kv } from "@vercel/kv"
 
 const getStravaAccessActivities = async () => {
