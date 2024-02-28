@@ -42,12 +42,6 @@ const SiteConfig: ISiteConfig = {
       isExternal: false,
     },
     {
-      href: "https://twitter.com/__wtfox__",
-      icon: FaTwitter,
-      text: "twitter",
-      isExternal: true,
-    },
-    {
       href: "https://github.com/wtfox/",
       icon: FaGithub,
       text: "github",
