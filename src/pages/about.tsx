@@ -8,10 +8,11 @@ import {
   Link,
 } from "@chakra-ui/react"
 
-import { ReactElement } from "react"
+import React, { ReactElement } from "react"
 import Section from "@/components/Section"
 import { FullWidthLayout } from "@/components/Layouts"
 import Rainbowify from "@/components/Rainbowify"
+import MileageDisplay from "@/components/Mileage"
 
 import me from "../../public/images/me.jpg"
 import bike from "../../public/images/bike.png"
@@ -44,6 +45,7 @@ const About = ({ age }) => {
     borderProps = { bgGradient: SiteConfig.gradient }
   }
 
+  const currentYear = new Date().getFullYear()
   const fontSize = "xl"
 
   return (
@@ -114,6 +116,12 @@ const About = ({ age }) => {
         </Section>
 
         <Section pb={5} delay={0.3}>
+          <Text fontSize={"2xl"}>
+            {currentYear}: <MileageDisplay /> miles 🚴🏃🚶‍♂️
+          </Text>
+        </Section>
+
+        <Section pb={5} delay={0.3}>
           <Text fontSize={fontSize}>
             You can follow me on{" "}
             <Link
@@ -123,7 +131,7 @@ const About = ({ age }) => {
             >
               <Rainbowify>Strava</Rainbowify>
             </Link>
-            , if you&apos;d like. I&apos;m more active during the summer. ;)
+            , if you&apos;d like.
           </Text>
         </Section>
 

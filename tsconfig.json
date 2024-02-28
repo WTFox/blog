@@ -16,9 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["src/components/*"],
-      "@/lib/*": ["src/lib/*"]
-    }
+      "@/lib/*": ["src/lib/*"],
+    },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "next.config.js"],
-  "exclude": ["node_modules"]
+  "exclude": ["src/pages/api/api/*.ts", "node_modules"],
 }

@@ -1,8 +1,7 @@
 import { BsFillPersonFill } from "react-icons/bs"
 import { DownloadIcon, EmailIcon } from "@chakra-ui/icons"
 
-import { FaTwitter, FaRss } from "react-icons/fa"
-import { GoOctoface } from "react-icons/go"
+import { FaTwitter, FaRss, FaGithub } from "react-icons/fa"
 import { Icon } from "@chakra-ui/react"
 import { IconType } from "react-icons"
 
@@ -24,7 +23,6 @@ interface ISiteConfig {
   lightAccent: string
   darkAccent: string
   links: Link[]
-  subtitles: string[]
   authorEmail: string
   siteDescription: string
 }
@@ -36,13 +34,6 @@ const SiteConfig: ISiteConfig = {
   authorEmail: "anthonyfox1988@gmail.com",
   siteDescription: "Random thoughts and musings.",
   siteURL: "https://afox.dev",
-  subtitles: [
-    "Software Engineer.",
-    "Husband.",
-    "Maker of things.",
-    "Dog lover.",
-    "Batman?",
-  ],
   links: [
     {
       href: "/about",
@@ -51,14 +42,8 @@ const SiteConfig: ISiteConfig = {
       isExternal: false,
     },
     {
-      href: "https://twitter.com/__wtfox__",
-      icon: FaTwitter,
-      text: "twitter",
-      isExternal: true,
-    },
-    {
       href: "https://github.com/wtfox/",
-      icon: GoOctoface,
+      icon: FaGithub,
       text: "github",
       isExternal: true,
     },
