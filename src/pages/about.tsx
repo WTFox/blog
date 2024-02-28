@@ -45,6 +45,7 @@ const About = ({ age }) => {
     borderProps = { bgGradient: SiteConfig.gradient }
   }
 
+  const currentYear = new Date().getFullYear()
   const fontSize = "xl"
 
   return (
@@ -115,6 +116,12 @@ const About = ({ age }) => {
         </Section>
 
         <Section pb={5} delay={0.3}>
+          <Text fontSize={"2xl"}>
+            {currentYear}: <MileageDisplay /> miles 🚴🏃🚶‍♂️
+          </Text>
+        </Section>
+
+        <Section pb={5} delay={0.3}>
           <Text fontSize={fontSize}>
             You can follow me on{" "}
             <Link
@@ -124,11 +131,7 @@ const About = ({ age }) => {
             >
               <Rainbowify>Strava</Rainbowify>
             </Link>
-            , if you&apos;d like. I&apos;ve logged{" "}
-            <Rainbowify>
-              <MileageDisplay /> miles
-            </Rainbowify>{" "}
-            this year (so far).
+            , if you&apos;d like.
           </Text>
         </Section>
 

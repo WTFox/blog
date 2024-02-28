@@ -45,7 +45,7 @@ export const SidebarHero = () => {
     borderProps = { bgGradient: SiteConfig.gradient }
   }
 
-  let currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear()
   let subtitleValues = [
     "Software Engineer",
     mileage && `${currentYear}: ${mileage} miles 🚴🏃🚶‍♂️`,

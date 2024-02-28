@@ -7,7 +7,7 @@ type Props = {
   delay?: number
 }
 
-const RoloText = ({ values, delay = 5000 }: Props) => {
+const RoloText = ({ values, delay = 4000 }: Props) => {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
