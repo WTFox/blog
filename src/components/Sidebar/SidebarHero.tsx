@@ -14,6 +14,8 @@ import SiteConfig from "../../lib/SiteConfig"
 import profilePic from "../../../public/images/profile.jpg"
 import RoloText from "../RoloText"
 
+import { useState, useEffect } from "react"
+
 export const SidebarHero = () => {
   const { colorMode } = useColorMode()
   const borderColor = useColorModeValue(
@@ -21,12 +23,37 @@ export const SidebarHero = () => {
     SiteConfig.darkAccent
   )
 
+  const [mileage, setMileage] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("/api/strava")
+      if (!response.ok) {
+        throw new Error("Failed to fetch mileage")
+      }
+      const data = await response.json()
+      const miles = Math.round(data.miles)
+      setMileage(miles)
+    }
+    fetchData()
+  }, [])
+
   let borderProps: any
   if (colorMode === "light") {
     borderProps = { borderColor }
   } else {
     borderProps = { bgGradient: SiteConfig.gradient }
   }
+
+  let currentYear = new Date().getFullYear()
+  let subtitleValues = [
+    "Software Engineer",
+    mileage && `${currentYear}: ${mileage} miles 🚴🏃🚶‍♂️`,
+    "Husband",
+    "Dog lover",
+    "Batman?",
+    "Click here ^^",
+  ]
 
   return (
     <Box>
@@ -48,18 +75,22 @@ export const SidebarHero = () => {
       </Section>
 
       <Section delay={0.1} pt={5}>
-        <Heading
-          bgGradient={SiteConfig.gradient}
-          bgClip="text"
-          textTransform={"uppercase"}
-          fontSize="4xl"
-          fontWeight="extrabold"
-        >
-          {SiteConfig.authorName}
-        </Heading>
+        <Link passHref href={"/about"}>
+          <ChakraLink cursor={"pointer"}>
+            <Heading
+              bgGradient={SiteConfig.gradient}
+              bgClip="text"
+              textTransform={"uppercase"}
+              fontSize="4xl"
+              fontWeight="extrabold"
+            >
+              {SiteConfig.authorName}
+            </Heading>
+          </ChakraLink>
+        </Link>
         <Container maxW={"md"} pt={2}>
           <Heading size={"md"} fontWeight={"medium"}>
-            <RoloText values={SiteConfig.subtitles} />
+            <RoloText values={subtitleValues} />
           </Heading>
         </Container>
       </Section>
