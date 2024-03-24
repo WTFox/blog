@@ -96,20 +96,20 @@ const About = ({ age }) => {
         </Section>
 
         <Section pb={5} delay={0.3}>
-          <Text fontSize={"2xl"}>
-            {currentYear}: <MileageDisplay /> miles 🚴🏃🚶‍♂️
-          </Text>
-        </Section>
-
-        <Section py={10} delay={0.3}>
-          {" "}
-        </Section>
-
-        <Section pb={5} delay={0.3}>
           <Text fontSize={fontSize}>
             I live in California with my wife, Paola, and my Australian
             Shepherd, Alto. When I&apos;m not programming, reading, or spending
             time with my wife, I&apos;m on my bike.
+          </Text>
+        </Section>
+
+        <Section py={10} delay={0.3}>
+          {" --- "}
+        </Section>
+
+        <Section pb={5} delay={0.3}>
+          <Text fontSize={"2xl"}>
+            {currentYear}: <MileageDisplay /> miles 🚴🏃🚶‍♂️
           </Text>
         </Section>
 
