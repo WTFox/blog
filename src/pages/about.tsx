@@ -13,6 +13,7 @@ import Section from "@/components/Section"
 import { FullWidthLayout } from "@/components/Layouts"
 import Rainbowify from "@/components/Rainbowify"
 import MileageDisplay from "@/components/Mileage"
+import BouncedInText from "@/components/BouncedInText"
 
 import me from "../../public/images/me.jpg"
 import bike from "../../public/images/bike.png"
@@ -54,7 +55,7 @@ const About = ({ age }) => {
         <title>{"About me!"}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <VStack maxW={"40rem"} textAlign={"justify"}>
+      <VStack maxW={"40rem"} textAlign={"left"}>
         <Section pb={5} delay={0.3}>
           <Box
             borderWidth={2}
@@ -68,12 +69,12 @@ const About = ({ age }) => {
         </Section>
 
         <Section pb={5} delay={0.3}>
-          <Text fontSize={fontSize}>Hello, I&apos;m Anthony Fox.</Text>
+          <Text fontSize={fontSize}>I&apos;m Anthony Fox,</Text>
         </Section>
 
         <Section pb={5} delay={0.3}>
           <Text fontSize={fontSize}>
-            I&apos;m a <Rainbowify>{age}</Rainbowify> year old
+            a <Rainbowify>{age}</Rainbowify> year old
             <Rainbowify> Principal Software Engineer</Rainbowify>.
           </Text>
         </Section>
