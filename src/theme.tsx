@@ -2,10 +2,11 @@ import { ThemeConfig, extendTheme, theme as baseTheme } from "@chakra-ui/react"
 
 import { createBreakpoints } from "@chakra-ui/theme-tools"
 
-const fonts = {
-  heading: "JetBrains Mono",
-  body: "JetBrains Mono",
-  mono: "JetBrains Mono",
+const fontSizes = {
+  base: "16px",
+}
+const lineHeights = {
+  base: 1.6,
 }
 
 const breakpoints = createBreakpoints({
@@ -25,7 +26,13 @@ const colors = {
 const theme: ThemeConfig = extendTheme({
   initialColorMode: "dark",
   useSystemColorMode: false,
-  fonts,
+  fonts: {
+    body: "JetBrains Mono, monospace",
+    heading: "JetBrains Mono, monospace",
+    mono: "JetBrains Mono, monospace",
+  },
+  fontSizes,
+  lineHeights,
   colors,
   breakpoints,
   styles: {
@@ -35,6 +42,11 @@ const theme: ThemeConfig = extendTheme({
           props.colorMode === "dark"
             ? colors.primaryFontColor.darkMode
             : colors.primaryFontColor.lightMode,
+        fontFamily: "JetBrains Mono, monospace",
+        fontSize: "16px",
+        lineHeight: 1.6,
+        fontFeatureSettings:
+          '"zero" 1, "ss02" 1, "calt" 1, "liga" 1, "dlig" 1, "kern" 1',
       },
     }),
   },
