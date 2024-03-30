@@ -49,7 +49,7 @@ export const SidebarHero = () => {
   const currentYear = new Date().getFullYear()
   let subtitleValues = [
     "Software Engineer",
-    mileage && `${currentYear}: ${mileage} miles 🚴🏃🚶‍♂️`,
+    mileage && `${currentYear}: ${mileage} mi 🚴🏃🚶‍♂️`,
     "Husband",
     "Dog lover",
     "Batman?",
