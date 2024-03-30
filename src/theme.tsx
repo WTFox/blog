@@ -46,7 +46,7 @@ const theme: ThemeConfig = extendTheme({
         fontSize: "16px",
         lineHeight: 1.6,
         fontFeatureSettings:
-          '"zero" 1, "ss02" 1, "calt" 1, "liga" 1, "dlig" 1, "kern" 1',
+          '"calt" 1, "clig" 1, "liga" 1, "ss02" 1,  "cv03" 1, "cv04" 1, "cv06" 1, "cv07" 1, "cv11" 1, "cv14" 1, "cv15" 1, "cv16" 1, "cv17" 1',
       },
     }),
   },
