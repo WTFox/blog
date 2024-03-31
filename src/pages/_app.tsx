@@ -5,7 +5,7 @@ import type { ReactElement, ReactNode } from "react"
 import type { AppProps } from "next/app"
 import type { NextPage } from "next"
 
-import "@fontsource/jetbrains-mono.css"
+import "../styles/globals.scss"
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
