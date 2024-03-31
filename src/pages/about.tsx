@@ -54,7 +54,7 @@ const About = ({ age }) => {
         <title>{"About me!"}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <VStack maxW={"40rem"} textAlign={"justify"}>
+      <VStack maxW={"40rem"} textAlign={"left"}>
         <Section pb={5} delay={0.3}>
           <Box
             borderWidth={2}
