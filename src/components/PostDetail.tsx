@@ -24,7 +24,7 @@ const Footer = ({ date }) => {
 }
 
 const PostDetail = (props: Props) => (
-  <Box maxW={"4xl"} px={{ base: 0, md: "16", xl: "12" }} textAlign={"left"}>
+  <Box maxW={"4xl"} px={{ base: 0, md: "16", xl: "12" }} textAlign={"justify"}>
     <Heading
       textAlign={"center"}
       bgGradient={SiteConfig.gradient}
