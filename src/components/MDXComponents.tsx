@@ -14,6 +14,7 @@ import {
   Text,
   TextProps,
   useColorModeValue,
+  useColorMode,
 } from "@chakra-ui/react"
 import NextLink, { LinkProps as NextLinkProps } from "next/link"
 
@@ -21,7 +22,11 @@ import Image from "next/image"
 import Mermaid from "./Mermaid"
 import SiteConfig from "@/lib/SiteConfig"
 import PhotoGrid from "./PhotoGrid"
-import { CodeBlock, dracula as theme } from "react-code-blocks"
+import {
+  CodeBlock,
+  atomOneLight as lightTheme,
+  nord as darkTheme,
+} from "react-code-blocks"
 import YouTubeEmbed from "./YouTubeEmbed"
 
 const P = ({ children, ...delegated }: TextProps) => {
@@ -195,6 +200,7 @@ const Td = (props: BoxProps) => (
 
 const CustomCodeBlock = (props) => {
   const { className, copy, children } = props
+  const { colorMode } = useColorMode()
 
   if (!className) {
     return <kbd>{children}</kbd>
@@ -212,7 +218,7 @@ const CustomCodeBlock = (props) => {
       <CodeBlock
         text={children}
         language={language}
-        theme={theme}
+        theme={colorMode === "dark" ? darkTheme : lightTheme}
         showLineNumbers={false}
         wrapLines
       />

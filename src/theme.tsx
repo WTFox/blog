@@ -23,7 +23,7 @@ const colors = {
 }
 
 const theme: ThemeConfig = extendTheme({
-  initialColorMode: "dark",
+  initialColorMode: "light",
   useSystemColorMode: false,
   fonts,
   colors,
@@ -35,6 +35,11 @@ const theme: ThemeConfig = extendTheme({
           props.colorMode === "dark"
             ? colors.primaryFontColor.darkMode
             : colors.primaryFontColor.lightMode,
+        fontFamily: "JetBrains Mono, monospace",
+        fontSize: "16px",
+        lineHeight: 1.6,
+        fontFeatureSettings:
+          '"calt" 1, "clig" 1, "liga" 1, "ss02" 1,  "cv03" 1, "cv04" 1, "cv06" 1, "cv07" 1, "cv11" 1, "cv14" 1, "cv15" 1, "cv16" 1, "cv17" 1',
       },
     }),
   },
