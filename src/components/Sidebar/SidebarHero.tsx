@@ -13,7 +13,6 @@ import Section from "@/components/Section"
 import SiteConfig from "../../lib/SiteConfig"
 import profilePic from "../../../public/images/profile.jpg"
 import RoloText from "../RoloText"
-import TypedText from "../TypedText"
 
 import { useState, useEffect } from "react"
 
@@ -49,7 +48,7 @@ export const SidebarHero = () => {
   const currentYear = new Date().getFullYear()
   let subtitleValues = [
     "Software Engineer",
-    mileage && `${currentYear}: ${mileage} mi 🚴🏃🚶‍♂️`,
+    mileage && `${currentYear}: ${mileage} miles 🚴🏃🚶‍♂️`,
     "Husband",
     "Dog lover",
     "Batman?",
@@ -91,13 +90,7 @@ export const SidebarHero = () => {
         </Link>
         <Container maxW={"md"} pt={2}>
           <Heading size={"md"} fontWeight={"medium"}>
-            <TypedText
-              options={{
-                strings: subtitleValues,
-                autoStart: true,
-                loop: true,
-              }}
-            />
+            <RoloText values={subtitleValues} />
           </Heading>
         </Container>
       </Section>
