@@ -23,6 +23,18 @@ const Footer = ({ date }) => {
   )
 }
 
+const MDXComponents: React.FC<{ slug: string; mdxSource: any }> = (props) => {
+  // @ts-ignore
+  const mdxProps = {
+    components: components(props.slug),
+    mt: 8,
+    wordBreak: "break-word",
+    ...props.mdxSource,
+  }
+
+  return <MDXRemote {...mdxProps} />
+}
+
 const PostDetail = (props: Props) => (
   <Box
     maxW={{ base: "100%", md: "2xl", lg: "3xl", xl: "4xl" }}
@@ -42,13 +54,9 @@ const PostDetail = (props: Props) => (
     >
       {props.frontMatter.title}
     </Heading>
-    {/* @ts-ignore */}
-    <MDXRemote
-      {...props.mdxSource}
-      components={components(props.slug)}
-      mt={8}
-      wordBreak="break-word"
-    />
+
+    <MDXComponents slug={props.slug} mdxSource={props.mdxSource} />
+
     <Footer date={props.frontMatter.date} />
   </Box>
 )
