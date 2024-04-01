@@ -54,7 +54,7 @@ const About = ({ age }) => {
         <title>{"About me!"}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <VStack maxW={"40rem"} textAlign={"left"}>
+      <VStack maxW={"40rem"} textAlign={"left"} wordBreak={"break-word"}>
         <Section pb={5} delay={0.3}>
           <Box
             borderWidth={2}
@@ -103,16 +103,6 @@ const About = ({ age }) => {
           </Text>
         </Section>
 
-        <Section py={10} delay={0.3}>
-          {" --- "}
-        </Section>
-
-        <Section pb={5} delay={0.3}>
-          <Text fontSize={"2xl"}>
-            {currentYear}: <MileageDisplay /> miles 🚴🏃🚶‍♂️
-          </Text>
-        </Section>
-
         <Section pb={5} delay={0.3}>
           <Box
             borderWidth={2}
@@ -123,6 +113,12 @@ const About = ({ age }) => {
           >
             <Image src={bike.src} alt="Picture of Anthony's road bike." />
           </Box>
+        </Section>
+
+        <Section pb={5} delay={0.3}>
+          <Text fontSize={"2xl"}>
+            {currentYear}: <MileageDisplay /> miles 🚴🏃🚶‍♂️
+          </Text>
         </Section>
 
         {/* <Section pb={5} delay={0.3}> */}

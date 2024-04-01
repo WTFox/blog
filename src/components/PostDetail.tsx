@@ -24,21 +24,31 @@ const Footer = ({ date }) => {
 }
 
 const PostDetail = (props: Props) => (
-  <Box maxW={"4xl"} px={{ base: 0, md: "16", xl: "12" }} textAlign={"left"}>
+  <Box
+    maxW={{ base: "100%", md: "2xl", lg: "3xl", xl: "4xl" }}
+    px={{ base: 4, md: 8, xl: 12 }}
+    textAlign="left"
+  >
     <Heading
-      textAlign={"center"}
+      textAlign="center"
       bgGradient={SiteConfig.gradient}
       bgClip="text"
-      textTransform={"uppercase"}
-      fontWeight="extrabold"
+      textTransform="uppercase"
+      fontWeight="bold"
       as="h1"
-      size="3xl"
-      pb={"16"}
+      size="2xl"
+      pb={8}
+      wordBreak="break-word"
     >
       {props.frontMatter.title}
     </Heading>
     {/* @ts-ignore */}
-    <MDXRemote {...props.mdxSource} components={components(props.slug)} />
+    <MDXRemote
+      {...props.mdxSource}
+      components={components(props.slug)}
+      mt={8}
+      wordBreak="break-word"
+    />
     <Footer date={props.frontMatter.date} />
   </Box>
 )
