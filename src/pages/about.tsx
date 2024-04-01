@@ -117,7 +117,7 @@ const About = ({ age }) => {
 
         <Section pb={5} delay={0.3}>
           <Text fontSize={"2xl"}>
-            {currentYear}: <MileageDisplay /> miles 🚴🏃🚶‍♂️
+            {currentYear}: <MileageDisplay /> mi 🚴🏃🚶‍♂️
           </Text>
         </Section>
 
