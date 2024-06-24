@@ -160,7 +160,7 @@ const ButtonLink = ({
 }: ButtonProps & NextLinkProps) => {
   return (
     <MyLink
-      href={href}
+      href={href as string}
       as={NextLink}
       replace={replace}
       scroll={scroll}
