@@ -11,6 +11,7 @@
     "newPost": "node ./scripts/newPost.js"
   },
   "dependencies": {
+    "@babel/core": "^7.0.0-0",
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
     "@chakra-ui/theme-tools": "^2.1.2",
