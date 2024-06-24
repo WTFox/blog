@@ -141,9 +141,7 @@ const Link = ({
       passHref={passHref ?? true}
       prefetch={prefetch}
       locale={locale}
-    >
-      <ChakraLink as="a" color={color} {...props} />
-    </NextLink>
+    />
   )
 }
 

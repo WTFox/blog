@@ -1,5 +1,4 @@
 import { Link as ChakraLink, Box, Heading, Text } from "@chakra-ui/react"
-import Link from "next/link"
 import { formatDistance } from "date-fns"
 
 export interface PostListItemProps {
@@ -14,16 +13,18 @@ export interface PostListItemProps {
 
 const PostListItem = (props: PostListItemProps) => {
   const readTime = props.frontMatter.readTimeInMinutes
-  const postDate = formatDistance(new Date(props.frontMatter.date), new Date(), { addSuffix: true })
+  const postDate = formatDistance(
+    new Date(props.frontMatter.date),
+    new Date(),
+    { addSuffix: true }
+  )
   return (
     <Box py={5} maxW={"8xl"}>
-      <Link href={props.link} passHref>
-        <ChakraLink>
-          <Heading pb={2} size="lg">
-            {props.frontMatter.title}
-          </Heading>
-        </ChakraLink>
-      </Link>
+      <ChakraLink href={props.link}>
+        <Heading pb={2} size="lg">
+          {props.frontMatter.title}
+        </Heading>
+      </ChakraLink>
 
       <Text fontSize="lg">{props.frontMatter.summary}</Text>
 

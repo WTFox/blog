@@ -8,7 +8,6 @@ import {
 
 import { Container } from "./Container"
 import DarkModeSwitch from "./DarkModeSwitch"
-import Link from "next/link"
 import profilePic from "../../public/images/profile.jpg"
 import { useRouter } from "next/router"
 
@@ -30,19 +29,17 @@ export default function NavBar() {
       >
         <Menu>
           <Container direction={"row"}>
-            <Link href={linkHref} passHref>
-              <ChakraLink>
-                <Box overflow="hidden">
-                  <Avatar
-                    borderWidth={"2px"}
-                    borderStyle={"solid"}
-                    borderRadius="full"
-                    size={"md"}
-                    src={profilePic.src}
-                  />
-                </Box>
-              </ChakraLink>
-            </Link>
+            <ChakraLink href={linkHref}>
+              <Box overflow="hidden">
+                <Avatar
+                  borderWidth={"2px"}
+                  borderStyle={"solid"}
+                  borderRadius="full"
+                  size={"md"}
+                  src={profilePic.src}
+                />
+              </Box>
+            </ChakraLink>
           </Container>
           <DarkModeSwitch
             motionProps={{

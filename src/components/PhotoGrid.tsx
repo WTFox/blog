@@ -1,7 +1,6 @@
 import path from "path"
 import Image from "next/image"
 import { Box, SimpleGrid, Link as ChakraLink } from "@chakra-ui/react"
-import Link from "next/link"
 
 const PhotoGrid = ({ slug, images }) => {
   return (
@@ -13,17 +12,15 @@ const PhotoGrid = ({ slug, images }) => {
           const srcLink = require(`../../content/${slug}/${image}`).default
 
           return (
-            <Link key={key} href={srcLink.src} passHref>
-              <ChakraLink key={key} isExternal>
-                <Image
-                  key={key}
-                  loading="eager"
-                  src={srcLink}
-                  alt={alt}
-                  layout={"responsive"}
-                />
-              </ChakraLink>
-            </Link>
+            <ChakraLink key={key} href={srcLink.src} isExternal>
+              <Image
+                key={key}
+                loading="eager"
+                src={srcLink}
+                alt={alt}
+                layout={"responsive"}
+              />
+            </ChakraLink>
           )
         })}
       </SimpleGrid>

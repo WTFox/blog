@@ -10,6 +10,7 @@ const withMDX = require("@next/mdx")({
 })
 
 module.exports = {
+  reactStrictMode: true,
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.(svg|png|jpe?g|gif|mp4)$/i,
