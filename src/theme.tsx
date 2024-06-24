@@ -1,19 +1,17 @@
 import { ThemeConfig, extendTheme, theme as baseTheme } from "@chakra-ui/react"
 
-import { createBreakpoints } from "@chakra-ui/theme-tools"
-
 const fonts = {
   heading: "JetBrains Mono",
   body: "JetBrains Mono",
   mono: "JetBrains Mono",
 }
 
-const breakpoints = createBreakpoints({
+const breakpoints = {
   sm: "40em",
   md: "52em",
   lg: "64em",
   xl: "80em",
-})
+}
 
 const colors = {
   primaryFontColor: {
@@ -31,10 +29,10 @@ const theme: ThemeConfig = extendTheme({
   styles: {
     global: (props) => ({
       "html, body": {
-        color:
-          props.colorMode === "dark"
-            ? colors.primaryFontColor.darkMode
-            : colors.primaryFontColor.lightMode,
+        // color:
+        //   props.colorMode === "dark"
+        //     ? colors.primaryFontColor.darkMode
+        //     : colors.primaryFontColor.lightMode,
         fontFamily: "JetBrains Mono, monospace",
         fontSize: "16px",
         lineHeight: 1.6,

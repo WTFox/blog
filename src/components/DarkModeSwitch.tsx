@@ -7,7 +7,7 @@ const DarkModeSwitch = ({ motionProps } = null) => {
   const { toggleColorMode } = useColorMode()
 
   return (
-    <AnimatePresence exitBeforeEnter initial={false}>
+    <AnimatePresence mode={"wait"} initial={false}>
       <motion.div
         style={{
           display: "inline-block",

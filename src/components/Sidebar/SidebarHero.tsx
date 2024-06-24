@@ -1,5 +1,4 @@
 import React from "react"
-import Link from "next/link"
 import {
   useColorMode,
   useColorModeValue,
@@ -58,36 +57,32 @@ export const SidebarHero = () => {
   return (
     <Box>
       <Section delay={0.1}>
-        <Link passHref href={"/about"}>
-          <ChakraLink cursor={"pointer"}>
-            <Box
-              borderWidth={4}
-              w={"56"}
-              display="inline-block"
-              borderRadius="50"
-              overflow="hidden"
-              {...borderProps}
-            >
-              <Image src={profilePic.src} alt="Profile picture" />
-            </Box>
-          </ChakraLink>
-        </Link>
+        <ChakraLink href={"/about"} cursor={"pointer"}>
+          <Box
+            borderWidth={4}
+            w={"56"}
+            display="inline-block"
+            borderRadius="50"
+            overflow="hidden"
+            {...borderProps}
+          >
+            <Image src={profilePic.src} alt="Profile picture" />
+          </Box>
+        </ChakraLink>
       </Section>
 
       <Section delay={0.1} pt={5}>
-        <Link passHref href={"/about"}>
-          <ChakraLink cursor={"pointer"}>
-            <Heading
-              bgGradient={SiteConfig.gradient}
-              bgClip="text"
-              textTransform={"uppercase"}
-              fontSize="4xl"
-              fontWeight="extrabold"
-            >
-              {SiteConfig.authorName}
-            </Heading>
-          </ChakraLink>
-        </Link>
+        <ChakraLink href={"/about"} cursor={"pointer"}>
+          <Heading
+            bgGradient={SiteConfig.gradient}
+            bgClip="text"
+            textTransform={"uppercase"}
+            fontSize="4xl"
+            fontWeight="extrabold"
+          >
+            {SiteConfig.authorName}
+          </Heading>
+        </ChakraLink>
         <Container maxW={"md"} pt={2}>
           <Heading size={"md"} fontWeight={"medium"}>
             <RoloText values={subtitleValues} />

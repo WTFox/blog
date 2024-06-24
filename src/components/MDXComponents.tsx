@@ -3,12 +3,11 @@ import {
   BoxProps,
   Button,
   ButtonProps,
-  Center,
   Divider,
   Heading,
   HeadingProps,
   Kbd,
-  Link as ChakraLink,
+  Link,
   LinkProps,
   Stack,
   Text,
@@ -119,7 +118,7 @@ const H5 = ({ children, ...delegated }: HeadingProps) => {
   )
 }
 
-const Link = ({
+const MyLink = ({
   href,
   as,
   replace,
@@ -132,18 +131,19 @@ const Link = ({
 }: LinkProps & NextLinkProps) => {
   const color = useColorModeValue(SiteConfig.lightAccent, SiteConfig.darkAccent)
   return (
-    <NextLink
+    <Link
+      as={NextLink}
       href={href}
-      as={as}
       replace={replace}
+      color={color}
       scroll={scroll}
       shallow={shallow}
       passHref={passHref ?? true}
       prefetch={prefetch}
       locale={locale}
     >
-      <ChakraLink as="a" color={color} {...props} />
-    </NextLink>
+      {props.children}
+    </Link>
   )
 }
 
@@ -159,9 +159,9 @@ const ButtonLink = ({
   ...props
 }: ButtonProps & NextLinkProps) => {
   return (
-    <NextLink
-      href={href}
-      as={as}
+    <MyLink
+      href={href as string}
+      as={NextLink}
       replace={replace}
       scroll={scroll}
       shallow={shallow}
@@ -170,7 +170,7 @@ const ButtonLink = ({
       locale={locale}
     >
       <Button as="a" {...props} />
-    </NextLink>
+    </MyLink>
   )
 }
 
@@ -230,13 +230,11 @@ export const components = (slug) => ({
   PhotoGrid: ({ images }) => <PhotoGrid slug={slug} images={images} />,
   img: ({ src, alt }) => {
     return (
-      <Center>
-        <Image
-          loading="eager"
-          alt={alt}
-          src={require(`../../content/${slug}/${src}`).default}
-        />
-      </Center>
+      <Image
+        loading="eager"
+        alt={alt}
+        src={require(`../../content/${slug}/${src}`).default}
+      />
     )
   },
   h1: H1,
@@ -255,8 +253,8 @@ export const components = (slug) => ({
   th: Th,
   td: Td,
   kbd: Kbd,
-  a: Link,
-  Link,
+  a: MyLink,
+  Link: MyLink,
   ButtonLink,
   Button,
   Stack,

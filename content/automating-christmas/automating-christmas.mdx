@@ -1,11 +1,14 @@
 ---
-title: "Automating Christmas with Particle, Docker, and Siri"
-date: "2017-02-24"
+title: 'Automating Christmas with Particle, Docker, and Siri'
+date: '2017-02-24'
 draft: false
-summary: "This was an incredibly fun project to do and gave me an excuse to not only put our Christmas tree up well before December, but to also keep it well into January. I'm not entirely sure how much this would cost if you had to buy each part separately."
-readTimeInMinutes: "5"
+summary: >-
+  This was an incredibly fun project to do and gave me an excuse to not only put
+  our Christmas tree up well before December, but to also keep it well into
+  January. I'm not entirely sure how much this would cost if you had to buy each
+  part separately.
+readTimeInMinutes: '5'
 ---
-
 First and foremost, this post shouldn't be considered as a step-by-step how-to. While I will go over some pretty low-level details and post code here, this post just won't work well if followed in sequential steps. That being said, I do hope it helps answers some of your question you may initially have and if it doesn't, feel free to reach out!
 
 Before we get started, here's the end result.
@@ -64,13 +67,13 @@ For power, I'm using a 5v 2a power supply
 
 And, of course, the tree..
 
-![](lokicartree.jpg)
+![lokicartree-img](lokicartree.jpg)
 
 ## Wiring
 
 As mentioned, the Photon only outputs 3.3v, but it can powered from 5v which made my life so much easier. I'll briefly describe the picture below. The bottom gutter (the rows of + and -) is powered directly from the 5v power supply plugged into the wall. The Photon is brought to life by providing power through the `vin` and `gnd` pins. On the other side, we have the 3.3v out. That and the other `gnd` pin are powering the other power gutter with 3.3v and grounding. Pins `D5` and `D6` are going into two of channels of the logic level converter which helpfully converts those 3.3v power and signals to 5v and sends those instructions directly to the led strip.
 
-![](wiring.jpg)
+![wiring-img](wiring.jpg)
 
 ## Code
 
@@ -180,7 +183,7 @@ Before you can run this you'll need to have a file named `config.json` exposed t
 Run the image with a command like this:
 
 ```sh
-$ docker run -itd —net host -p 0.0.0.0:51826:51826 -v /path/to/homebridge/config/folder/:/root/.homebridge hugoch/rpi-python-homebridge:v1 /root/run_homebridge.sh
+docker run -itd —net host -p 0.0.0.0:51826:51826 -v /path/to/homebridge/config/folder/:/root/.homebridge hugoch/rpi-python-homebridge:v1 /root/run_homebridge.sh
 ```
 
 After that open up HomeKit on your iOS device and you should see the new “Homebridge” accessory listed. You can add it into any scene, or just use Siri to access it directly by name.
@@ -190,3 +193,4 @@ After that open up HomeKit on your iOS device and you should see the new “Home
 Here's the github repo with the code I used: [xmas-tree](https://github.com/WTFox/xmas-tree).
 
 Again this guide wasn't really meant to be a step by step guide but more of a high level guide. Feel free to reach out if you have any questions!
+
