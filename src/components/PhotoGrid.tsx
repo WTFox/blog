@@ -13,13 +13,7 @@ const PhotoGrid = ({ slug, images }) => {
 
           return (
             <ChakraLink key={key} href={srcLink.src} isExternal>
-              <Image
-                key={key}
-                loading="eager"
-                src={srcLink}
-                alt={alt}
-                layout={"responsive"}
-              />
+              <Image key={key} loading="eager" src={srcLink} alt={alt} />
             </ChakraLink>
           )
         })}
