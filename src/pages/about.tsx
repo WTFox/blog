@@ -5,7 +5,6 @@ import {
   VStack,
   useColorMode,
   useColorModeValue,
-  Link,
 } from "@chakra-ui/react"
 
 import React, { ReactElement } from "react"
@@ -97,9 +96,9 @@ const About = ({ age }) => {
 
         <Section pb={5} delay={0.3}>
           <Text fontSize={fontSize}>
-            I live in California with my wife, Paola, and my Australian
-            Shepherd, Alto. When I&apos;m not programming, reading, or spending
-            time with my wife, I&apos;m on my bike.
+            I live in California with my wife, and my Australian Shepherd. When
+            I&apos;m not programming, reading, or spending time with my wife,
+            I&apos;m on my bike, or out on a run.
           </Text>
         </Section>
 

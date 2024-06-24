@@ -1,7 +1,7 @@
 import { BsFillPersonFill } from "react-icons/bs"
-import { DownloadIcon, EmailIcon } from "@chakra-ui/icons"
+import { EmailIcon } from "@chakra-ui/icons"
 
-import { FaTwitter, FaRss, FaGithub } from "react-icons/fa"
+import { FaRss, FaGithub } from "react-icons/fa"
 import { Icon } from "@chakra-ui/react"
 import { IconType } from "react-icons"
 
@@ -47,12 +47,12 @@ const SiteConfig: ISiteConfig = {
       text: "github",
       isExternal: true,
     },
-    {
-      href: "https://docs.google.com/viewer?url=https://docs.google.com/document/d/1NlGqYx4y47pHcgdFibr9-zFWBz6BMeM-wRga8vYAuwE/export?format=pdf",
-      icon: DownloadIcon,
-      text: "resume",
-      isExternal: true,
-    },
+    // {
+    //   href: "https://docs.google.com/viewer?url=https://docs.google.com/document/d/1NlGqYx4y47pHcgdFibr9-zFWBz6BMeM-wRga8vYAuwE/export?format=pdf",
+    //   icon: DownloadIcon,
+    //   text: "resume",
+    //   isExternal: true,
+    // },
     {
       href: "mailto:anthonyfox1988@gmail.com",
       icon: EmailIcon,
