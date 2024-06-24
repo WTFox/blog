@@ -1,5 +1,4 @@
 import React from "react"
-import Link from "next/link"
 import { Link as ChakraLink, Grid, GridItem, Text } from "@chakra-ui/react"
 import { Icon } from "@chakra-ui/icons"
 import Section from "@/components/Section"
