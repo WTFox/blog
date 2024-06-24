@@ -47,7 +47,7 @@ const getStravaAccessActivities = async () => {
   })
 
   if (!response.ok) {
-    throw new Error("Failed to fetch Strava activities")
+    throw new Error("Failed to fetch Strava activities.")
   }
 
   return await response.json()
