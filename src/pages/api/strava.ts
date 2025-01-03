@@ -4,7 +4,7 @@ import { kv } from "@vercel/kv"
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const totalMiles = await kv.get("total_miles")
   if (totalMiles) {
@@ -35,7 +35,7 @@ const getStravaAccessActivities = async () => {
   const url = new URL("https://www.strava.com/api/v3/athlete/activities")
   url.searchParams.append(
     "after",
-    String(Math.floor(new Date(currentYear, 0, 1).getTime() / 1000))
+    String(Math.floor(new Date(currentYear, 0, 1).getTime() / 1000)),
   )
   url.searchParams.append("per_page", "200")
 
