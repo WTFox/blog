@@ -4,7 +4,7 @@ default:
 
 # Create a new blog post
 new title:
-    npm run newPost "{{title}}"
+    yarn newPost "{{title}}"
 
 # Start development server
 dev:
@@ -12,19 +12,19 @@ dev:
 
 # Build the site
 build:
-    npm run build
+    yarn build
 
 # Start production server
 start:
-    npm run start
+    yarn start
 
 # Lint the codebase
 lint:
-    eslint .
+    yarn eslint --config eslint.config.mjs .
 
 # Type checking
 typecheck:
-    tsc --noEmit
+    yarn tsc --noEmit
 
 # Combined development check
 check: lint typecheck
