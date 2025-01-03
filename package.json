@@ -1,13 +1,12 @@
 {
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "vercel dev",
     "lint": "next lint",
-    "build": "next build",
-    "start": "next start",
+    "deploy": "vercel deploy",
     "newPost": "node ./scripts/newPost.js"
   },
   "dependencies": {
