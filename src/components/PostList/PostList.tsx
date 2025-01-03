@@ -20,12 +20,9 @@ export const PostList = ({ posts }: PostListProps) => {
 
   return (
     <Stack maxW={"4xl"} px={{ base: 8, lg: 20 }}>
-      <Section pb={5} delay={0.1}>
-        <Heading id="Posts" size="xl">
-          {"❯_ writings"}
-        </Heading>
-        <Divider pt={5} size={"md"} />
-      </Section>
+      <Heading id="Posts" size="2xl">
+        {"❯ Posts"}
+      </Heading>
       {sortedPosts.map((post, index: number) => {
         return (
           <Section key={index} delay={(index + 1) / 10 + 0.3}>

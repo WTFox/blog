@@ -16,17 +16,19 @@ const PostListItem = (props: PostListItemProps) => {
   const postDate = formatDistance(
     new Date(props.frontMatter.date),
     new Date(),
-    { addSuffix: true }
+    { addSuffix: true },
   )
   return (
-    <Box py={5} maxW={"8xl"}>
+    <Box py={4} maxW={"8xl"}>
       <ChakraLink href={props.link}>
         <Heading pb={2} size="lg">
           {props.frontMatter.title}
         </Heading>
       </ChakraLink>
 
-      <Text fontSize="lg">{props.frontMatter.summary}</Text>
+      <Text fontSize="lg" fontStyle="italic">
+        {props.frontMatter.summary}
+      </Text>
 
       <Text pt={2} fontSize="sm" fontStyle={"italic"}>
         {postDate} - {readTime} minute read
