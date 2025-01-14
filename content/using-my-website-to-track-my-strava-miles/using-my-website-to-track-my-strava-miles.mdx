@@ -1,0 +1,34 @@
+---
+date: "2025-01-13"
+title: "Using My Website to Track my Strava Miles"
+draft: false
+summary: "I built a simple React component that keeps track of all the miles I've walked, run, and cycled throughout the current year. It pulls data from my Strava account and displays the total distance, providing a real-time snapshot of my athletic activities."
+readTimeInMinutes: 5
+---
+
+I built a simple React component that keeps track of all the miles I've walked, run, and cycled throughout the current year. It pulls data from my Strava account and displays the total distance, providing a real-time snapshot of my athletic activities. Here it is:
+
+<StravaMiles />
+
+### How It Works
+
+The component consists of two main parts: a Next.js Edge Function that handles the Strava API interaction and data processing, and a React component that displays the results.
+
+The Edge Function does several things:
+
+- Fetches activities from the Strava API for the current year
+- Handles token refresh when needed
+- Calculates total mileage across running, walking, and cycling activities
+  - Converts from Strava's metric measurements to miles using the conversion factor 1609.344
+- Caches results in Vercel KV to respect API limits (1 hour TTL)
+
+### Why?
+
+Why not? I wanted a simple way to track my cumulative progress throughout the year across different types of activities. While Strava provides great activity-specific stats, I was interested in seeing my total mileage across all endurance activities in a single number. But mostly I just like adding cool shit to my blog.
+
+The current implementation is intentionally minimal, but it provides a solid foundation for adding more features while maintaining its core simplicity.
+
+Github Links:
+
+- [React Component](https://github.com/WTFox/blog/blob/main/src/components/StravaMiles.tsx)
+- [Edge Function](https://github.com/WTFox/blog/blob/main/src/pages/api/strava.ts)
