@@ -142,6 +142,7 @@ const MyLink = ({
       passHref={passHref ?? true}
       prefetch={prefetch}
       locale={locale}
+      target="_blank"
     >
       {props.children}
     </Link>
