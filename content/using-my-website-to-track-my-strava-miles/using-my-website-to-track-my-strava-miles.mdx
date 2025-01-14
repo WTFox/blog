@@ -20,11 +20,11 @@ The Edge Function does several things:
 - Handles token refresh when needed
 - Calculates total mileage across running, walking, and cycling activities
   - Converts from Strava's metric measurements to miles using the conversion factor 1609.344
-- Caches results in Vercel KV for an hour to respect API limits (1 hour TTL)
+- Caches results in Vercel KV to respect API limits (1 hour TTL)
 
 ### Why?
 
-Why not? I wanted a simple way to track my cumulative progress throughout the year across different types of activities. While Strava provides great activity-specific stats, I was interested in seeing my total mileage across all endurance activities in a single number.
+Why not? I wanted a simple way to track my cumulative progress throughout the year across different types of activities. While Strava provides great activity-specific stats, I was interested in seeing my total mileage across all endurance activities in a single number. But mostly I just like adding cool shit to my blog.
 
 The current implementation is intentionally minimal, but it provides a solid foundation for adding more features while maintaining its core simplicity.
 
