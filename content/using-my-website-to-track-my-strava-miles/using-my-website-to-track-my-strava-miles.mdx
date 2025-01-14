@@ -10,6 +10,8 @@ I built a simple React component that keeps track of all the miles I've walked, 
 
 <StravaMiles />
 
+(check back later, it will be a larger number)
+
 ### How It Works
 
 The component consists of two main parts: a Next.js Edge Function that handles the Strava API interaction and data processing, and a React component that displays the results.
@@ -20,7 +22,7 @@ The Edge Function does several things:
 - Handles token refresh when needed
 - Calculates total mileage across running, walking, and cycling activities
   - Converts from Strava's metric measurements to miles using the conversion factor 1609.344
-- Caches results in Vercel KV to respect API limits (1 hour TTL)
+- Caches results in Vercel KV (redis) to respect API limits (1 hour TTL)
 
 ### Why?
 
