@@ -1,9 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next"
-// @ts-ignore
 import { kv } from "@vercel/kv"
 
+type Activity = {
+  type: string
+  distance: number
+}
+
 export default async function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse,
 ) {
   const totalMiles = await kv.get("total_miles")
@@ -85,7 +89,7 @@ async function refreshTokensAndRetry(res: NextApiResponse) {
   res.status(200).json({ miles: totalMiles })
 }
 
-function calculateTotalMiles(activities) {
+function calculateTotalMiles(activities: Activity[]) {
   const activityTypes = ["Run", "Walk", "Ride"]
   return activities.reduce((total, activity) => {
     if (activityTypes.includes(activity.type) && activity.distance) {

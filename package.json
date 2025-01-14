@@ -4,8 +4,9 @@
   },
   "private": true,
   "scripts": {
-    "dev": "vercel dev",
+    "dev": "next",
     "lint": "next lint",
+    "build": "next build",
     "deploy": "vercel deploy",
     "newPost": "node ./scripts/newPost.js"
   },

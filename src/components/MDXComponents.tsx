@@ -27,6 +27,7 @@ import {
   nord as darkTheme,
 } from "react-code-blocks"
 import YouTubeEmbed from "./YouTubeEmbed"
+import StravaMiles from "./StravaMiles"
 
 const P = ({ children, ...delegated }: TextProps) => {
   return (
@@ -261,4 +262,5 @@ export const components = (slug) => ({
   Mermaid,
   code: (props) => <CustomCodeBlock {...props} />,
   YouTubeEmbed,
+  StravaMiles: StravaMiles,
 })
