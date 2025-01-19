@@ -10,6 +10,16 @@ const withMDX = require("@next/mdx")({
 })
 
 module.exports = {
+  async redirects() {
+    return [
+      {
+        source: "/dotfiles",
+        destination:
+          "https://raw.githubusercontent.com/WTFox/dotfiles/main/bootstrap.sh",
+        permanent: true,
+      },
+    ]
+  },
   reactStrictMode: true,
   webpack: (config, options) => {
     config.module.rules.push({
