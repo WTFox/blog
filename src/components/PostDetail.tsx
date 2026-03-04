@@ -1,4 +1,4 @@
-import { Box, Divider, Heading, Text } from "@chakra-ui/react"
+import { Box, Divider, Heading, Link, Text } from "@chakra-ui/react"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote"
 
 import { PostListItemProps } from "@/components/PostList/PostListItem"
@@ -15,8 +15,15 @@ const Footer = ({ date }) => {
     <Box key={"footer"} py={3}>
       <Divider size={"md"} />
       <Box py={10}>
-        <Text>
+        <Text mb={2}>
           Authored by {SiteConfig.authorName} on {date}
+        </Text>
+        <Text fontSize="sm">
+          Have comments or feedback?{" "}
+          <Link href={`mailto:${SiteConfig.authorEmail}`} isExternal color="inherit" fontWeight="semibold" textDecoration="underline">
+            I'd love to hear from you
+          </Link>
+          .
         </Text>
       </Box>
     </Box>
@@ -37,8 +44,10 @@ const MDXComponents: React.FC<{ slug: string; mdxSource: any }> = (props) => {
 
 const PostDetail = (props: Props) => (
   <Box
-    maxW={{ base: "100%", md: "2xl", lg: "3xl", xl: "4xl" }}
-    px={{ base: 4, md: 8, xl: 12 }}
+    maxW="2xl"
+    w="full"
+    mx="auto"
+    px={{ base: 4, md: 6 }}
     textAlign="left"
   >
     <Heading
@@ -49,7 +58,8 @@ const PostDetail = (props: Props) => (
       fontWeight="bold"
       as="h1"
       size="2xl"
-      pb={8}
+      pb={3}
+      mb={6}
       wordBreak="break-word"
     >
       {props.frontMatter.title}

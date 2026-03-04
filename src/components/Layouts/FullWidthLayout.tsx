@@ -11,7 +11,7 @@ const FullWidthLayout = ({ children }) => {
       <NavBar />
       <Container pt={"10"}>
         <Box id="top" />
-        <Box maxW={"100%"} px={{ base: "2rem", xl: "12rem" }}>
+        <Box w="full">
           {children}
         </Box>
       </Container>

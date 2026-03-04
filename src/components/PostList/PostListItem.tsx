@@ -19,19 +19,19 @@ const PostListItem = (props: PostListItemProps) => {
     { addSuffix: true },
   )
   return (
-    <Box py={4} maxW={"8xl"}>
-      <ChakraLink href={props.link}>
-        <Heading pb={2} size="lg">
+    <Box py={1.5} maxW={"8xl"} borderBottomWidth="1px" borderColor="inherit" _last={{ borderBottomWidth: 0 }}>
+      <ChakraLink href={props.link} _hover={{ textDecoration: "none" }}>
+        <Heading pb={1} size="md" _groupHover={{ color: "accent" }}>
           {props.frontMatter.title}
         </Heading>
       </ChakraLink>
 
-      <Text fontSize="lg" fontStyle="italic">
+      <Text fontSize="sm" fontStyle="italic" mb={1} color="gray.600" _dark={{ color: "gray.400" }}>
         {props.frontMatter.summary}
       </Text>
 
-      <Text pt={2} fontSize="sm" fontStyle={"italic"}>
-        {postDate} - {readTime} minute read
+      <Text fontSize="xs" fontStyle="italic" color="gray.500" _dark={{ color: "gray.500" }}>
+        {postDate} · {readTime} min read
       </Text>
     </Box>
   )

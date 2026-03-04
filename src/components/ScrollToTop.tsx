@@ -7,26 +7,31 @@ import SiteConfig from "@/lib/SiteConfig"
 const SCROLLBREAKPOINT = 500
 
 const ScrollToTopButton = () => {
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+  }
+
   return (
-    <Link href="#top">
-      <Box
-        display="inline-block"
-        position="fixed"
-        bottom="1rem"
-        right="1rem"
-        key={useColorModeValue("light", "dark")}
-      >
-        <IconButton
-          aria-label="Scroll to top"
-          bgColor={useColorModeValue(
-            SiteConfig.lightAccent,
-            SiteConfig.darkAccent
-          )}
-          color="white"
-          icon={<TriangleUpIcon />}
-        ></IconButton>
-      </Box>
-    </Link>
+    <Box
+      display="inline-block"
+      position="fixed"
+      bottom="1rem"
+      right="1rem"
+      key={useColorModeValue("light", "dark")}
+      as="button"
+      onClick={handleClick}
+      cursor="pointer"
+    >
+      <IconButton
+        aria-label="Scroll to top"
+        bgColor={useColorModeValue(
+          SiteConfig.lightAccent,
+          SiteConfig.darkAccent
+        )}
+        color="white"
+        icon={<TriangleUpIcon />}
+      ></IconButton>
+    </Box>
   )
 }
 

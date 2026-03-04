@@ -3,6 +3,7 @@ import {
   BoxProps,
   Button,
   ButtonProps,
+  Code,
   Divider,
   Heading,
   HeadingProps,
@@ -29,95 +30,83 @@ import {
 import YouTubeEmbed from "./YouTubeEmbed"
 import StravaMiles from "./StravaMiles"
 
-const P = ({ children, ...delegated }: TextProps) => {
-  return (
-    <Text as="p" py={4} fontSize={"lg"} lineHeight="tall" {...delegated}>
-      {children}
-    </Text>
-  )
-}
+const P = ({ children, ...delegated }: TextProps) => (
+  <Text as="p" mt={0} mb={4} fontSize="md" lineHeight="1.75" {...delegated}>
+    {children}
+  </Text>
+)
 
-const Ul = ({ children, ...delegated }: BoxProps) => {
-  return (
-    <Box as="ul" pt={2} pl={4} ml={2} {...delegated}>
-      {children}
-    </Box>
-  )
-}
+const Ul = ({ children, ...delegated }: BoxProps) => (
+  <Box as="ul" mt={1} mb={4} pl={6} listStyleType="disc" {...delegated}>
+    {children}
+  </Box>
+)
 
-const Ol = ({ children, ...delegated }: BoxProps) => {
-  return (
-    <Box as="ol" pt={2} pl={4} ml={2} {...delegated}>
-      {children}
-    </Box>
-  )
-}
+const Ol = ({ children, ...delegated }: BoxProps) => (
+  <Box as="ol" mt={1} mb={4} pl={6} listStyleType="decimal" {...delegated}>
+    {children}
+  </Box>
+)
 
-const Li = ({ children, ...delegated }: BoxProps) => {
-  return (
-    <Box as="li" pb={1} fontSize={"lg"} {...delegated}>
-      {children}
-    </Box>
-  )
-}
+const Li = ({ children, ...delegated }: BoxProps) => (
+  <Box as="li" mb={1.5} fontSize="md" lineHeight="1.75" {...delegated}>
+    {children}
+  </Box>
+)
 
 const BlockQuote = (props) => {
+  const borderColor = useColorModeValue("gray.300", "gray.500")
+  const bg = useColorModeValue("gray.50", "gray.800")
   return (
     <Box
-      borderLeft={"10px solid #ccc"}
-      m={"1.5em 10px"}
-      p={"0.5em 10px"}
-      fontSize={"larger"}
-    >
-      <blockquote color="#ccc" {...props}></blockquote>
-    </Box>
+      borderLeftWidth="4px"
+      borderLeftColor={borderColor}
+      borderLeftStyle="solid"
+      bg={bg}
+      pl={4}
+      pr={3}
+      py={3}
+      my={5}
+      borderRadius="sm"
+      fontStyle="italic"
+      {...props}
+    />
   )
 }
 
 const HR = () => {
   const borderColor = useColorModeValue("gray.200", "gray.600")
-  return <Divider borderColor={borderColor} my={4} w="full" />
+  return <Divider borderColor={borderColor} my={8} w="full" />
 }
 
-const H1 = ({ children, ...delegated }: HeadingProps) => {
-  return (
-    <Heading as="h1" size="2xl" py={5} {...delegated}>
-      {children}
-    </Heading>
-  )
-}
+const H1 = ({ children, ...delegated }: HeadingProps) => (
+  <Heading as="h1" size="xl" mt={8} mb={2} fontWeight="bold" {...delegated}>
+    {children}
+  </Heading>
+)
 
-const H2 = ({ children, ...delegated }: HeadingProps) => {
-  return (
-    <Heading py={5} as="h2" fontWeight="bold" size="xl" {...delegated}>
-      {children}
-    </Heading>
-  )
-}
+const H2 = ({ children, ...delegated }: HeadingProps) => (
+  <Heading as="h2" size="lg" mt={7} mb={2} fontWeight="bold" {...delegated}>
+    {children}
+  </Heading>
+)
 
-const H3 = ({ children, ...delegated }: HeadingProps) => {
-  return (
-    <Heading py={5} as="h3" size="lg" fontWeight="bold" {...delegated}>
-      {children}
-    </Heading>
-  )
-}
+const H3 = ({ children, ...delegated }: HeadingProps) => (
+  <Heading as="h3" size="md" mt={6} mb={1} fontWeight="semibold" {...delegated}>
+    {children}
+  </Heading>
+)
 
-const H4 = ({ children, ...delegated }: HeadingProps) => {
-  return (
-    <Heading py={5} as="h4" size="lg" fontWeight="bold" {...delegated}>
-      {children}
-    </Heading>
-  )
-}
+const H4 = ({ children, ...delegated }: HeadingProps) => (
+  <Heading as="h4" size="sm" mt={5} mb={1} fontWeight="semibold" {...delegated}>
+    {children}
+  </Heading>
+)
 
-const H5 = ({ children, ...delegated }: HeadingProps) => {
-  return (
-    <Heading py={5} as="h5" size="lg" fontWeight="bold" {...delegated}>
-      {children}
-    </Heading>
-  )
-}
+const H5 = ({ children, ...delegated }: HeadingProps) => (
+  <Heading as="h5" size="xs" mt={4} mb={1} fontWeight="medium"
+    letterSpacing="wide" textTransform="uppercase" {...delegated}>{children}</Heading>
+)
 
 const MyLink = ({
   href,
@@ -131,6 +120,7 @@ const MyLink = ({
   ...props
 }: LinkProps & NextLinkProps) => {
   const color = useColorModeValue(SiteConfig.lightAccent, SiteConfig.darkAccent)
+  const isExternal = typeof href === "string" && (href.startsWith("http") || href.startsWith("//"))
   return (
     <Link
       as={NextLink}
@@ -142,7 +132,7 @@ const MyLink = ({
       passHref={passHref ?? true}
       prefetch={prefetch}
       locale={locale}
-      target="_blank"
+      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >
       {props.children}
     </Link>
@@ -203,9 +193,16 @@ const Td = (props: BoxProps) => (
 const CustomCodeBlock = (props) => {
   const { className, copy, children } = props
   const { colorMode } = useColorMode()
+  const inlineCodeBg = useColorModeValue("gray.100", "gray.700")
+  const inlineCodeColor = useColorModeValue("gray.800", "gray.100")
 
   if (!className) {
-    return <kbd>{children}</kbd>
+    return (
+      <Code px={1.5} py={0.5} borderRadius="sm" fontSize="0.875em"
+        bg={inlineCodeBg} color={inlineCodeColor} fontFamily="mono">
+        {children}
+      </Code>
+    )
   }
 
   let language =
@@ -216,7 +213,7 @@ const CustomCodeBlock = (props) => {
   language = language.replace("language-", "")
 
   return (
-    <Box py={3}>
+    <Box my={5} borderRadius="md" overflow="hidden">
       <CodeBlock
         text={children}
         language={language}
