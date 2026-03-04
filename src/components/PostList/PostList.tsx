@@ -10,7 +10,7 @@ interface PostListProps {
 }
 
 export const PostList = ({ posts }: PostListProps) => {
-  const bg = useColorModeValue("white", "gray.900")
+  const bg = useColorModeValue("white", "gray.800")
 
   const sortedPosts = posts.sort((a, b) => {
     const [dateA, dateB] = [
@@ -36,7 +36,7 @@ export const PostList = ({ posts }: PostListProps) => {
         pr={{ base: 8, lg: 20 }}
       >
         <Heading id="Posts" size="xl">
-          {"❯ Posts"}
+          {"Latest"}
         </Heading>
       </Box>
       {sortedPosts.map((post, index: number) => {
