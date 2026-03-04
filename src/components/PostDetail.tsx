@@ -61,6 +61,7 @@ const PostDetail = (props: Props) => (
       pb={3}
       mb={6}
       wordBreak="break-word"
+      data-post-title={props.frontMatter.title}
     >
       {props.frontMatter.title}
     </Heading>
