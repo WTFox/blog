@@ -21,7 +21,7 @@ export const PostList = ({ posts }: PostListProps) => {
   })
 
   return (
-    <Stack maxW={"4xl"} px={{ base: 8, lg: 20 }} mt={{ base: 0, lg: 0 }}>
+    <Stack maxW={"4xl"} px={{ base: 8, lg: 20 }} mt={{ base: 0, lg: "-1.5em" }}>
       <Box
         position="sticky"
         top="16"
@@ -29,7 +29,7 @@ export const PostList = ({ posts }: PostListProps) => {
         zIndex={0}
         pb={3}
         pt={3}
-        mt={{ base: 0, lg: 0 }}
+        mt={{ base: 0, lg: "-1.5em" }}
         ml={{ base: "-8", lg: "-20" }}
         mr={{ base: "-8", lg: "-20" }}
         pl={{ base: 8, lg: 20 }}

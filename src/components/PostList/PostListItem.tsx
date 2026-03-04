@@ -1,5 +1,6 @@
-import { Link as ChakraLink, Box, Heading, Text } from "@chakra-ui/react"
+import { Link as ChakraLink, Box, Heading, Text, useColorModeValue } from "@chakra-ui/react"
 import { formatDistance } from "date-fns"
+import SiteConfig from "@/lib/SiteConfig"
 
 export interface PostListItemProps {
   link: string
@@ -18,20 +19,34 @@ const PostListItem = (props: PostListItemProps) => {
     new Date(),
     { addSuffix: true },
   )
+  const hoverBg = useColorModeValue("gray.100", "gray.800")
+  const accentColor = useColorModeValue(SiteConfig.lightAccent, SiteConfig.darkAccent)
+
   return (
-    <Box py={1.5} maxW={"8xl"} borderBottomWidth="1px" borderColor="inherit" _last={{ borderBottomWidth: 0 }}>
-      <ChakraLink href={props.link} _hover={{ textDecoration: "none" }}>
-        <Heading pb={1} size="md" _groupHover={{ color: "accent" }}>
+    <Box
+      py={0.75}
+      maxW={"8xl"}
+      borderBottomWidth="1px"
+      borderColor="inherit"
+      _last={{ borderBottomWidth: 0 }}
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      gap={4}
+      px={2}
+      mx={-2}
+      borderRadius="sm"
+      _hover={{ bg: hoverBg }}
+      transition="background-color 0.2s"
+    >
+      <ChakraLink href={props.link} _hover={{ textDecoration: "none" }} flex={1}>
+        <Text fontSize="md" fontWeight="normal" _groupHover={{ color: accentColor }} color="inherit" transition="color 0.2s">
           {props.frontMatter.title}
-        </Heading>
+        </Text>
       </ChakraLink>
 
-      <Text fontSize="sm" fontStyle="italic" mb={1} color="gray.600" _dark={{ color: "gray.400" }}>
-        {props.frontMatter.summary}
-      </Text>
-
-      <Text fontSize="xs" fontStyle="italic" color="gray.500" _dark={{ color: "gray.500" }}>
-        {postDate} · {readTime} min read
+      <Text fontSize="sm" color="gray.500" _dark={{ color: "gray.500" }} whiteSpace="nowrap" flexShrink={0}>
+        {postDate}
       </Text>
     </Box>
   )
