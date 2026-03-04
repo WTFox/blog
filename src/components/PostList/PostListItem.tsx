@@ -19,7 +19,7 @@ const PostListItem = (props: PostListItemProps) => {
     new Date(),
     { addSuffix: true },
   )
-  const hoverBg = useColorModeValue("gray.100", "gray.800")
+  const hoverBg = useColorModeValue("gray.100", "gray.700")
   const accentColor = useColorModeValue(SiteConfig.lightAccent, SiteConfig.darkAccent)
 
   return (
