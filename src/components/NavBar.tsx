@@ -20,6 +20,7 @@ export default function NavBar() {
 
   const [scrollPosition, setScrollPosition] = useState(0)
   const [postTitle, setPostTitle] = useState<string | null>(null)
+  const [readingProgress, setReadingProgress] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +37,12 @@ export default function NavBar() {
         } else {
           setPostTitle(null)
         }
+
+        // Reading progress
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight
+        setReadingProgress(docHeight > 0 ? Math.min(window.scrollY / docHeight, 1) : 0)
+      } else {
+        setReadingProgress(0)
       }
     }
 
@@ -92,6 +99,18 @@ export default function NavBar() {
           />
         </Menu>
       </Container>
+      {readingProgress > 0 && (
+        <Box
+          position="fixed"
+          top="64px"
+          left={0}
+          h="2px"
+          w={`${readingProgress * 100}%`}
+          bgGradient={SiteConfig.gradient}
+          zIndex={2}
+          transition="width 0.1s linear"
+        />
+      )}
     </Box>
   )
 }

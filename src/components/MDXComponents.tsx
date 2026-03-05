@@ -7,14 +7,18 @@ import {
   Divider,
   Heading,
   HeadingProps,
+  IconButton,
   Link,
   LinkProps,
   Stack,
   Text,
   TextProps,
+  Tooltip,
   useColorModeValue,
   useColorMode,
 } from "@chakra-ui/react"
+import { CopyIcon, CheckIcon } from "@chakra-ui/icons"
+import { useState } from "react"
 import NextLink, { LinkProps as NextLinkProps } from "next/link"
 
 import Image from "next/image"
@@ -227,6 +231,37 @@ const CustomKbd = ({ children }) => {
   )
 }
 
+const CopyButton = ({ text }: { text: string }) => {
+  const [copied, setCopied] = useState(false)
+  const color = useColorModeValue("blackAlpha.600", "whiteAlpha.600")
+  const hoverColor = useColorModeValue("blackAlpha.800", "whiteAlpha.900")
+  const hoverBg = useColorModeValue("blackAlpha.100", "whiteAlpha.200")
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
+
+  return (
+    <Tooltip label={copied ? "Copied!" : "Copy"} placement="left" hasArrow>
+      <IconButton
+        aria-label="Copy code"
+        icon={copied ? <CheckIcon /> : <CopyIcon />}
+        size="xs"
+        variant="ghost"
+        color={copied ? "green.400" : color}
+        _hover={{ color: copied ? "green.400" : hoverColor, bg: hoverBg }}
+        position="absolute"
+        top={2}
+        right={2}
+        onClick={handleCopy}
+      />
+    </Tooltip>
+  )
+}
+
 const CustomCodeBlock = (props) => {
   const { className, copy, children } = props
   const { colorMode } = useColorMode()
@@ -254,7 +289,14 @@ const CustomCodeBlock = (props) => {
   }
 
   return (
-    <Box my={5} borderRadius="md" overflow="hidden">
+    <Box my={5} borderRadius="md" overflow="hidden" position="relative" role="group">
+      <Box
+        opacity={0}
+        _groupHover={{ opacity: 1 }}
+        transition="opacity 0.15s ease"
+      >
+        <CopyButton text={children} />
+      </Box>
       <CodeBlock
         text={children}
         language={language}
