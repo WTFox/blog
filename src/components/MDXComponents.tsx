@@ -20,6 +20,7 @@ import NextLink, { LinkProps as NextLinkProps } from "next/link"
 import Image from "next/image"
 import Mermaid from "./Mermaid"
 import SiteConfig from "@/lib/SiteConfig"
+import { getPostImage } from "@/lib/postImages"
 import PhotoGrid from "./PhotoGrid"
 import {
   CodeBlock,
@@ -268,7 +269,7 @@ export const components = (slug) => ({
       <Image
         loading="eager"
         alt={alt}
-        src={require(`../../content/${slug}/${src}`).default}
+        src={getPostImage(slug, src)}
       />
     )
   },

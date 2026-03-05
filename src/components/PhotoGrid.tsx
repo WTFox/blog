@@ -1,15 +1,15 @@
-import path from "path"
 import Image from "next/image"
 import { Box, SimpleGrid, Link as ChakraLink } from "@chakra-ui/react"
+import { getPostImage } from "@/lib/postImages"
 
 const PhotoGrid = ({ slug, images }) => {
   return (
     <Box py={5}>
       <SimpleGrid minChildWidth={"150px"} spacing={5}>
         {images.map((image: string, index: number) => {
-          const alt = path.basename(image, path.extname(image))
+          const alt = image.replace(/\.[^.]+$/, "")
           const key = `${alt}-${index}`
-          const srcLink = require(`../../content/${slug}/${image}`).default
+          const srcLink = getPostImage(slug, image)
 
           return (
             <ChakraLink key={key} href={srcLink.src} isExternal>
