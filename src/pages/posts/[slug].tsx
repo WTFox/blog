@@ -22,6 +22,8 @@ const PostDetailView = ({ link, frontMatter, mdxSource, slug, adjacentPosts }) =
         <meta property="og:title" content={frontMatter.title} />
         <meta property="og:description" content={frontMatter.summary || ""} />
         <meta property="og:image" content={ogUrl} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={frontMatter.title} />
