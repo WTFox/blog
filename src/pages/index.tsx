@@ -18,6 +18,7 @@ Index.getLayout = function getLayout(page: ReactElement) {
       <Head>
         <title>{SiteConfig.siteTitle}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content={SiteConfig.siteDescription} />
       </Head>
       <SidebarLayout>{page}</SidebarLayout>
     </div>

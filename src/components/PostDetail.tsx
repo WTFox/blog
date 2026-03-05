@@ -23,10 +23,10 @@ const Footer = ({ date }) => {
     <Box key={"footer"} py={3}>
       <Divider size={"md"} />
       <Box py={10}>
-        <Text mb={2}>
+        <Text mb={2} fontFamily="heading">
           Authored by {SiteConfig.authorName} on {formattedDate}
         </Text>
-        <Text fontSize="sm">
+        <Text fontSize="sm" fontFamily="heading">
           Have comments or feedback?{" "}
           <Link href={`mailto:${SiteConfig.authorEmail}`} isExternal color="inherit" fontWeight="semibold" textDecoration="underline">
             I'd love to hear from you
@@ -86,7 +86,7 @@ const PostDetail = (props: Props) => {
         {props.frontMatter.title}
       </Heading>
 
-      <Text fontSize="sm" color={mutedColor} textAlign="center" mb={8}>
+      <Text fontSize="sm" color={mutedColor} textAlign="center" mb={8} fontFamily="heading">
         {meta.join(" · ")}
         {props.frontMatter.tags?.length > 0 && (
           <>

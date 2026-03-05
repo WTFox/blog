@@ -50,11 +50,11 @@ const PostListItem = (props: PostListItemProps) => {
           alignItems="center"
           gap={4}
         >
-          <Text fontSize="md" fontWeight="normal" color="inherit">
+          <Text fontSize="md" fontWeight="normal" color="inherit" fontFamily="heading">
             {props.frontMatter.title}
           </Text>
 
-          <Text fontSize="sm" color={mutedColor} whiteSpace="nowrap" flexShrink={0}>
+          <Text fontSize="sm" color={mutedColor} whiteSpace="nowrap" flexShrink={0} fontFamily="heading">
             {postDate}
           </Text>
         </Box>
@@ -74,6 +74,7 @@ const PostListItem = (props: PostListItemProps) => {
                 pb={1.5}
                 noOfLines={2}
                 lineHeight="1.5"
+                fontFamily="heading"
               >
                 {props.frontMatter.summary}
               </Text>

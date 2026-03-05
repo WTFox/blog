@@ -61,7 +61,7 @@ export const PostList = ({ posts, allTags = [] }: PostListProps) => {
       </Box>
       {filteredPosts.map((post, index: number) => {
         return (
-          <Section key={post.slug || index} delay={(index + 1) / 10 + 0.3}>
+          <Section key={post.slug || index} delay={Math.min((index + 1) / 10 + 0.3, 0.8)}>
             <PostListItem {...post} />
           </Section>
         )

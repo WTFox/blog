@@ -37,10 +37,10 @@ const PostNavigation = ({ prev, next }: Props) => {
           p={3}
           transition="background-color 0.2s"
         >
-          <Text fontSize="xs" color="gray.500" _dark={{ color: t.dark.mutedText }} mb={1}>
+          <Text fontSize="xs" color="gray.500" _dark={{ color: t.dark.mutedText }} mb={1} fontFamily="heading">
             <ChevronLeftIcon /> Previous
           </Text>
-          <Text fontSize="sm" fontWeight="medium" color={accentColor} noOfLines={2}>
+          <Text fontSize="sm" fontWeight="medium" color={accentColor} noOfLines={2} fontFamily="heading">
             {prev.frontMatter.title}
           </Text>
         </ChakraLink>
@@ -59,10 +59,10 @@ const PostNavigation = ({ prev, next }: Props) => {
           textAlign="right"
           transition="background-color 0.2s"
         >
-          <Text fontSize="xs" color="gray.500" _dark={{ color: t.dark.mutedText }} mb={1}>
+          <Text fontSize="xs" color="gray.500" _dark={{ color: t.dark.mutedText }} mb={1} fontFamily="heading">
             Next <ChevronRightIcon />
           </Text>
-          <Text fontSize="sm" fontWeight="medium" color={accentColor} noOfLines={2}>
+          <Text fontSize="sm" fontWeight="medium" color={accentColor} noOfLines={2} fontFamily="heading">
             {next.frontMatter.title}
           </Text>
         </ChakraLink>
