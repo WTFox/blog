@@ -2,15 +2,18 @@ import { Box, Heading, Stack, useColorModeValue } from "@chakra-ui/react"
 
 import PostListItem from "./PostListItem"
 import { PostListItemProps } from "./PostListItem"
-import React from "react"
+import React, { useState } from "react"
 import Section from "../Section"
 import SiteConfig from "@/lib/SiteConfig"
+import TagFilter from "@/components/TagFilter"
 
 interface PostListProps {
   posts: PostListItemProps[]
+  allTags?: string[]
 }
 
-export const PostList = ({ posts }: PostListProps) => {
+export const PostList = ({ posts, allTags = [] }: PostListProps) => {
+  const [activeTag, setActiveTag] = useState<string | null>(null)
   const t = SiteConfig.theme
   const bg = useColorModeValue("white", t.dark.bg)
   const headingColor = useColorModeValue(t.light.headingColor, undefined)
@@ -23,6 +26,10 @@ export const PostList = ({ posts }: PostListProps) => {
     ]
     return dateB - dateA
   })
+
+  const filteredPosts = activeTag
+    ? sortedPosts.filter((post) => post.frontMatter.tags?.includes(activeTag))
+    : sortedPosts
 
   return (
     <Stack maxW={"4xl"} px={{ base: 8, lg: 20 }} mt={{ base: 0, lg: "-1.5em" }}>
@@ -46,13 +53,15 @@ export const PostList = ({ posts }: PostListProps) => {
           bgGradient={headingGradient}
           bgClip={headingGradient ? "text" : undefined}
           fontWeight="extrabold"
+          mb={3}
         >
           {"Latest"}
         </Heading>
+        <TagFilter tags={allTags} activeTag={activeTag} onTagClick={setActiveTag} />
       </Box>
-      {sortedPosts.map((post, index: number) => {
+      {filteredPosts.map((post, index: number) => {
         return (
-          <Section key={index} delay={(index + 1) / 10 + 0.3}>
+          <Section key={post.slug || index} delay={(index + 1) / 10 + 0.3}>
             <PostListItem {...post} />
           </Section>
         )

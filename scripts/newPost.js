@@ -22,11 +22,10 @@ fs.writeFileSync(
 date: "${date}"
 title: "${title}"
 draft: true
-summary: "Something about ${title}"
-readTimeInMinutes: 5
+tags: []
+summary: ""
 ---
 
-Something about ${title}
 `,
     function (err) {
         if (err) {

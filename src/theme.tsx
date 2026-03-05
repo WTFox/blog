@@ -3,7 +3,7 @@ import { activeTheme } from "@/lib/themes"
 
 const fonts = {
     heading: "DM Sans",
-    body: "DM Sans",
+    body: "Literata, Georgia, serif",
     mono: "JetBrains Mono",
 }
 
@@ -30,7 +30,7 @@ const theme: ThemeConfig = extendTheme({
     styles: {
         global: (props) => ({
             "html, body": {
-                fontFamily: "DM Sans",
+                fontFamily: "Literata, Georgia, serif",
                 fontSize: "18px",
                 bg: props.colorMode === "dark" ? activeTheme.dark.bg : "white",
             },

@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { TriangleUpIcon } from "@chakra-ui/icons"
 import SiteConfig from "@/lib/SiteConfig"
 
-const SCROLLBREAKPOINT = 500
+const SCROLLBREAKPOINT = 200
 
 const ScrollToTopButton = () => {
   const handleClick = () => {

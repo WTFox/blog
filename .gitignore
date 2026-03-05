@@ -34,8 +34,10 @@ yarn-error.log*
 # vercel
 .vercel
 
-# rss feed
+# generated at build time
 public/rss/
+public/sitemap.xml
+public/search/
 
 # random files
 scratch.sh

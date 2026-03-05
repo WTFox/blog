@@ -2,13 +2,18 @@ import {
   Avatar,
   Box,
   Link as ChakraLink,
+  IconButton,
   Menu,
   Text,
+  Tooltip,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react"
+import { SearchIcon } from "@chakra-ui/icons"
 
 import { Container } from "./Container"
 import DarkModeSwitch from "./DarkModeSwitch"
+import SearchModal from "./SearchModal"
 import SiteConfig from "@/lib/SiteConfig"
 import profilePic from "../../public/images/profile.jpg"
 import { useRouter } from "next/router"
@@ -21,6 +26,20 @@ export default function NavBar() {
   const [scrollPosition, setScrollPosition] = useState(0)
   const [postTitle, setPostTitle] = useState<string | null>(null)
   const [readingProgress, setReadingProgress] = useState(0)
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const mutedColor = useColorModeValue("gray.500", SiteConfig.theme.dark.mutedText)
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault()
+        onOpen()
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [onOpen])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -89,15 +108,28 @@ export default function NavBar() {
             {postTitle}
           </Text>
         )}
-        <Menu>
-          <DarkModeSwitch
-            motionProps={{
-              style: {
-                display: "inline-block",
-              },
-            }}
-          />
-        </Menu>
+        <Box display="flex" alignItems="center" gap={1}>
+          <Tooltip label="Search (Cmd+K)" hasArrow placement="bottom">
+            <IconButton
+              aria-label="Search"
+              icon={<SearchIcon />}
+              variant="ghost"
+              size="sm"
+              color={mutedColor}
+              _hover={{ color: useColorModeValue(SiteConfig.lightAccent, SiteConfig.darkAccent) }}
+              onClick={onOpen}
+            />
+          </Tooltip>
+          <Menu>
+            <DarkModeSwitch
+              motionProps={{
+                style: {
+                  display: "inline-block",
+                },
+              }}
+            />
+          </Menu>
+        </Box>
       </Container>
       {readingProgress > 0 && (
         <Box
@@ -111,6 +143,7 @@ export default function NavBar() {
           transition="width 0.1s linear"
         />
       )}
+      <SearchModal isOpen={isOpen} onClose={onClose} />
     </Box>
   )
 }

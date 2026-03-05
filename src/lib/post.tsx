@@ -23,6 +23,16 @@ function getPosts(): Post[] {
 
     const wordCount = content.trim().split(/\s+/).length
     frontMatter.readTimeInMinutes = Math.max(1, Math.round(wordCount / 200))
+    frontMatter.wordCount = wordCount
+
+    // Auto-summary: use first paragraph if no summary provided
+    if (!frontMatter.summary) {
+      const firstParagraph = content.trim().split(/\n\n/)[0]?.replace(/[#*_`\[\]]/g, "").trim()
+      frontMatter.summary = firstParagraph?.slice(0, 160) || ""
+    }
+
+    // Ensure tags is always an array
+    frontMatter.tags = frontMatter.tags || []
 
     // filenames are special. They're slugs.
     const slug = filename_base
@@ -55,8 +65,44 @@ function getPosts(): Post[] {
   return posts
 }
 
+function getSortedPosts(): Post[] {
+  return getPosts().sort((a, b) => {
+    return new Date(b.frontMatter.date).getTime() - new Date(a.frontMatter.date).getTime()
+  })
+}
+
+function getAllTags(): string[] {
+  const tags = new Set<string>()
+  getPosts().forEach((post) => {
+    ;(post.frontMatter.tags || []).forEach((tag: string) => tags.add(tag))
+  })
+  return Array.from(tags).sort()
+}
+
+function getAdjacentPosts(slug: string): { prev: Post | null; next: Post | null } {
+  const sorted = getSortedPosts()
+  const index = sorted.findIndex((post) => post.slug === slug)
+  return {
+    prev: index < sorted.length - 1 ? sorted[index + 1] : null,
+    next: index > 0 ? sorted[index - 1] : null,
+  }
+}
+
 function lookupPostFromSlug(slug: string): Post {
   return getPosts().find((post) => post.slug === slug)
 }
 
-export { getPosts, lookupPostFromSlug }
+function validateFrontMatter(): { slug: string; warnings: string[] }[] {
+  const issues: { slug: string; warnings: string[] }[] = []
+  getPosts().forEach((post) => {
+    const warnings: string[] = []
+    if (!post.frontMatter.title) warnings.push("Missing title")
+    if (!post.frontMatter.date) warnings.push("Missing date")
+    if (!post.frontMatter.summary) warnings.push("Missing summary")
+    if (!post.frontMatter.tags || post.frontMatter.tags.length === 0) warnings.push("No tags")
+    if (warnings.length > 0) issues.push({ slug: post.slug, warnings })
+  })
+  return issues
+}
+
+export { getPosts, getSortedPosts, getAllTags, getAdjacentPosts, lookupPostFromSlug, validateFrontMatter }
