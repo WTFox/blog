@@ -19,7 +19,10 @@ function getPosts(): Post[] {
     const filename_base = path.basename(filename).replace(".mdx", "")
 
     const markdownWithMeta = fs.readFileSync(filename, "utf-8")
-    const { data: frontMatter } = matter(markdownWithMeta)
+    const { data: frontMatter, content } = matter(markdownWithMeta)
+
+    const wordCount = content.trim().split(/\s+/).length
+    frontMatter.readTimeInMinutes = Math.max(1, Math.round(wordCount / 200))
 
     // filenames are special. They're slugs.
     const slug = filename_base

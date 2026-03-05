@@ -3,7 +3,6 @@ title: "How I Used Python and Boto3 to Modify CSV's in AWS S3"
 date: "2017-07-21"
 draft: false
 summary: "Using Python to write to CSV files stored in S3. Particularly to write CSV headers to queries unloaded from Redshift (before the header option)."
-readTimeInMinutes: 2
 ---
 
 At work we developed an app to build dynamic sql queries using sql alchemy. The user can build the query they want and get the results in csv file. We also make use of AWS’s ability to unload a query to Redshift. The reason behind this is that if a query returns more X amount of rows, we can just have Redshift run it, and store the csv file in S3 for us. There is a slight problem with this. When a query isn’t unloaded, we have the ability to put in column headers, and then serve the csv file. But when a query _is_ unloaded, only the results are in the csv and the column headers are left out.
