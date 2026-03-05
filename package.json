@@ -1,6 +1,6 @@
 {
     "engines": {
-        "node": ">=22"
+        "node": "22.x"
     },
     "private": true,
     "scripts": {
