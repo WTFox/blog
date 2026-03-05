@@ -15,7 +15,7 @@ const RoloText = ({ values, delay = 4000 }: Props) => {
       setIndex((index + 1) % values.length)
     }, delay)
     return () => clearTimeout(id)
-  })
+  }, [index, values.length, delay])
 
   const displayText = values[index]
 

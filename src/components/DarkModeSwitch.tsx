@@ -4,18 +4,15 @@ import { MoonIcon, SunIcon } from "@chakra-ui/icons"
 import SiteConfig from "@/lib/SiteConfig"
 
 const DarkModeSwitch = ({ motionProps } = null) => {
-  const { toggleColorMode } = useColorMode()
+  const { colorMode, toggleColorMode } = useColorMode()
 
   return (
     <AnimatePresence mode={"wait"} initial={false}>
       <motion.div
         style={{
           display: "inline-block",
-          position: "fixed",
-          top: "1rem",
-          right: "1rem",
         }}
-        key={useColorModeValue("light", "dark")}
+        key={colorMode}
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 20, opacity: 0 }}

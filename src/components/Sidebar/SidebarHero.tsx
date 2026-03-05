@@ -45,14 +45,14 @@ export const SidebarHero = () => {
   }
 
   const currentYear = new Date().getFullYear()
-  let subtitleValues = [
+  const subtitleValues = [
     "Software Engineer",
-    mileage && `${currentYear}: ${mileage} miles 🚴🏃🚶‍♂️`,
+    mileage ? `${currentYear}: ${mileage} miles` : null,
     "Husband",
     "Dog lover",
     "Batman?",
     "Click here ^^",
-  ]
+  ].filter(Boolean) as string[]
 
   return (
     <Box>

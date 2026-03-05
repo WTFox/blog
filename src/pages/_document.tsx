@@ -15,6 +15,9 @@ export default class Document extends NextDocument {
           <meta property="og:image" content={ogUrl} />
           <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary_large_image" />
+          <meta name="theme-color" content="#110D00" media="(prefers-color-scheme: dark)" />
+          <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+          <link rel="icon" href="/favicon.ico" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
           <link

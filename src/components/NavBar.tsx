@@ -73,7 +73,7 @@ export default function NavBar() {
     <Box pb={"20"}>
       <Container
         direction={"row"}
-        w={"100vw"}
+        w={"100%"}
         position={"fixed"}
         zIndex={"1"}
         bg={useColorModeValue("white", SiteConfig.theme.dark.bg)}

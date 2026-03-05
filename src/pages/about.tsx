@@ -121,20 +121,6 @@ const About = ({ age }) => {
           </Text>
         </Section>
 
-        {/* <Section pb={5} delay={0.3}> */}
-        {/*   <Text fontSize={fontSize}> */}
-        {/*     You can follow me on{" "} */}
-        {/*     <Link */}
-        {/*       textDecoration={"underline"} */}
-        {/*       isExternal */}
-        {/*       href={"https://strava.com/athletes/wtfox"} */}
-        {/*     > */}
-        {/*       <Rainbowify>Strava</Rainbowify> */}
-        {/*     </Link> */}
-        {/*     , if you&apos;d like. */}
-        {/*   </Text> */}
-        {/* </Section> */}
-
         <Section py={10} delay={0.3}>
           {" "}
         </Section>
