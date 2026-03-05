@@ -9,6 +9,7 @@ import {
 
 import { Container } from "./Container"
 import DarkModeSwitch from "./DarkModeSwitch"
+import SiteConfig from "@/lib/SiteConfig"
 import profilePic from "../../public/images/profile.jpg"
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
@@ -16,7 +17,7 @@ import { useState, useEffect } from "react"
 export default function NavBar() {
   const router = useRouter()
   const linkHref = router.asPath === "/" ? "/about" : "/"
-  const borderColor = useColorModeValue("gray.100", "#2A1F00")
+
   const [scrollPosition, setScrollPosition] = useState(0)
   const [postTitle, setPostTitle] = useState<string | null>(null)
 
@@ -49,9 +50,8 @@ export default function NavBar() {
         w={"100vw"}
         position={"fixed"}
         zIndex={"1"}
-        bg={useColorModeValue("white", "#110D00")}
-        borderBottomWidth="1px"
-        borderBottomColor={borderColor}
+        bg={useColorModeValue("white", SiteConfig.theme.dark.bg)}
+
         px={{ base: "10", xl: "20" }}
         h={"16"}
         align={"center"}

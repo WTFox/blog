@@ -1,5 +1,6 @@
 import { Link as ChakraLink, Box, Text, useColorModeValue } from "@chakra-ui/react"
 import { formatDistance } from "date-fns"
+import SiteConfig from "@/lib/SiteConfig"
 
 export interface PostListItemProps {
   link: string
@@ -17,7 +18,8 @@ const PostListItem = (props: PostListItemProps) => {
     new Date(),
     { addSuffix: true },
   )
-  const hoverBg = useColorModeValue("#FEF3C7", "#1F1700")
+  const t = SiteConfig.theme
+  const hoverBg = useColorModeValue(t.light.hover, t.dark.elevated)
 
   return (
     <ChakraLink href={props.link} _hover={{ textDecoration: "none" }} display="block">
@@ -41,7 +43,7 @@ const PostListItem = (props: PostListItemProps) => {
           {props.frontMatter.title}
         </Text>
 
-        <Text fontSize="sm" color="gray.500" _dark={{ color: "gray.500" }} whiteSpace="nowrap" flexShrink={0}>
+        <Text fontSize="sm" color="gray.500" _dark={{ color: t.dark.mutedText }} whiteSpace="nowrap" flexShrink={0}>
           {postDate}
         </Text>
       </Box>

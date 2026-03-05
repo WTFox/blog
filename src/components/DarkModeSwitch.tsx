@@ -28,7 +28,7 @@ const DarkModeSwitch = ({ motionProps } = null) => {
             SiteConfig.lightAccent,
             SiteConfig.darkAccent
           )}
-          color="white"
+          color={useColorModeValue("white", SiteConfig.theme.dark.buttonIcon)}
           icon={useColorModeValue(<MoonIcon />, <SunIcon />)}
           onClick={toggleColorMode}
         ></IconButton>

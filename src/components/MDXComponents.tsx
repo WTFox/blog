@@ -23,11 +23,22 @@ import SiteConfig from "@/lib/SiteConfig"
 import PhotoGrid from "./PhotoGrid"
 import {
   CodeBlock,
-  solarizedLight as lightTheme,
-  railscast as darkTheme,
+  solarizedLight,
+  railscast,
+  atomOneLight,
+  nord,
+  github,
+  obsidian,
+  dracula,
 } from "react-code-blocks"
+
 import YouTubeEmbed from "./YouTubeEmbed"
 import StravaMiles from "./StravaMiles"
+
+const codeThemeMap = { solarizedLight, railscast, atomOneLight, nord, github, obsidian, dracula }
+const lightCodeTheme = codeThemeMap[SiteConfig.theme.codeThemeLight]
+const darkCodeTheme = codeThemeMap[SiteConfig.theme.codeThemeDark]
+const t = SiteConfig.theme
 
 const P = ({ children, ...delegated }: TextProps) => (
   <Text as="p" mt={0} mb={4} fontSize="md" lineHeight="1.75" {...delegated}>
@@ -54,8 +65,8 @@ const Li = ({ children, ...delegated }: BoxProps) => (
 )
 
 const BlockQuote = (props) => {
-  const borderColor = useColorModeValue("gray.300", "gray.500")
-  const bg = useColorModeValue("gray.50", "#1A1400")
+  const borderColor = useColorModeValue(t.light.blockquoteBorder, t.dark.blockquoteBorder)
+  const bg = useColorModeValue(t.light.surface, t.dark.surface)
   return (
     <Box
       borderLeftWidth="4px"
@@ -74,7 +85,7 @@ const BlockQuote = (props) => {
 }
 
 const HR = () => {
-  const borderColor = useColorModeValue("gray.200", "gray.600")
+  const borderColor = useColorModeValue(t.light.border, t.dark.border)
   return <Divider borderColor={borderColor} my={8} w="full" />
 }
 
@@ -170,7 +181,7 @@ const Table = (props: BoxProps) => (
 )
 
 const Th = (props: BoxProps) => {
-  const bg = useColorModeValue("gray.50", "whiteAlpha.100")
+  const bg = useColorModeValue(t.light.surface, t.dark.surface)
 
   return (
     <Box as="th" bg={bg} fontWeight="semibold" p={2} fontSize="sm" {...props} />
@@ -190,9 +201,9 @@ const Td = (props: BoxProps) => (
 )
 
 const CustomKbd = ({ children }) => {
-  const bg = useColorModeValue("#FEF3C7", "#2A1F00")
-  const color = useColorModeValue("#92400E", "#FCD34D")
-  const borderColor = useColorModeValue("#B45309", "#FBBF24")
+  const bg = useColorModeValue(t.light.inlineCodeBg, t.dark.inlineCodeBg)
+  const color = useColorModeValue(t.light.inlineCodeColor, t.dark.inlineCodeColor)
+  const borderColor = useColorModeValue(t.light.kbdBorder, t.dark.kbdBorder)
 
   return (
     <Box
@@ -218,8 +229,8 @@ const CustomKbd = ({ children }) => {
 const CustomCodeBlock = (props) => {
   const { className, copy, children } = props
   const { colorMode } = useColorMode()
-  const inlineCodeBg = useColorModeValue("#FEF3C7", "#2A1F00")
-  const inlineCodeColor = useColorModeValue("#92400E", "#FCD34D")
+  const inlineCodeBg = useColorModeValue(t.light.inlineCodeBg, t.dark.inlineCodeBg)
+  const inlineCodeColor = useColorModeValue(t.light.inlineCodeColor, t.dark.inlineCodeColor)
 
   if (!className) {
     return (
@@ -242,7 +253,7 @@ const CustomCodeBlock = (props) => {
       <CodeBlock
         text={children}
         language={language}
-        theme={colorMode === "dark" ? darkTheme : lightTheme}
+        theme={colorMode === "dark" ? darkCodeTheme : lightCodeTheme}
         showLineNumbers={false}
         wrapLines
       />

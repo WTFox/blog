@@ -11,8 +11,9 @@ interface PostListProps {
 }
 
 export const PostList = ({ posts }: PostListProps) => {
-  const bg = useColorModeValue("white", "#110D00")
-  const headingColor = useColorModeValue("#92400E", undefined)
+  const t = SiteConfig.theme
+  const bg = useColorModeValue("white", t.dark.bg)
+  const headingColor = useColorModeValue(t.light.headingColor, undefined)
   const headingGradient = useColorModeValue(undefined, SiteConfig.gradient)
 
   const sortedPosts = posts.sort((a, b) => {

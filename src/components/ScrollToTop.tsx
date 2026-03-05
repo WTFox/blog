@@ -29,7 +29,7 @@ const ScrollToTopButton = () => {
           SiteConfig.lightAccent,
           SiteConfig.darkAccent
         )}
-        color="white"
+        color={useColorModeValue("white", SiteConfig.theme.dark.buttonIcon)}
         icon={<TriangleUpIcon />}
       ></IconButton>
     </Box>

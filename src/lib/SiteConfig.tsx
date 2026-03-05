@@ -6,6 +6,7 @@ import { Icon } from "@chakra-ui/react"
 import { IconType } from "react-icons"
 
 import path from "path"
+import { activeTheme, SiteTheme } from "./themes"
 
 interface Link {
   href: string
@@ -25,6 +26,7 @@ interface ISiteConfig {
   links: Link[]
   authorEmail: string
   siteDescription: string
+  theme: SiteTheme
 }
 
 const SiteConfig: ISiteConfig = {
@@ -66,9 +68,10 @@ const SiteConfig: ISiteConfig = {
       isExternal: false,
     },
   ],
-  gradient: "linear(to-l, #B45309, #FBBF24)",
-  lightAccent: "#B45309",
-  darkAccent: "#FBBF24",
+  gradient: activeTheme.gradient,
+  lightAccent: activeTheme.lightAccent,
+  darkAccent: activeTheme.darkAccent,
+  theme: activeTheme,
 }
 
 export default SiteConfig

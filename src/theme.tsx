@@ -1,4 +1,5 @@
 import { ThemeConfig, extendTheme, theme as baseTheme } from "@chakra-ui/react"
+import { activeTheme } from "@/lib/themes"
 
 const fonts = {
   heading: "DM Sans",
@@ -31,7 +32,7 @@ const theme: ThemeConfig = extendTheme({
       "html, body": {
         fontFamily: "DM Sans",
         fontSize: "18px",
-        bg: props.colorMode === "dark" ? "#110D00" : "white",
+        bg: props.colorMode === "dark" ? activeTheme.dark.bg : "white",
       },
       "pre, code": {
         fontFamily: "JetBrains Mono, monospace",

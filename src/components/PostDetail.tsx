@@ -67,7 +67,7 @@ const PostDetail = (props: Props) => (
       {props.frontMatter.title}
     </Heading>
 
-    <Text fontSize="sm" color="gray.500" textAlign="center" mb={8}>
+    <Text fontSize="sm" color="gray.500" _dark={{ color: SiteConfig.theme.dark.mutedText }} textAlign="center" mb={8}>
       {format(new Date(props.frontMatter.date), "MMMM d, yyyy")}
       {props.frontMatter.readTimeInMinutes
         ? ` · ${props.frontMatter.readTimeInMinutes} min read`
