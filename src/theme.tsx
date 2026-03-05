@@ -31,6 +31,7 @@ const theme: ThemeConfig = extendTheme({
       "html, body": {
         fontFamily: "DM Sans",
         fontSize: "18px",
+        bg: props.colorMode === "dark" ? "#110D00" : "white",
       },
       "pre, code": {
         fontFamily: "JetBrains Mono, monospace",

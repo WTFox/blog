@@ -66,9 +66,9 @@ const SiteConfig: ISiteConfig = {
       isExternal: false,
     },
   ],
-  gradient: "linear(to-l, #7928CA, #FF0080)",
-  lightAccent: "#7928CA",
-  darkAccent: "#FF0080",
+  gradient: "linear(to-l, #B45309, #FBBF24)",
+  lightAccent: "#B45309",
+  darkAccent: "#FBBF24",
 }
 
 export default SiteConfig

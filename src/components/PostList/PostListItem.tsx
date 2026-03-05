@@ -17,7 +17,7 @@ const PostListItem = (props: PostListItemProps) => {
     new Date(),
     { addSuffix: true },
   )
-  const hoverBg = useColorModeValue("gray.100", "gray.700")
+  const hoverBg = useColorModeValue("#FEF3C7", "#1F1700")
 
   return (
     <ChakraLink href={props.link} _hover={{ textDecoration: "none" }} display="block">

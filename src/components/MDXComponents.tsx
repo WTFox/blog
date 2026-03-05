@@ -7,7 +7,6 @@ import {
   Divider,
   Heading,
   HeadingProps,
-  Kbd,
   Link,
   LinkProps,
   Stack,
@@ -24,8 +23,8 @@ import SiteConfig from "@/lib/SiteConfig"
 import PhotoGrid from "./PhotoGrid"
 import {
   CodeBlock,
-  atomOneLight as lightTheme,
-  nord as darkTheme,
+  solarizedLight as lightTheme,
+  railscast as darkTheme,
 } from "react-code-blocks"
 import YouTubeEmbed from "./YouTubeEmbed"
 import StravaMiles from "./StravaMiles"
@@ -56,7 +55,7 @@ const Li = ({ children, ...delegated }: BoxProps) => (
 
 const BlockQuote = (props) => {
   const borderColor = useColorModeValue("gray.300", "gray.500")
-  const bg = useColorModeValue("gray.50", "gray.800")
+  const bg = useColorModeValue("gray.50", "#1A1400")
   return (
     <Box
       borderLeftWidth="4px"
@@ -190,11 +189,37 @@ const Td = (props: BoxProps) => (
   />
 )
 
+const CustomKbd = ({ children }) => {
+  const bg = useColorModeValue("#FEF3C7", "#2A1F00")
+  const color = useColorModeValue("#92400E", "#FCD34D")
+  const borderColor = useColorModeValue("#B45309", "#FBBF24")
+
+  return (
+    <Box
+      as="kbd"
+      display="inline-block"
+      px={1.5}
+      py={0.5}
+      fontSize="0.8em"
+      fontFamily="mono"
+      bg={bg}
+      color={color}
+      borderWidth="1px"
+      borderColor={borderColor}
+      borderBottomWidth="3px"
+      borderRadius="md"
+      lineHeight="normal"
+    >
+      {children}
+    </Box>
+  )
+}
+
 const CustomCodeBlock = (props) => {
   const { className, copy, children } = props
   const { colorMode } = useColorMode()
-  const inlineCodeBg = useColorModeValue("gray.100", "gray.700")
-  const inlineCodeColor = useColorModeValue("gray.800", "gray.100")
+  const inlineCodeBg = useColorModeValue("#FEF3C7", "#2A1F00")
+  const inlineCodeColor = useColorModeValue("#92400E", "#FCD34D")
 
   if (!className) {
     return (
@@ -251,7 +276,7 @@ export const components = (slug) => ({
   table: Table,
   th: Th,
   td: Td,
-  kbd: Kbd,
+  kbd: CustomKbd,
   a: MyLink,
   Link: MyLink,
   ButtonLink,

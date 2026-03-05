@@ -1,16 +1,19 @@
-import { Box, Divider, Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react"
+import { Box, Heading, Stack, useColorModeValue } from "@chakra-ui/react"
 
 import PostListItem from "./PostListItem"
 import { PostListItemProps } from "./PostListItem"
 import React from "react"
 import Section from "../Section"
+import SiteConfig from "@/lib/SiteConfig"
 
 interface PostListProps {
   posts: PostListItemProps[]
 }
 
 export const PostList = ({ posts }: PostListProps) => {
-  const bg = useColorModeValue("white", "gray.800")
+  const bg = useColorModeValue("white", "#110D00")
+  const headingColor = useColorModeValue("#92400E", undefined)
+  const headingGradient = useColorModeValue(undefined, SiteConfig.gradient)
 
   const sortedPosts = posts.sort((a, b) => {
     const [dateA, dateB] = [
@@ -35,7 +38,14 @@ export const PostList = ({ posts }: PostListProps) => {
         pl={{ base: 8, lg: 20 }}
         pr={{ base: 8, lg: 20 }}
       >
-        <Heading id="Posts" size="xl">
+        <Heading
+          id="Posts"
+          size="xl"
+          color={headingColor}
+          bgGradient={headingGradient}
+          bgClip={headingGradient ? "text" : undefined}
+          fontWeight="extrabold"
+        >
           {"Latest"}
         </Heading>
       </Box>
