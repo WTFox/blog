@@ -5,8 +5,8 @@ import {
   Box,
   Link as ChakraLink,
   Heading,
-  Image,
 } from "@chakra-ui/react"
+import NextImage from "next/image"
 import { Container } from "@/components/Container"
 import Section from "@/components/Section"
 import SiteConfig from "../../lib/SiteConfig"
@@ -66,7 +66,7 @@ export const SidebarHero = () => {
             overflow="hidden"
             {...borderProps}
           >
-            <Image src={profilePic.src} alt="Profile picture" />
+            <NextImage src={profilePic} alt="Profile picture" style={{ width: "100%", height: "auto", display: "block" }} />
           </Box>
         </ChakraLink>
       </Section>

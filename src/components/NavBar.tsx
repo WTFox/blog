@@ -16,6 +16,7 @@ import { useState, useEffect } from "react"
 export default function NavBar() {
   const router = useRouter()
   const linkHref = router.asPath === "/" ? "/about" : "/"
+  const borderColor = useColorModeValue("gray.100", "gray.700")
   const [scrollPosition, setScrollPosition] = useState(0)
   const [postTitle, setPostTitle] = useState<string | null>(null)
 
@@ -49,6 +50,8 @@ export default function NavBar() {
         position={"fixed"}
         zIndex={"1"}
         bg={useColorModeValue("white", "gray.800")}
+        borderBottomWidth="1px"
+        borderBottomColor={borderColor}
         px={{ base: "10", xl: "20" }}
         h={"16"}
         align={"center"}

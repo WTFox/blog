@@ -1,5 +1,6 @@
 import { Box, Divider, Heading, Link, Text } from "@chakra-ui/react"
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote"
+import { format } from "date-fns"
 
 import { PostListItemProps } from "@/components/PostList/PostListItem"
 import SiteConfig from "@/lib/SiteConfig"
@@ -11,12 +12,13 @@ interface Props extends PostListItemProps {
 }
 
 const Footer = ({ date }) => {
+  const formattedDate = format(new Date(date), "MMMM d, yyyy")
   return (
     <Box key={"footer"} py={3}>
       <Divider size={"md"} />
       <Box py={10}>
         <Text mb={2}>
-          Authored by {SiteConfig.authorName} on {date}
+          Authored by {SiteConfig.authorName} on {formattedDate}
         </Text>
         <Text fontSize="sm">
           Have comments or feedback?{" "}
@@ -54,17 +56,23 @@ const PostDetail = (props: Props) => (
       textAlign="center"
       bgGradient={SiteConfig.gradient}
       bgClip="text"
-      textTransform="uppercase"
       fontWeight="bold"
       as="h1"
       size="2xl"
-      pb={3}
-      mb={6}
+      pb={2}
+      mb={2}
       wordBreak="break-word"
       data-post-title={props.frontMatter.title}
     >
       {props.frontMatter.title}
     </Heading>
+
+    <Text fontSize="sm" color="gray.500" textAlign="center" mb={8}>
+      {format(new Date(props.frontMatter.date), "MMMM d, yyyy")}
+      {props.frontMatter.readTimeInMinutes
+        ? ` · ${props.frontMatter.readTimeInMinutes} min read`
+        : null}
+    </Text>
 
     <MDXComponents slug={props.slug} mdxSource={props.mdxSource} />
 

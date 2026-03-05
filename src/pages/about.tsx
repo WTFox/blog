@@ -1,11 +1,11 @@
 import {
   Text,
   Box,
-  Image,
   VStack,
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react"
+import NextImage from "next/image"
 
 import React, { ReactElement } from "react"
 import Section from "@/components/Section"
@@ -62,7 +62,7 @@ const About = ({ age }) => {
             overflow="hidden"
             {...borderProps}
           >
-            <Image src={me.src} alt="Picture of Anthony" />
+            <NextImage src={me} alt="Picture of Anthony" style={{ width: "100%", height: "auto", display: "block" }} />
           </Box>
         </Section>
 
@@ -110,7 +110,7 @@ const About = ({ age }) => {
             overflow="hidden"
             {...borderProps}
           >
-            <Image src={bike.src} alt="Picture of Anthony's road bike." />
+            <NextImage src={bike} alt="Picture of Anthony's road bike." style={{ width: "100%", height: "auto", display: "block" }} />
           </Box>
         </Section>
 

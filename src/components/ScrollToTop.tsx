@@ -1,5 +1,6 @@
 import { Box, IconButton, Link, useColorModeValue } from "@chakra-ui/react"
 import { useEffect, useState } from "react"
+import { AnimatePresence, motion } from "framer-motion"
 
 import { TriangleUpIcon } from "@chakra-ui/icons"
 import SiteConfig from "@/lib/SiteConfig"
@@ -51,7 +52,20 @@ const ScrollToTop = () => {
     }
   }, [])
 
-  return scrollPosition > SCROLLBREAKPOINT && <ScrollToTopButton />
+  return (
+    <AnimatePresence>
+      {scrollPosition > SCROLLBREAKPOINT && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ScrollToTopButton />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
 }
 
 export default ScrollToTop
