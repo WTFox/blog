@@ -249,6 +249,10 @@ const CustomCodeBlock = (props) => {
 
   language = language.replace("language-", "")
 
+  if (language === "mermaid") {
+    return <Mermaid>{children}</Mermaid>
+  }
+
   return (
     <Box my={5} borderRadius="md" overflow="hidden">
       <CodeBlock

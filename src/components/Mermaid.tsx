@@ -1,14 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { Container } from "./Container";
 import mermaid from "mermaid";
 
-export default function Mermaid({ definition, _key }) {
-  const id = `mermaid-${_key}`;
-  const ref = useRef(null);
+let mermaidCounter = 0;
+
+export default function Mermaid({ children }) {
+  const definition = typeof children === "string" ? children.trim() : "";
+  const ref = useRef<HTMLDivElement>(null);
+  const [id] = useState(() => `mermaid-${++mermaidCounter}`);
 
   useEffect(() => {
-    if (ref.current) {
+    if (ref.current && definition) {
       mermaid.mermaidAPI.render(id, definition, (result) => {
         ref.current.innerHTML = result;
       });
