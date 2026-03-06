@@ -31,9 +31,14 @@ const TableOfContents = () => {
               .replace(/[^a-z0-9]+/g, "-")
               .replace(/(^-|-$)/g, "") || ""
         }
+        // Get text content excluding the link element
+        const clone = el.cloneNode(true) as HTMLElement
+        const link = clone.querySelector('a')
+        if (link) link.remove()
+
         return {
           id: el.id,
-          text: el.textContent || "",
+          text: clone.textContent || "",
           level: parseInt(el.tagName.replace("H", "")),
         }
       })

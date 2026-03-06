@@ -54,7 +54,7 @@ const About = ({ age }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content={`About ${SiteConfig.authorName} - ${SiteConfig.siteDescription}`} />
       </Head>
-      <VStack maxW={"40rem"} mx="auto" textAlign={"left"} wordBreak={"break-word"}>
+      <VStack maxW={"40rem"} mx="auto" px={{ base: 4, md: 0 }} textAlign={"left"} wordBreak={"break-word"}>
         <Section pb={5} delay={0.3}>
           <Box
             borderWidth={2}

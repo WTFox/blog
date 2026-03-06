@@ -77,7 +77,7 @@ const PostDetail = (props: Props) => {
         bgClip="text"
         fontWeight="bold"
         as="h1"
-        size="2xl"
+        size={{ base: "xl", md: "2xl" }}
         pb={2}
         mb={2}
         wordBreak="break-word"
