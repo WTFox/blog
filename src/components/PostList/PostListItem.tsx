@@ -27,6 +27,8 @@ const PostListItem = (props: PostListItemProps) => {
   const t = SiteConfig.theme
   const hoverBg = useColorModeValue(t.light.hover, t.dark.elevated)
   const mutedColor = useColorModeValue("gray.500", t.dark.mutedText)
+  const titleHoverColor = useColorModeValue(t.light.headingColor, undefined)
+  const titleHoverGradient = useColorModeValue(undefined, SiteConfig.gradient)
 
   return (
     <ChakraLink href={props.link} _hover={{ textDecoration: "none" }} display="block">
@@ -50,7 +52,15 @@ const PostListItem = (props: PostListItemProps) => {
           alignItems="center"
           gap={4}
         >
-          <Text fontSize="md" fontWeight="normal" color="inherit" fontFamily="heading">
+          <Text
+            fontSize="md"
+            fontWeight="normal"
+            fontFamily="heading"
+            color={hovered ? titleHoverColor : "inherit"}
+            bgGradient={hovered ? titleHoverGradient : undefined}
+            bgClip={hovered && titleHoverGradient ? "text" : undefined}
+            transition="color 0.2s"
+          >
             {props.frontMatter.title}
           </Text>
 
