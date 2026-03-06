@@ -59,7 +59,7 @@ const PostListItem = (props: PostListItemProps) => {
           </Text>
         </Box>
         <AnimatePresence>
-          {hovered && props.frontMatter.summary && (
+          {hovered && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
@@ -67,16 +67,27 @@ const PostListItem = (props: PostListItemProps) => {
               transition={{ duration: 0.2, ease: "easeOut" }}
               style={{ overflow: "hidden" }}
             >
+              {props.frontMatter.summary && (
+                <Text
+                  fontSize="sm"
+                  color={mutedColor}
+                  pt={1}
+                  noOfLines={2}
+                  lineHeight="1.5"
+                  fontFamily="heading"
+                >
+                  {props.frontMatter.summary}
+                </Text>
+              )}
               <Text
-                fontSize="sm"
+                fontSize="xs"
                 color={mutedColor}
-                pt={1}
+                pt={0.5}
                 pb={1.5}
-                noOfLines={2}
-                lineHeight="1.5"
                 fontFamily="heading"
               >
-                {props.frontMatter.summary}
+                {props.frontMatter.readTimeInMinutes} min read
+                {props.frontMatter.wordCount ? ` · ${props.frontMatter.wordCount.toLocaleString()} words` : ""}
               </Text>
             </motion.div>
           )}

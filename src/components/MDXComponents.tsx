@@ -17,7 +17,7 @@ import {
   useColorModeValue,
   useColorMode,
 } from "@chakra-ui/react"
-import { CopyIcon, CheckIcon } from "@chakra-ui/icons"
+import { CopyIcon, CheckIcon, LinkIcon } from "@chakra-ui/icons"
 import { useState } from "react"
 import NextLink, { LinkProps as NextLinkProps } from "next/link"
 
@@ -94,28 +94,54 @@ const HR = () => {
   return <Divider borderColor={borderColor} my={8} w="full" />
 }
 
+const LinkedHeading = ({ as, size, mt, mb, fontWeight, children, ...delegated }: HeadingProps & { as: any }) => {
+  const accentColor = useColorModeValue(SiteConfig.lightAccent, SiteConfig.darkAccent)
+  const text = typeof children === "string" ? children : ""
+  const id = text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
+
+  return (
+    <Heading
+      as={as}
+      size={size}
+      mt={mt}
+      mb={mb}
+      fontWeight={fontWeight}
+      id={id}
+      role="group"
+      position="relative"
+      {...delegated}
+    >
+      {children}
+      <Link
+        href={`#${id}`}
+        aria-label={`Link to ${text}`}
+        ml={2}
+        color={accentColor}
+        opacity={0}
+        _groupHover={{ opacity: 1 }}
+        transition="opacity 0.15s"
+        fontSize="0.8em"
+      >
+        #
+      </Link>
+    </Heading>
+  )
+}
+
 const H1 = ({ children, ...delegated }: HeadingProps) => (
-  <Heading as="h1" size="xl" mt={8} mb={2} fontWeight="bold" {...delegated}>
-    {children}
-  </Heading>
+  <LinkedHeading as="h1" size="xl" mt={8} mb={2} fontWeight="bold" {...delegated}>{children}</LinkedHeading>
 )
 
 const H2 = ({ children, ...delegated }: HeadingProps) => (
-  <Heading as="h2" size="lg" mt={7} mb={2} fontWeight="bold" {...delegated}>
-    {children}
-  </Heading>
+  <LinkedHeading as="h2" size="lg" mt={7} mb={2} fontWeight="bold" {...delegated}>{children}</LinkedHeading>
 )
 
 const H3 = ({ children, ...delegated }: HeadingProps) => (
-  <Heading as="h3" size="md" mt={6} mb={1} fontWeight="semibold" {...delegated}>
-    {children}
-  </Heading>
+  <LinkedHeading as="h3" size="md" mt={6} mb={1} fontWeight="semibold" {...delegated}>{children}</LinkedHeading>
 )
 
 const H4 = ({ children, ...delegated }: HeadingProps) => (
-  <Heading as="h4" size="sm" mt={5} mb={1} fontWeight="semibold" {...delegated}>
-    {children}
-  </Heading>
+  <LinkedHeading as="h4" size="sm" mt={5} mb={1} fontWeight="semibold" {...delegated}>{children}</LinkedHeading>
 )
 
 const H5 = ({ children, ...delegated }: HeadingProps) => (
@@ -267,6 +293,9 @@ const CustomCodeBlock = (props) => {
   const { colorMode } = useColorMode()
   const inlineCodeBg = useColorModeValue(t.light.inlineCodeBg, t.dark.inlineCodeBg)
   const inlineCodeColor = useColorModeValue(t.light.inlineCodeColor, t.dark.inlineCodeColor)
+  const titleBg = useColorModeValue(t.light.surface, t.dark.surface)
+  const titleColor = useColorModeValue(t.light.inlineCodeColor, t.dark.mutedText)
+  const titleBorder = useColorModeValue(t.light.border, t.dark.border)
 
   if (!className) {
     return (
@@ -277,12 +306,16 @@ const CustomCodeBlock = (props) => {
     )
   }
 
-  let language =
-    className.match(/language-(\w.*?)\b/) != null
-      ? className.match(/language-(\w.*?)\b/)[0]
-      : "javascript"
+  const classMatch = className.match(/language-(\S+)/)
+  let language = classMatch ? classMatch[1] : "javascript"
 
-  language = language.replace("language-", "")
+  // Extract title from language string: language-python:title=utils.py
+  let title = null
+  if (language.includes(":title=")) {
+    const parts = language.split(":title=")
+    language = parts[0]
+    title = parts[1]
+  }
 
   if (language === "mermaid") {
     return <Mermaid>{children}</Mermaid>
@@ -290,6 +323,20 @@ const CustomCodeBlock = (props) => {
 
   return (
     <Box my={5} borderRadius="md" overflow="hidden" position="relative" role="group">
+      {title && (
+        <Box
+          px={4}
+          py={1.5}
+          bg={titleBg}
+          borderBottomWidth="1px"
+          borderColor={titleBorder}
+          fontFamily="mono"
+          fontSize="xs"
+          color={titleColor}
+        >
+          {title}
+        </Box>
+      )}
       <Box
         opacity={0}
         _groupHover={{ opacity: 1 }}
