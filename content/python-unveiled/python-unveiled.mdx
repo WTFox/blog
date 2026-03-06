@@ -8,40 +8,40 @@ summary: "Idioms, Standard Library Gems, and Snake Traps to Avoid"
 
 Python is an interpreted, dynamically typed, language. Python's philosophy can be found in any interpreter by typing `import this`. These are not hard-rules, but rather guidelines to writing clean, efficient, and 'Pythonic' code.
 
-```
-  >>> import this
-  The Zen of Python, by Tim Peters
+```text
+>>> import this
+The Zen of Python, by Tim Peters
 
-  Beautiful is better than ugly.
-  Explicit is better than implicit.
-  Simple is better than complex.
-  Complex is better than complicated.
-  Flat is better than nested.
-  Sparse is better than dense.
-  Readability counts.
-  Special cases aren't special enough to break the rules.
-  Although practicality beats purity.
-  Errors should never pass silently.
-  Unless explicitly silenced.
-  In the face of ambiguity, refuse the temptation to guess.
-  There should be one-- and preferably only one --obvious way to do it.
-  Although that way may not be obvious at first unless you're Dutch.
-  Now is better than never.
-  Although never is often better than *right* now.
-  If the implementation is hard to explain, it's a bad idea.
-  If the implementation is easy to explain, it may be a good idea.
-  Namespaces are one honking great idea -- let's do more of those!
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
 ```
 
 (another fun one: `import antigravity`)
 
 
-## Pythonic Idioms: Embracing the Zen 
+## Pythonic Idioms: Embracing the Zen
 
 
 #### List Comprehensions
 
-Python's preferred way to filter lists, 
+Python's preferred way to filter lists,
 
 ```python
 def is_even(num):
@@ -53,7 +53,7 @@ for num in range(10):
     evens.append(num)
 print(evens)  # [0, 2, 4, 6, 8]
 
-# equivalent to 
+# equivalent to
 evens = [num for num in range(10) if is_even(num)]
 print(evens)  # [0, 2, 4, 6, 8]
 ```
@@ -69,12 +69,12 @@ for num in range(10):
   nums.append(add_two(num))
 print(nums)  # [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-# equivalent to 
+# equivalent to
 nums = [add_two(num) for num in range(10)]
 print(nums)  # [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 ```
 
-You can combine both approaches to map and filter in one fell swoop. 
+You can combine both approaches to map and filter in one fell swoop.
 
 ```python
 def add_two(num):
@@ -103,16 +103,16 @@ print(easy_words)  # {'foo': 3, 'bar': 3, 'baz': 3}
 
 #### Decorators
 
-**@staticmethod** Used when a method logically belongs in a class but doesn't operate on it's instances. 
+**@staticmethod** Used when a method logically belongs in a class but doesn't operate on it's instances.
 
 ```python
 class MathUtil:
-  
+
     @staticmethod
     def add(x, y):
         return x + y
-      
-      
+
+
 # Use the static method
 result = MathUtil.add(5, 7)
 ```
@@ -142,7 +142,7 @@ print(p2.ingredients)  # Output: ['cheese', 'tomatoes']
 
 **@property** gives us some syntax sugar. Note that we're decorating the function full_name, but we don't use parens when calling it!
 
-```python 
+```python
 class Person:
     def __init__(self, first_name, last_name):
         self.first_name = first_name
@@ -159,7 +159,7 @@ print(p.full_name)  # Output: John Doe
 
 #### Decorators (custom)
 
-Decorators functions that wrap other functions, giving you access to the time just before the function runs and immediately after. This lets gives you the ability to create really neat things. 
+Decorators functions that wrap other functions, giving you access to the time just before the function runs and immediately after. This lets gives you the ability to create really neat things.
 
 Good use cases: retrying when failures happen, memoization, logging, and more.
 
@@ -169,18 +169,18 @@ import functools
 
 
 def print_decorator(func):
-  
+
     @functools.wraps(func)  # <- another decorator. Preserves original function's name and docstring
     def wrapper(*args, **kwargs):
         print(f"Before calling function {func.__name__}")
         result = func(*args, **kwargs)
         print(f"After calling function {func.__name__}")
         return result
-      
+
     return wrapper
 
-  
-# Usage: 
+
+# Usage:
 @print_decorator
 def add(x, y):
     return x + y
@@ -226,7 +226,7 @@ class Repeat:
             raise StopIteration
         self.count += 1
         return self.value
-      
+
 
 r = Repeat('Python', 5)
 for val in r:
@@ -240,14 +240,14 @@ for val in r:
 # Python
 ```
 
-Note: You should use `itertools.repeat` if you actually need repeat functionality. 
+Note: You should use `itertools.repeat` if you actually need repeat functionality.
 
 
 #### Context Managers
 
-Context managers are Python's solution to working with objects that require a specific setup and exit operations. Here's a timer, for example: 
+Context managers are Python's solution to working with objects that require a specific setup and exit operations. Here's a timer, for example:
 
-```python 
+```python
 import time
 
 class Timer:
@@ -259,15 +259,15 @@ class Timer:
         self.end = time.time()
         print(f"Execution time: {self.end - self.start} seconds")
 
-        
+
 with Timer():  # <- __enter__
     sum(range(10**7))  # Some time-consuming operation
     # other operations can go here...
-    
+
     # __exit__() is called here
 ```
 
-If you've ever typed `with open(...)`, that's a context manager! 
+If you've ever typed `with open(...)`, that's a context manager!
 
 ```python
 lines = []
@@ -275,7 +275,7 @@ with open("myfile.csv", "r") as f:  # file is opened in reader mode, e.g "r"
   lines = f.read_lines()
   # other operations can go here.
   # file is closed once the end of the block is reached
-  
+
 # equivalent to:
 f = open("myfile.csv", "r")
 lines = f.read_lines()
@@ -287,7 +287,7 @@ Fun fact: we often use these to close db connections, too! Preventing us from ac
 
 #### Generators
 
-You can think of iterables and iterators like a book and bookmark respectively. Iterators hold their location untill instructed to advance. Generators take it a step further and chop the left side of the book off entirely. In other word, generators only care about what the current value is and the location of the next value. This reduces a lot of memory overhead. 
+You can think of iterables and iterators like a book and bookmark respectively. Iterators hold their location untill instructed to advance. Generators take it a step further and chop the left side of the book off entirely. In other word, generators only care about what the current value is and the location of the next value. This reduces a lot of memory overhead.
 
 In this example, pretend that we're iterating over a very large file (terabytes, even!). If we were to load that file into memory entirely, python would raise an OutOfMemory exception. We're able to prevent that by using generators.
 
@@ -296,7 +296,7 @@ def read_large_file(file_path):
     with open(file_path, "r") as file:
         for line in file:
             yield line.strip()  # remove trailing newline character
-            
+
 
 # Use the generator function
 for line in read_large_file("/path/to/your/large/file.log"):
@@ -305,7 +305,7 @@ for line in read_large_file("/path/to/your/large/file.log"):
 ```
 
 
-## Python's Standard Library: Hidden Gems 
+## Python's Standard Library: Hidden Gems
 
 Python ships with 'batteries included.' This means that out of the box, Python provides us with a broad selection of libraries to use for many different tasks. 305 modules, to be exact.
 
@@ -315,7 +315,7 @@ Python ships with 'batteries included.' This means that out of the box, Python p
 305  # <- dang, that's a lot!
 ```
 
-Dang, that's a lot! (jinx) Probably too much, to be honest. Good news, [PEP 594](https://peps.python.org/pep-0594/) aims to remove "dead batteries" and Brett Cannon had discussions this year at the Python Summit to answer the question [What is the std library for?](https://pyfound.blogspot.com/2023/05/the-python-language-summit-2023-what-is.html) 
+Dang, that's a lot! (jinx) Probably too much, to be honest. Good news, [PEP 594](https://peps.python.org/pep-0594/) aims to remove "dead batteries" and Brett Cannon had discussions this year at the Python Summit to answer the question [What is the std library for?](https://pyfound.blogspot.com/2023/05/the-python-language-summit-2023-what-is.html)
 
 However, there are a few modules in the standard library that stand out!
 
@@ -324,13 +324,13 @@ However, there are a few modules in the standard library that stand out!
 
 **`itertools.cycle(iterable)`** is used to infinitely repeat iteration over an iterable.
 
-```python 
+```python
 import itertools
 
 colors = itertools.cycle(['red', 'green', 'blue'])
 for _ in range(10):
     print(next(colors))
-    
+
 # Output:
 # red
 # green
@@ -373,7 +373,7 @@ perms = itertools.permutations(word)
 for perm in perms:
     print(''.join(perm))
 
-# Ouputs: 
+# Ouputs:
 # dog
 # dgo
 # odg
@@ -426,7 +426,7 @@ Other neat modules
 #### Collections (for working with container datatypes)
 
 
-**`collections.defaultdict(callable)`** saves us from having to check if a key exists in a dictionary before working with it. 
+**`collections.defaultdict(callable)`** saves us from having to check if a key exists in a dictionary before working with it.
 
 ```python
 from collections import defaultdict
@@ -497,7 +497,7 @@ Other neat modules
 - collections.OrderedDict
 
 
-## Python Gotchas: Avoiding the Snakebite 
+## Python Gotchas: Avoiding the Snakebite
 
 
 **Mutable default arguments: the trap in function definitions**
@@ -520,7 +520,7 @@ What happened here? If Alice and Bob were two different users, we wouldn't want 
 
 A better approach would be to use None as the default value, and assign an empty list in the function body, if None was provided:
 
-```python 
+```python
 def update_profile(request_data, profile_data=None):
     if profile_data is None:
         profile_data = {"name": "Guest", "email": "guest@example.com"}
@@ -594,12 +594,12 @@ b = 257
 print(a is b)  # Outputs: False
 ```
 
-In the last example we should clearly be using equality checks instead of identity. 
+In the last example we should clearly be using equality checks instead of identity.
 
 
 ## General Performance Advice
 
-This is taken from Anthony Shaw's PyCon talk. 
+This is taken from Anthony Shaw's PyCon talk.
 [link](https://www.youtube.com/watch?v=YY7yJHo0M5I)
 
 
@@ -609,19 +609,19 @@ This is taken from Anthony Shaw's PyCon talk.
 def before():
   x = (1, 2, 3, 4)
   i = 6
-  
+
   for j in range(10_000):
     print(len(x) * i + j)  # len(x) doesn't change in the context of this loop
-   
-    
+
+
 def after():
   x = (1, 2, 3, 4)
   i = 6
   x_i = len(x) * i
-   
+
   for j in range(10_000):
     print(x_i + j)
-   
+
 ```
 
 **Missing Comprehensions**
@@ -635,7 +635,7 @@ for num in range(10):
     evens.append(num)
 print(evens)  # [0, 2, 4, 6, 8]
 
-# equivalent to 
+# equivalent to
 evens = [num for num in range(10) if is_even(num)]
 ```
 
