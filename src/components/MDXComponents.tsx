@@ -10,15 +10,20 @@ import {
   IconButton,
   Link,
   LinkProps,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalOverlay,
   Stack,
   Text,
   TextProps,
   Tooltip,
   useColorModeValue,
   useColorMode,
+  useDisclosure,
 } from "@chakra-ui/react"
-import { CopyIcon, CheckIcon, LinkIcon } from "@chakra-ui/icons"
-import { useState } from "react"
+import { CloseIcon, CopyIcon, CheckIcon, LinkIcon } from "@chakra-ui/icons"
+import { useState, useEffect } from "react"
 import NextLink, { LinkProps as NextLinkProps } from "next/link"
 
 import Image from "next/image"
@@ -355,17 +360,87 @@ const CustomCodeBlock = (props) => {
   )
 }
 
+const ClickableImage = ({ src, alt }: { src: string; alt?: string }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  useEffect(() => {
+    if (!isOpen) return
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose()
+    }
+    window.addEventListener("keydown", handleKey)
+    return () => window.removeEventListener("keydown", handleKey)
+  }, [isOpen, onClose])
+
+  return (
+    <>
+      <Box
+        as="span"
+        display="block"
+        cursor="zoom-in"
+        onClick={onOpen}
+        transition="opacity 0.15s ease"
+        _hover={{ opacity: 0.9 }}
+      >
+        <Image loading="eager" src={src} alt={alt ?? ""} />
+      </Box>
+
+      <Modal isOpen={isOpen} onClose={onClose} size="full" isCentered>
+        <ModalOverlay bg="blackAlpha.900" />
+        <ModalContent
+          bg="transparent"
+          boxShadow="none"
+          maxW="100vw"
+          maxH="100vh"
+          m={0}
+          onClick={onClose}
+        >
+          <ModalBody
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            p={0}
+            position="relative"
+          >
+            <IconButton
+              aria-label="Close"
+              icon={<CloseIcon />}
+              variant="ghost"
+              color="whiteAlpha.800"
+              _hover={{ color: "white", bg: "whiteAlpha.200" }}
+              size="sm"
+              position="fixed"
+              top={4}
+              right={4}
+              onClick={onClose}
+            />
+            <Box
+              maxW="90vw"
+              maxH="90vh"
+              onClick={(e) => e.stopPropagation()}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Image
+                src={src}
+                alt={alt ?? ""}
+                loading="eager"
+                style={{ maxHeight: "90vh", width: "auto", objectFit: "contain" }}
+              />
+            </Box>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </>
+  )
+}
+
 export const components = (slug) => ({
   PhotoGrid: ({ images }) => <PhotoGrid slug={slug} images={images} />,
-  img: ({ src, alt }) => {
-    return (
-      <Image
-        loading="eager"
-        alt={alt}
-        src={getPostImage(slug, src)}
-      />
-    )
-  },
+  img: ({ src, alt }) => (
+    <ClickableImage src={getPostImage(slug, src)} alt={alt} />
+  ),
   h1: H1,
   h2: H2,
   h3: H3,
